@@ -1,0 +1,6 @@
+localization.cpp:17:6:void localization::SendReqest()	16	static
+localization.cpp:25:6:void localization::Setloca()	16	static
+localization.cpp:48:6:void localization::begin()	16	static
+localization.cpp:99:7:float localization::GetX()	16	static
+localization.cpp:105:7:float localization::GetY()	16	static
+localization.cpp:111:7:float localization::GetYaw()	16	static

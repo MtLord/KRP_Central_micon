@@ -1,0 +1,3 @@
+Sensor.cpp:12:6:void Sensor::SendRequest()	16	static
+Sensor.cpp:17:6:void Sensor::SetData()	16	static
+Sensor.cpp:39:16:short unsigned int Sensor::GetValue()	16	static
