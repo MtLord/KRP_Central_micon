@@ -110,15 +110,23 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
+  LcdInit();
   FilterConfig();
+  LcdPuts((char *)"CAN OK");
   LowlayerHandelTypedef hlow;
     plow=&hlow;
 
+
     Timer1 LoopInt(&htim6,10);//(tim handle,interrupt period)
     LoopInt.Start();
-    LcdInit();
-
+    LcdCls();
+    LcdPuts((char *)"Comu OK");
     HAL_Delay(200);
+    //LcdXy(0, 2);
+    //LcdPuts((char *)"NUCLEO F401RE");
+
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -128,15 +136,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  HAL_Delay_s(1);
-//	 	  LcdPuts((char *)"NUCLEO F401RE");
-//	 	  HAL_Delay_s(1);
-//	 	  LcdCls();
+	  HAL_Delay_s(1);
+	 	//  LcdPuts((char *)"NUCLEO F401RE");
+	 	  HAL_Delay_s(1);
+	 	 // LcdCls();
 	  if(IntFlag)
 	 	  {
 	 		  /****user code here*******/
 
-hlow.extcan_d.Send(0x23, 0,0);
+//hlow.extcan_d.Send(0x23, 0,0);
 
 
 

@@ -125,7 +125,7 @@ void LcdInit()
 	HAL_Delay(5);
 	lcd_write(CMD, 0x06);			// Entry Mode Set
 	HAL_Delay(40);
-	LcdDisplayMode(1, 1, 1);
+	LcdDisplayMode(1, 0, 0);
 	HAL_Delay(5);
 }
 
