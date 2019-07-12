@@ -21,7 +21,6 @@ LCD.h:103:6:void LcdInit()	8	static
 LCD.h:132:6:void LcdPutc(char)	16	static
 LCD.h:137:6:void LcdPuts(char*)	16	static
 LCD.h:145:6:void LcdXy(char, char)	24	static
-main.cpp:52:6:void HAL_Delay_s(int)	16	static
-main.cpp:82:5:int main()	840	static
-main.cpp:162:6:void SystemClock_Config()	88	static
-main.cpp:209:6:void Error_Handler()	4	static
+main.cpp:77:5:int main()	856	static
+main.cpp:163:6:void SystemClock_Config()	88	static
+main.cpp:210:6:void Error_Handler()	4	static

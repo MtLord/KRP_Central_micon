@@ -32,7 +32,7 @@
 #include "InterruptIvent/TimerInterruptCallback.hpp"
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
-#include "LCD.h"
+#include "LCD/LCD.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,18 +49,13 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-void HAL_Delay_s(int sec)
-{
-	while(sec){
-		HAL_Delay(1000);
-		sec--;
-	}
-}
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+
 
 /* USER CODE END PV */
 
@@ -109,6 +104,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   LcdInit();
   FilterConfig();
@@ -116,16 +112,15 @@ int main(void)
   LowlayerHandelTypedef hlow;
     plow=&hlow;
 
-
+    //SetFrequency(440);
+//    HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
+//    __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
     Timer1 LoopInt(&htim6,10);//(tim handle,interrupt period)
     LoopInt.Start();
     LcdCls();
     LcdPuts((char *)"Comu OK");
-    HAL_Delay(200);
-    //LcdXy(0, 2);
-    //LcdPuts((char *)"NUCLEO F401RE");
-
-
+   // HAL_Delay(200);
+    float a;
 
   /* USER CODE END 2 */
 
@@ -136,21 +131,27 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_Delay_s(1);
-	 	//  LcdPuts((char *)"NUCLEO F401RE");
-	 	  HAL_Delay_s(1);
-	 	 // LcdCls();
-	  if(IntFlag)
-	 	  {
+//	  HAL_Delay_s(1);
+
+//	 	  HAL_Delay_s(1);
+
+
+	     printf("a:%f\n\r",a);
+	     scanf("%f\r",&a);
+//	  printf("printok/n/r");
+	  //if(IntFlag)
+	 	//  {
 	 		  /****user code here*******/
 
 //hlow.extcan_d.Send(0x23, 0,0);
-
-
-
+//	  HAL_Delay(200);
+//	  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1 );
+//	  HAL_Delay(200);
+//	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 
 	 		  /***************************/
-	 	  }
+	 	 // }
+
   }
   /* USER CODE END 3 */
 }

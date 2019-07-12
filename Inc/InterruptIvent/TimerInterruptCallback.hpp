@@ -12,11 +12,11 @@ private:
 	float period=0;//Š„‚è‚İüŠú
 	unsigned short counterperiod=0;
 	unsigned short Prescaler=0;
-	float ajustperiod;
+	float ajustperiod=0;
 
 	TIM_HandleTypeDef *htim;
 public:
-	Timer1(TIM_HandleTypeDef *timhandle,float p):period(p/1000),htim(timhandle),ajustperiod(0)
+	Timer1(TIM_HandleTypeDef *timhandle,float p):period(p/1000),htim(timhandle)
 	{
 		/**************initialization******************/
 		while(ajustperiod!=period)
