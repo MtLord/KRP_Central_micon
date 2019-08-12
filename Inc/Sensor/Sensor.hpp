@@ -11,7 +11,7 @@
 class Sensor
 {
 	CanBus *canbus;
-	unsigned short sensordata[12]={0,};
+	static unsigned short sensordata[12];
 	int num;
 public:
 	Sensor(CanBus *_canbus,int _num):canbus(_canbus),num(_num)
@@ -28,10 +28,10 @@ class MicroSw
 {
 	CanBus *canbus;
 	static unsigned char Data[4];
-	int comnum=0;
+	int conenum=0;
 	int boardnum=1;
 public:
-	MicroSw(CanBus *_canbus,int num,int brnum):canbus(_canbus),comnum(num),boardnum(brnum)
+	MicroSw(CanBus *_canbus,int _conenum,int brnum):canbus(_canbus),conenum(_conenum),boardnum(brnum)
 	{
 
 	}

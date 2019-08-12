@@ -14,6 +14,6 @@ LCD.h:137:6:void LcdPuts(char*)	24	static
 LCD.h:145:6:void LcdXy(char, char)	8	static
 Buzzer.h:11:6:void SetFrequency(long int)	24	static
 Buzzer.h:43:6:long int map(float, long int, long int, long int, long int)	0	static
-main.cpp:167:6:void SystemClock_Config()	104	static
-main.cpp:80:5:int main()	800	static
-main.cpp:214:6:void Error_Handler()	24	static
+main.cpp:171:6:void SystemClock_Config()	104	static
+main.cpp:80:5:int main()	792	static
+main.cpp:218:6:void Error_Handler()	24	static

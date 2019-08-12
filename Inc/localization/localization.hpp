@@ -40,6 +40,7 @@ public:
 	 float GetY();
 
 	 float GetYaw();
+	 void PutLCD();
 	void Setshitf_X(float x)//機体中心からのズレを記述
 	{
 		ShiftX=x;

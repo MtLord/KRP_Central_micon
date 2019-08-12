@@ -114,18 +114,22 @@ int main(void)
   FilterConfig();
   LcdPuts((char *)"CAN OK");
   LowlayerHandelTypedef hlow;
-    plow=&hlow;
-
+  plow=&hlow;
+#ifdef MOTERSYSTEM
 hlow.M1.begin();
 hlow.M2.begin();
 hlow.M2.begin();
 hlow.M4.begin();
+hlow.M5.begin();
+hlow.M6.begin();
+hlow.M7.begin();
+#endif
     SetFrequency(440);
 //    HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 //    __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
-    Timer1 LoopInt(&htim6,10);//(tim handle,interrupt period)
+    Timer1 LoopInt(&htim6,8);//(tim handle,interrupt period)
     LoopInt.Start();
-//    LcdCls();
+    	LcdCls();
 //    LcdPuts((char *)"Comu OK");
    // HAL_Delay(200);
     float a=0;

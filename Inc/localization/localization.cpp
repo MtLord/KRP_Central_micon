@@ -113,3 +113,8 @@ float localization::GetYaw()
 
 	return currentyaw;
 }
+
+void localization::PutLCD()
+{
+
+}

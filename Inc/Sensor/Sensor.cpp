@@ -62,10 +62,10 @@ int MicroSw::GetPush()
 {
 	if(boardnum==1)
 	{
-		return  (Data[0]>>comnum)&1;
+		return  (Data[0]>>conenum)&1;
 	}
 	else if(boardnum==2)
 	{
-		return  (Data[1]>>comnum)&1;
+		return  (Data[1]>>conenum)&1;
 	}
 }
