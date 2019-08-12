@@ -27,12 +27,17 @@ public:
 class MicroSw
 {
 	CanBus *canbus;
+	static unsigned char Data[4];
+	int comnum=0;
+	int boardnum=1;
 public:
-	MicroSw(CanBus *_canbus):canbus(_canbus){
+	MicroSw(CanBus *_canbus,int num,int brnum):canbus(_canbus),comnum(num),boardnum(brnum)
+	{
 
 	}
+	void SetData();
 	void SendRequest();
-	void GetPush();
+	int GetPush();
 };
 
 #endif /* SENSOR_SENSOR_HPP_ */

@@ -1,2 +1,2 @@
-Aircylinder.cpp:13:6:void Aircylinder::open()	16	static
-Aircylinder.cpp:18:6:void Aircylinder::close()	16	static
+Aircylinder.cpp:13:6:void Aircylinder::open()	0	static
+Aircylinder.cpp:18:6:void Aircylinder::close()	0	static

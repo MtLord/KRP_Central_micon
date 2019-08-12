@@ -40,3 +40,32 @@ unsigned short Sensor:: GetValue()
 {
 	return sensordata[num];
 }
+
+void MicroSw::SendRequest()
+{
+	canbus->Send(GET_MICROSWITCH<<ORDER_BIT_Pos, 0, 0);
+}
+
+void MicroSw::SetData()
+{
+	if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|1))
+	{
+		Data[0]=RxFIFO_Data[0];
+	}
+	else if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|2))
+	{
+		Data[1]=RxFIFO_Data[1];
+	}
+}
+
+int MicroSw::GetPush()
+{
+	if(boardnum==1)
+	{
+		return  (Data[0]>>comnum)&1;
+	}
+	else if(boardnum==2)
+	{
+		return  (Data[1]>>comnum)&1;
+	}
+}

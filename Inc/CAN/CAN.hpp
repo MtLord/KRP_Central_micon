@@ -25,6 +25,7 @@ public:
 
 	}
 	 short Send(unsigned long ID,unsigned char DLC,unsigned char *data);
+
 };
 
 

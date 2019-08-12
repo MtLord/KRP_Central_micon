@@ -22,3 +22,11 @@ void Motor::SetDuty(float duty)
 	canbus->Send(MOTORE_SET_DUTY<<ORDER_BIT_Pos_S|node_id,4,tx_buff);
 }
 
+
+
+
+
+
+
+
+

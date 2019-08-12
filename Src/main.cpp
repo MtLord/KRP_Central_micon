@@ -22,6 +22,7 @@
 #include "main.h"
 #include "can.h"
 #include "dma.h"
+#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -33,6 +34,8 @@
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
 #include "LCD/LCD.h"
+#include "Buzzer.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,6 +108,7 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM7_Init();
   MX_TIM2_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   LcdInit();
   FilterConfig();
@@ -112,16 +116,19 @@ int main(void)
   LowlayerHandelTypedef hlow;
     plow=&hlow;
 
-    //SetFrequency(440);
+hlow.M1.begin();
+hlow.M2.begin();
+hlow.M2.begin();
+hlow.M4.begin();
+    SetFrequency(440);
 //    HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 //    __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
     Timer1 LoopInt(&htim6,10);//(tim handle,interrupt period)
     LoopInt.Start();
-    LcdCls();
-    LcdPuts((char *)"Comu OK");
+//    LcdCls();
+//    LcdPuts((char *)"Comu OK");
    // HAL_Delay(200);
-    float a;
-
+    float a=0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -133,11 +140,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
 //	  HAL_Delay_s(1);
 
-//	 	  HAL_Delay_s(1);
-
-
-	     printf("a:%f\n\r",a);
-	     scanf("%f\r",&a);
+//	     printf("a:%f\n\r",a);
+//	     scanf("%f\r",&a);
 //	  printf("printok/n/r");
 	  //if(IntFlag)
 	 	//  {
@@ -211,7 +215,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+	 LcdPuts((char *)"Now in error handler");
   /* USER CODE END Error_Handler_Debug */
 }
 

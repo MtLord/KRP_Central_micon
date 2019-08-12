@@ -18,6 +18,7 @@ class Motor
 public:
 	Motor(CanBus *_canbus,unsigned short _node_id):canbus(_canbus),node_id(_node_id)
 	{
+
 	}
 	void SetDuty(float duty);
 };

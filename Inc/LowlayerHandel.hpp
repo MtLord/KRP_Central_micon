@@ -14,7 +14,7 @@
 #include "Servo/Servo.hpp"
 #include "CAN/CAN.hpp"
 #include "localization/localization.hpp"
-
+#include "MotorSystem/MotorSystemClass.hpp"
 
 #include "Sensor/Sensor.hpp"
 #include "PS3/PS3class.hpp"
@@ -33,7 +33,7 @@ public:
 	/*************************/
 
 	Aircylinder Air1,Air2,Air3,Air4,Air5,Air6,Air7,Air8;
-	Motor M1,M2,M3,M4,M5,M6,M7,M8;
+	MotorSystem M1,M2,M3,M4,M5,M6,M7,M8;
 	Servo servo1,servo2,servo3,servo4,servo5,servo6,servo7,servo8;
 	PS3controller PS3;
 	localization loca;

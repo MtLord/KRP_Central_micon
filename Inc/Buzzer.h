@@ -17,7 +17,7 @@ void SetFrequency(long freq)
 			long sysclock=0;
 //			if(Mhandler==&htim1)
 //			{
-//				sysclock=HAL_RCC_GetPCLK2Freq();
+//				sysclock=HAL_RCC_GetPCLK2Freq(); //TIM1,TIM8�̏ꍇ
 //			}
 //			else
 //			{

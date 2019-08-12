@@ -18,11 +18,11 @@ void localization::SendReqest()
 {
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_3);
+		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_3);//送信エラーLED点滅
 	}
 }
 
-void localization::Setloca()
+void localization::Setloca()//受信割り込み時の値セット関数
 {
 	if(RXmsg.ExtId==(GET_LOCA<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
 	{
@@ -79,8 +79,8 @@ void localization::begin()
 	txdata2[5]=((unsigned char *)&pulse)[1];
 	txdata2[6]=((unsigned char *)&pulse)[2];
 	txdata2[7]=((unsigned char *)&pulse)[3];
-	canbus->Send(LOCA_BEGIN<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos,8,txdata2);
-	while(RXmsg.ExtId!=(LOCA_BEGIN<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
+	canbus->Send(LOCA_BEGIN<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos,8,txdata2);
+	while(RXmsg.ExtId!=(LOCA_BEGIN<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos))
 	{
 		if(timcount2>0x8000000)
 		{

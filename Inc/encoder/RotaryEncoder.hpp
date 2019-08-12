@@ -23,6 +23,7 @@ public:
 
 	}
 	float GetDistance(float d,float count);//(ギアのピッチ円直径,一周あたりのカウント量
+	void SetData();
 };
 
 #endif /* ENCODER_ROTARYENCODER_HPP_ */

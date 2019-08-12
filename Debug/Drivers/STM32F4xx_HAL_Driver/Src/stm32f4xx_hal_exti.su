@@ -1,4 +1,4 @@
-stm32f4xx_hal_exti.c:141:19:HAL_EXTI_SetConfigLine	8	static
+stm32f4xx_hal_exti.c:141:19:HAL_EXTI_SetConfigLine	4	static
 stm32f4xx_hal_exti.c:194:19:HAL_EXTI_GetConfigLine	0	static
 stm32f4xx_hal_exti.c:253:19:HAL_EXTI_ClearConfigLine	0	static
 stm32f4xx_hal_exti.c:285:19:HAL_EXTI_RegisterCallback	0	static
