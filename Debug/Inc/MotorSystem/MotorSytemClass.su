@@ -1,6 +1,6 @@
-MotorSytemClass.cpp:14:6:void MotorSystem::SetSendData(int, unsigned char, float)	24	static
-MotorSytemClass.cpp:24:6:void MotorSystem::SetReceevieData(short unsigned int*, unsigned char*, float*)	8	static
-MotorSytemClass.cpp:36:7:float MotorSystem::SetReceevieData()	8	static
+MotorSytemClass.cpp:14:6:void MotorSystem::SetSendData(int, unsigned char, float)	32	static
+MotorSytemClass.cpp:24:6:void MotorSystem::SetReceevieData(short unsigned int*, unsigned char*, float*)	24	static
+MotorSytemClass.cpp:36:7:float MotorSystem::SetReceevieData()	24	static
 MotorSytemClass.cpp:45:6:void MotorSystem::SetDuty(float)	16	static
 MotorSytemClass.cpp:50:6:void MotorSystem::SetVelocity(float)	16	static
 MotorSytemClass.cpp:55:6:void MotorSystem::SetTorque(float)	16	static

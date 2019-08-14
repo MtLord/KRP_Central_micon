@@ -1,2 +1,2 @@
-Motor.cpp:11:6:void Motor::DivideData(float)	8	static
+Motor.cpp:11:6:void Motor::DivideData(float)	24	static
 Motor.cpp:19:6:void Motor::SetDuty(float)	16	static

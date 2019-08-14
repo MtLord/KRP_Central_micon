@@ -34,7 +34,7 @@
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
 #include "LCD/LCD.h"
-#include "Buzzer.h"
+#include "Buzzer/Buzzer.h"
 
 /* USER CODE END Includes */
 
@@ -89,7 +89,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+int count=0;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -102,7 +102,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_CAN1_Init();
+ // MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
@@ -111,7 +111,8 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   LcdInit();
-  FilterConfig();
+ // FilterConfig();
+  LcdXy(1, 4);
   LcdPuts((char *)"CAN OK");
   LowlayerHandelTypedef hlow;
   plow=&hlow;
@@ -124,15 +125,16 @@ hlow.M5.begin();
 hlow.M6.begin();
 hlow.M7.begin();
 #endif
-    SetFrequency(440);
+
 //    HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 //    __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
-    Timer1 LoopInt(&htim6,8);//(tim handle,interrupt period)
+//LcdCls();
+//LcdPuts2((char *)"Comu OK");
+    Timer1 LoopInt(&htim6);
+    LoopInt.SetLoopTime(5);//Loop period set up ms
     LoopInt.Start();
-    	LcdCls();
-//    LcdPuts((char *)"Comu OK");
-   // HAL_Delay(200);
-    float a=0;
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -147,10 +149,10 @@ hlow.M7.begin();
 //	     printf("a:%f\n\r",a);
 //	     scanf("%f\r",&a);
 //	  printf("printok/n/r");
-	  //if(IntFlag)
-	 	//  {
+	  if(IntFlag)
+	  {
 	 		  /****user code here*******/
-
+		  count++;
 //hlow.extcan_d.Send(0x23, 0,0);
 //	  HAL_Delay(200);
 //	  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1 );
@@ -158,7 +160,8 @@ hlow.M7.begin();
 //	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 
 	 		  /***************************/
-	 	 // }
+		  IntFlag=false;
+	 	 }
 
   }
   /* USER CODE END 3 */

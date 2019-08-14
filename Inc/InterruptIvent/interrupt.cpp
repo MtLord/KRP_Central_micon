@@ -17,7 +17,6 @@ int warikan=0;
  			{
 	 	 	 	if(htim->Instance==TIM6)
 	 	 	 		{
- 					plow->loca.SendReqest();
  					IntFlag=true;
 
  					}

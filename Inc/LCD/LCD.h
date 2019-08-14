@@ -7,13 +7,15 @@
 #include "stm32f4xx_hal.h"
 #ifndef LCD_H_
 #define LCD_H_
+
 #define CMD 	0
 #define DAT 	1
 #define ON 	1
 #define OFF 	0
 #define IN		1
 #define OUT 	0
-
+#define line2 0xC0
+#define line1 0x80
 // LCD Control(ハードウェア依存部)
 #define E_PORT		GPIOC
 #define E_PIN			(1<<0)
@@ -72,10 +74,10 @@ void lcd_write8(char reg, char dat)
 }
 
 // 4bit mode write
-void lcd_write(char reg, char dat)
+void lcd_write(char reg, char dat)//コマンド送信　datは送信コマンド
 {
 	LCD_RS(reg);
-	LCD_OUT(dat);
+	LCD_OUT(dat);//output_b
 	LCD_E(ON);
 	HAL_Delay(1);
 	LCD_E(OFF);
@@ -136,10 +138,22 @@ void LcdPutc(char c)
 
 void LcdPuts(char *str)
 {
-	while(*str){
+	while(*str)
+	{
 		LcdPutc(*str);
 		str++;
 	}
+}
+
+void LcdPuts2(char *str)
+{
+	lcd_write(CMD,0xC0);
+	HAL_Delay(10);
+	while(*str)
+		{
+			LcdPutc(*str);
+			str++;
+		}
 }
 
 void LcdXy(char x, char y)
@@ -149,6 +163,7 @@ void LcdXy(char x, char y)
 	lcd_write(CMD, adr);
 	HAL_Delay(10);
 }
+
 
 
 

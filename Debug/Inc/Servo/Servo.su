@@ -1,2 +1,2 @@
-Servo.cpp:13:6:void Servo::DivideData(float)	8	static
+Servo.cpp:13:6:void Servo::DivideData(float)	24	static
 Servo.cpp:21:6:void Servo::SetDuty(float)	16	static
