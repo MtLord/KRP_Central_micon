@@ -34,7 +34,14 @@ public:
 	CanBus extcan_d, extcan_r,stdcan_d;
 
 	/*************************/
-
+	void EmagenceStop()//ƒvƒƒOƒ‰ƒ€‚©‚ç‹Ù‹}’â~‚·‚éŠÖ”
+	{
+		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+	}
+	void PowerOn()//‹Ù‹}’â~‚ğ‰ğœ‚·‚éŠÖ”
+	{
+		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+	}
 	Aircylinder Air1,Air2,Air3,Air4,Air5,Air6,Air7,Air8;
 #ifdef MOTERSYSTEM
 	MotorSystem M1,M2,M3,M4,M5,M6,M7,M8;

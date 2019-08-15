@@ -8,7 +8,7 @@ Sensor.hpp:17:2:Sensor::Sensor(CanBus*, int)	24	static
 Sensor.hpp:34:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
 PS3class.hpp:21:2:PS3controller::PS3controller(CanBus*)	16	static
 Buzzer.h:20:2:Buzzer::Buzzer(TIM_HandleTypeDef*)	16	static
-LowlayerHandel.hpp:53:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
+LowlayerHandel.hpp:60:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static

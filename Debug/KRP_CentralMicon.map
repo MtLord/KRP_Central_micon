@@ -3324,7 +3324,7 @@ LOAD c:/program files (x86)/atollic/truestudio for stm32 9.0.1/armtools/bin/../l
                 0x000008be       0x22 c:/program files (x86)/atollic/truestudio for stm32 9.0.1/armtools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
 OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x1c300
+.debug_info     0x00000000    0x1c364
  .debug_info    0x00000000      0xa41 Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
  .debug_info    0x00000a41     0x10ed Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.o
  .debug_info    0x00001b2e      0xf5b Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
@@ -3337,20 +3337,20 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
  .debug_info    0x0000cb2a     0x1518 Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.o
  .debug_info    0x0000e042     0x17bb Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.o
  .debug_info    0x0000f7fd     0x11b4 Inc\CAN\CAN.o
- .debug_info    0x000109b1     0x1f34 Inc\InterruptIvent\interrupt.o
- .debug_info    0x000128e5      0x67a Inc\LCD\LCD.o
- .debug_info    0x00012f5f      0xc41 Src\can.o
- .debug_info    0x00013ba0      0x5e8 Src\dma.o
- .debug_info    0x00014188      0x5bc Src\gpio.o
- .debug_info    0x00014744      0xaa4 Src\i2c.o
- .debug_info    0x000151e8     0x3167 Src\main.o
- .debug_info    0x0001834f      0x366 Src\stm32f4xx_hal_msp.o
- .debug_info    0x000186b5      0xb5a Src\stm32f4xx_it.o
- .debug_info    0x0001920f      0xffa Src\syscalls.o
- .debug_info    0x0001a209      0x53e Src\system_stm32f4xx.o
- .debug_info    0x0001a747     0x105c Src\tim.o
- .debug_info    0x0001b7a3      0xaef Src\usart.o
- .debug_info    0x0001c292       0x6e startup\startup_stm32f446xx.o
+ .debug_info    0x000109b1     0x1f66 Inc\InterruptIvent\interrupt.o
+ .debug_info    0x00012917      0x67a Inc\LCD\LCD.o
+ .debug_info    0x00012f91      0xc41 Src\can.o
+ .debug_info    0x00013bd2      0x5e8 Src\dma.o
+ .debug_info    0x000141ba      0x5bc Src\gpio.o
+ .debug_info    0x00014776      0xaa4 Src\i2c.o
+ .debug_info    0x0001521a     0x3199 Src\main.o
+ .debug_info    0x000183b3      0x366 Src\stm32f4xx_hal_msp.o
+ .debug_info    0x00018719      0xb5a Src\stm32f4xx_it.o
+ .debug_info    0x00019273      0xffa Src\syscalls.o
+ .debug_info    0x0001a26d      0x53e Src\system_stm32f4xx.o
+ .debug_info    0x0001a7ab     0x105c Src\tim.o
+ .debug_info    0x0001b807      0xaef Src\usart.o
+ .debug_info    0x0001c2f6       0x6e startup\startup_stm32f446xx.o
 
 .debug_abbrev   0x00000000     0x3c9f
  .debug_abbrev  0x00000000      0x23d Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
@@ -3509,7 +3509,7 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
  .debug_line    0x0000a0ae      0x320 Src\usart.o
  .debug_line    0x0000a3ce       0x7f startup\startup_stm32f446xx.o
 
-.debug_str      0x00000000     0x655c
+.debug_str      0x00000000     0x65c1
  .debug_str     0x00000000      0xb5a Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
                                 0xc14 (size before relaxing)
  .debug_str     0x00000b5a      0x6e0 Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.o
@@ -3534,31 +3534,31 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
                                 0xc67 (size before relaxing)
  .debug_str     0x00004922      0x67e Inc\CAN\CAN.o
                                 0xd12 (size before relaxing)
- .debug_str     0x00004fa0      0xcdd Inc\InterruptIvent\interrupt.o
-                               0x188a (size before relaxing)
- .debug_str     0x00005c7d       0x35 Inc\LCD\LCD.o
+ .debug_str     0x00004fa0      0xd42 Inc\InterruptIvent\interrupt.o
+                               0x18ef (size before relaxing)
+ .debug_str     0x00005ce2       0x35 Inc\LCD\LCD.o
                                 0x411 (size before relaxing)
- .debug_str     0x00005cb2       0x32 Src\can.o
+ .debug_str     0x00005d17       0x32 Src\can.o
                                 0xc15 (size before relaxing)
- .debug_str     0x00005ce4       0x19 Src\dma.o
+ .debug_str     0x00005d49       0x19 Src\dma.o
                                 0x895 (size before relaxing)
- .debug_str     0x00005cfd       0x1b Src\gpio.o
+ .debug_str     0x00005d62       0x1b Src\gpio.o
                                 0x3fd (size before relaxing)
- .debug_str     0x00005d18       0x2a Src\i2c.o
+ .debug_str     0x00005d7d       0x2a Src\i2c.o
                                 0x930 (size before relaxing)
- .debug_str     0x00005d42      0x345 Src\main.o
-                               0x2530 (size before relaxing)
- .debug_str     0x00006087       0x1b Src\stm32f4xx_hal_msp.o
+ .debug_str     0x00005da7      0x345 Src\main.o
+                               0x2595 (size before relaxing)
+ .debug_str     0x000060ec       0x1b Src\stm32f4xx_hal_msp.o
                                 0x369 (size before relaxing)
- .debug_str     0x000060a2      0x164 Src\stm32f4xx_it.o
+ .debug_str     0x00006107      0x164 Src\stm32f4xx_it.o
                                 0xa4a (size before relaxing)
- .debug_str     0x00006206      0x256 Src\syscalls.o
+ .debug_str     0x0000626b      0x256 Src\syscalls.o
                                 0x86a (size before relaxing)
- .debug_str     0x0000645c       0x45 Src\system_stm32f4xx.o
+ .debug_str     0x000064c1       0x45 Src\system_stm32f4xx.o
                                 0x3c8 (size before relaxing)
- .debug_str     0x000064a1       0x79 Src\tim.o
+ .debug_str     0x00006506       0x79 Src\tim.o
                                 0xf56 (size before relaxing)
- .debug_str     0x0000651a       0x42 Src\usart.o
+ .debug_str     0x0000657f       0x42 Src\usart.o
                                 0x8ab (size before relaxing)
 
 .comment        0x00000000       0x7c
