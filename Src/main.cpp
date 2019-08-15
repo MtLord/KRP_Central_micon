@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+#include <LCD/LCD.hpp>
 #include "main.h"
 #include "can.h"
 #include "dma.h"
@@ -33,7 +34,6 @@
 #include "InterruptIvent/TimerInterruptCallback.hpp"
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
-#include "LCD/LCD.h"
 #include "Buzzer/Buzzer.h"
 
 /* USER CODE END Includes */
@@ -110,12 +110,12 @@ int count=0;
   MX_TIM2_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  LcdInit();
  // FilterConfig();
-  LcdXy(1, 4);
-  LcdPuts((char *)"CAN OK");
   LowlayerHandelTypedef hlow;
   plow=&hlow;
+  hlow.lcd.LcdInit();
+  hlow.lcd.LcdPuts((char *)"CAN OK");
+
 #ifdef MOTERSYSTEM
 hlow.M1.begin();
 hlow.M2.begin();
@@ -126,15 +126,12 @@ hlow.M6.begin();
 hlow.M7.begin();
 #endif
 
-//    HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
-//    __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
-//LcdCls();
-//LcdPuts2((char *)"Comu OK");
+/************Loop config here**************/
     Timer1 LoopInt(&htim6);
-    LoopInt.SetLoopTime(5);//Loop period set up ms
+    LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
 
-
+/*************************************/
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -144,11 +141,6 @@ hlow.M7.begin();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  HAL_Delay_s(1);
-
-//	     printf("a:%f\n\r",a);
-//	     scanf("%f\r",&a);
-//	  printf("printok/n/r");
 	  if(IntFlag)
 	  {
 	 		  /****user code here*******/
@@ -158,6 +150,16 @@ hlow.M7.begin();
 //	  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1 );
 //	  HAL_Delay(200);
 //	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
+
+
+
+
+
+
+
+
+
+
 
 	 		  /***************************/
 		  IntFlag=false;
@@ -222,7 +224,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-	 LcdPuts((char *)"Now in error handler");
+	 plow->lcd.LcdPuts((char *)"Now in error handler");
   /* USER CODE END Error_Handler_Debug */
 }
 

@@ -22,7 +22,7 @@ public:
 	Encoder(CanBus *_canbus,unsigned char ID):canbus(_canbus),nodeID(ID){
 
 	}
-	float GetDistance(float d,float count);//(ギアのピッチ円直径,一周あたりのカウント量
+	float GetDistance(float d,float count);//(ギアのピッチ円直径,一周あたりのカウント量)
 	void SetData();
 };
 

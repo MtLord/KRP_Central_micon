@@ -1,0 +1,3 @@
+Buzzer.h:15:7:long int Buzzer::map(float, long int, long int, long int, long int)	32	static
+Buzzer.cpp:11:6:void Buzzer::SetFrequency(long int)	32	static
+Buzzer.cpp:38:6:void Buzzer::Vibrate()	32	static

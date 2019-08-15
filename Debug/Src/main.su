@@ -7,23 +7,10 @@ localization.hpp:30:3:localization::localization(CanBus*, CanBus*)	24	static
 Sensor.hpp:17:2:Sensor::Sensor(CanBus*, int)	24	static
 Sensor.hpp:34:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
 PS3class.hpp:21:2:PS3controller::PS3controller(CanBus*)	16	static
-LowlayerHandel.hpp:48:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
+LowlayerHandel.hpp:51:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static
-LCD.h:30:6:void LCD_RW(char)	16	static
-LCD.h:35:6:void LCD_E(char)	16	static
-LCD.h:44:6:void LCD_RS(char)	16	static
-LCD.h:53:6:void LCD_OUT(int)	24	static
-LCD.h:66:6:void lcd_write8(char, char)	16	static
-LCD.h:77:6:void lcd_write(char, char)	16	static
-LCD.h:91:6:void LcdCls()	8	static
-LCD.h:96:6:void LcdDisplayMode(char, char, char)	24	static
-LCD.h:105:6:void LcdInit()	8	static
-LCD.h:134:6:void LcdPutc(char)	16	static
-LCD.h:139:6:void LcdPuts(char*)	16	static
-LCD.h:148:6:void LcdPuts2(char*)	16	static
-LCD.h:159:6:void LcdXy(char, char)	24	static
 main.cpp:80:5:int main()	776	static
-main.cpp:174:6:void SystemClock_Config()	88	static
-main.cpp:221:6:void Error_Handler()	8	static
+main.cpp:176:6:void SystemClock_Config()	88	static
+main.cpp:223:6:void Error_Handler()	8	static

@@ -31,7 +31,7 @@ class MicroSw
 	int conenum=0;
 	int boardnum=1;
 public:
-	MicroSw(CanBus *_canbus,int _conenum,int brnum):canbus(_canbus),conenum(_conenum),boardnum(brnum)
+	MicroSw(CanBus *_canbus,int _conenum,int brnum):canbus(_canbus),conenum(_conenum),boardnum(brnum)//(CAN handle,connection number,board number)
 	{
 
 	}
