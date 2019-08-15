@@ -38,6 +38,6 @@ void Buzzer::SetFrequency(long freq)
 void Buzzer::Vibrate()
 {
 	    HAL_TIM_PWM_Start(htim,TIM_CHANNEL_1) ;
-	    __HAL_TIM_SetCompare(htim,TIM_CHANNEL_1,map(50,0,100,0,htim2.Instance->ARR));
+	    __HAL_TIM_SetCompare(htim,TIM_CHANNEL_1,map(50,0,100,0,htim->Instance->ARR));
 }
 

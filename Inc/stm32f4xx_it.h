@@ -61,6 +61,7 @@ void DMA1_Stream6_IRQHandler(void);
 void CAN1_RX0_IRQHandler(void);
 void CAN1_RX1_IRQHandler(void);
 void CAN1_SCE_IRQHandler(void);
+void TIM3_IRQHandler(void);
 void TIM6_DAC_IRQHandler(void);
 void TIM7_IRQHandler(void);
 /* USER CODE BEGIN EFP */
