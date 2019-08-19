@@ -13,20 +13,18 @@ extern unsigned char RxFIFO_Data[12];
 
 void Encoder::Sendreqest(unsigned long cmd)
 {
-
+	canbus->Send(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID,0,0);
 }
 
 float Encoder::GetDistance(float d,float count)
 {
-	canbus->Send(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos,0,0);
-
 	dist=countdata*d/count;
 		return dist;
 }
 
 void Encoder::SetData()
 {
-	if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos))
+	if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID))
 	{
 		for(int i=0;i<3;i++)
 			{

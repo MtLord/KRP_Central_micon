@@ -100,7 +100,7 @@ int count=0;
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
+  //MX_DMA_Init();
   MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
@@ -129,7 +129,7 @@ hlow.M7.begin();
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-
+float a=0;
 /*************************************/
   /* USER CODE END 2 */
 
@@ -140,29 +140,33 @@ hlow.M7.begin();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if(IntFlag)
-	  {
-	 		  /****user code here*******/
-		  count++;
-//hlow.extcan_d.Send(0x23, 0,0);
-//	  HAL_Delay(200);
-//	  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1 );
-//	  HAL_Delay(200);
-//	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
 
-
-
-
-
-
-
-
-
-
-
-	 		  /***************************/
-		  IntFlag=false;
-	 	 }
+//     scanf("%*f%f",&a);
+//     printf("a:%f\n\r",a);
+//	  if(IntFlag)
+//	  {
+//		  hlow.loca.SendReqest();
+//	 		  /****user code here*******/
+//
+////hlow.extcan_d.Send(0x23, 0,0);
+////	  HAL_Delay(200);
+////	  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1 );
+////	  HAL_Delay(200);
+////	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1) ;
+//
+//printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//	 		  /***************************/
+//		  IntFlag=false;
+//	 	 }
 
   }
   /* USER CODE END 3 */

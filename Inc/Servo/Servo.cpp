@@ -21,6 +21,6 @@ void Servo::DivideData(float data)
 void Servo::SetDuty(float duty)
 {
 	this->DivideData(duty);
-	canbus->Send(SERVO_SET_DUTY<<ORDER_BIT_Pos|node_id<<NODE_ID_Pos,4,tx_buff);
+	canbus->Send(SERVO_SET_DUTY<<ORDER_BIT_Pos_S|node_id,4,tx_buff);
 }
 

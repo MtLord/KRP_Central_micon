@@ -10,6 +10,7 @@
 
 #include "stm32f4xx_hal.h"
 
+
 class CanBus
 {
 	CAN_TxHeaderTypeDef Txmsg;
@@ -20,12 +21,13 @@ class CanBus
 	int error_code=0;
 	unsigned long IDE;
 	unsigned long RTR;
+	int txled=0;
+
 public:
 	CanBus(unsigned long _IDE,unsigned long _RTR):IDE(_IDE),RTR(_RTR){
 
 	}
 	 short Send(unsigned long ID,unsigned char DLC,unsigned char *data);
-
 };
 
 

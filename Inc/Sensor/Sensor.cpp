@@ -5,10 +5,13 @@
  *      Author: —T‘¿
  */
 
-#include "Sensor/Sensor.hpp"
+#include "Sensor.hpp"
 #include "DefineOrder.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
+unsigned short Sensor::sensordata[12]={0,};
+unsigned char MicroSw::Data[4]={0,};
+
 void Sensor::SendRequest()
 {
 	canbus->Send(Get_SENSOR<<ORDER_BIT_Pos, 0, 0);
