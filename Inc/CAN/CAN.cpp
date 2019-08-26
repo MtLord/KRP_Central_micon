@@ -81,7 +81,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 							if(HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX0)!=HAL_OK)
 							{
 								error_flag=true;
-								error_code=hcan1.Instance->ESR>>4&0b111;
+								error_code=hcan1.ErrorCode;
 								return -1;
 							}
 							else
@@ -97,7 +97,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 							if(HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX1)!=HAL_OK)
 							{
 								error_flag=true;
-								error_code=hcan1.Instance->ESR>>4&0b111;
+								error_code=hcan1.ErrorCode;
 								return -1;
 							}
 							else
@@ -113,7 +113,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 							if(	HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX2)!=HAL_OK)
 							{
 								error_flag=true;
-								error_code=hcan1.Instance->ESR>>4&0b111;
+								error_code=hcan1.ErrorCode;
 								return -1;
 							}
 							else
@@ -152,15 +152,15 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 						}
 						else if(Txok)
 						{
-							if(txled>5) //5回送信ごとにLチカ
-							{
+//							if(txled>5) //5回送信ごとにLチカ
+//							{
 								TOGGLE_TX_LED;
 								txled=0;
-							}
-							else
-							{
-								txled++;
-							}
+//							}
+//							else
+//							{
+//								txled++;
+//							}
 							RESET_ERRORLED;
 							return 0;
 						}

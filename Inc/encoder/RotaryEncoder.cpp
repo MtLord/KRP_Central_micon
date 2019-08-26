@@ -26,7 +26,7 @@ void Encoder::SetData()
 {
 	if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID))
 	{
-		for(int i=0;i<3;i++)
+		for(int i=0;i<4;i++)
 			{
 				((unsigned char *)&countdata)[i]=RxFIFO_Data[i];
 			}

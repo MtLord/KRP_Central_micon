@@ -16,9 +16,10 @@ extern unsigned char RxFIFO_Data[6];
 
 void localization::SendReqest()
 {
+	//canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0);
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_3);//送信エラーLED点滅
+		//HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_3);//送信エラーLED点滅
 	}
 }
 

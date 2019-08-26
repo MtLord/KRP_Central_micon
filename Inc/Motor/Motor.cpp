@@ -10,7 +10,7 @@
 
 void Motor::DivideData(float data)
 {
-	for(int i=0;i<3;i++)
+	for(int i=0;i<4;i++)
 	{
 		tx_buff[i]=((unsigned char*)&data)[i];
 	}
