@@ -23,6 +23,7 @@ extern LowlayerHandelTypedef *plow;
 #define RESET_ERRORLED HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,GPIO_PIN_RESET);
 
 int rx_led=0;
+int tx_led=0;
 void FilterConfig()
 {
 	CAN_FilterTypeDef  sFilterConfig;
@@ -65,106 +66,73 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   }
 
  }
-
+void CanBus::SetError()
+{
+	error_code=(hcan1.Instance->ESR>>4)&0b111;
+}
 short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 {
-	Txmsg.DLC=DLC;
-	Txmsg.ExtId=ID;
-	Txmsg.StdId=ID;
-	Txmsg.IDE=this->IDE;
-	Txmsg.RTR=this->RTR;
-	while(Txok==false)
-	{
-		if((hcan1.Instance->TSR>>26&0x1)==1)//TME0 is Empty
-						{
+	uint32_t mailbox_num;
+				 HAL_CAN_StateTypeDef state = hcan1.State;
+				 uint32_t TSR = hcan1.Instance->TSR;
+				 if ((state == HAL_CAN_STATE_READY) ||(state == HAL_CAN_STATE_LISTENING))
+				   {
+					  if (((TSR & CAN_TSR_TME0) != 0U) || ((TSR & CAN_TSR_TME1) != 0U) ||((TSR & CAN_TSR_TME2) != 0U))//どれかのメールボックスが空いていたら
+					  {
+						  mailbox_num = (TSR & CAN_TSR_CODE) >> CAN_TSR_CODE_Pos; //空きメールボックス番号を取得
+						  if (mailbox_num > 2)
+						  {
+						         /* Update error code */
+						         hcan1.ErrorCode |= HAL_CAN_ERROR_INTERNAL;
+						         error_flag=true;
+						         this->SetError();
+						         return -1;
+						   }
 
-							if(HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX0)!=HAL_OK)
-							{
-								error_flag=true;
-								error_code=hcan1.ErrorCode;
-								return -1;
-							}
-							else
-							{
-								Txok=true;
-								error_flag=false;
-							}
+						  if(this->IDE==CAN_ID_STD)
+						  {
+							  	  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<21|this->RTR;
+						  }
+						  else//ext id
+						  {
+							  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<3U|IDE|RTR;
+						  }
+						  hcan1.Instance->sTxMailBox[mailbox_num].TDTR = DLC;
+						  hcan1.Instance->sTxMailBox[mailbox_num].TDHR=(uint32_t)data[7]<<24|(uint32_t)data[6]<<16|(uint32_t)data[5]<<8|(uint32_t)data[4];//メールボックス上位レジスタにセット
+						  hcan1.Instance->sTxMailBox[mailbox_num].TDLR=(uint32_t)data[3]<<24|(uint32_t)data[2]<<16|(uint32_t)data[1]<<8|(uint32_t)data[0];
+						  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//送信ビットセット
+						  return 0;
+						  Txok=true;
+						  error_flag=false;
+					  }
+					  else
+					  {
+						  hcan1.ErrorCode |= HAL_CAN_ERROR_PARAM;
+						  error_flag=true;
+						  this->SetError();
+						  return -1;
+					  }
 
-						}
-		else if((hcan1.Instance->TSR>>27&0x1)==1)//TME1 is empty
-						{
-
-							if(HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX1)!=HAL_OK)
-							{
-								error_flag=true;
-								error_code=hcan1.ErrorCode;
-								return -1;
-							}
-							else
-							{
-								Txok=true;
-								error_flag=false;
-							}
-
-						}
-		else if((hcan1.Instance->TSR>>28&0x1)==1)//TME2 is empty
-						{
-
-							if(	HAL_CAN_AddTxMessage(&hcan1,&Txmsg,data,(uint32_t*)CAN_TX_MAILBOX2)!=HAL_OK)
-							{
-								error_flag=true;
-								error_code=hcan1.ErrorCode;
-								return -1;
-							}
-							else
-							{
-								Txok=true;
-								error_flag=false;
-							}
-
-						}
-
-						if(error_flag)
-						{
-							switch(error_code)
-							{
-							case 1:
-								printf("staff error\n\r");
-								break;
-							case 2:
-								printf("form error\n\r");
-								break;
-							case 3:
-								printf("ACK error\n\r");
-								break;
-							case 4:
-								printf("bit recessive error\n\r");
-								break;
-							case 5:
-								printf("bit dominant error\n\r");
-								break;
-							case 6:
-								printf("CRC error\n\r");
-								break;
-							}
-							SET_ERROR_LED;
-							Txok=true;
-						}
-						else if(Txok)
-						{
-//							if(txled>5) //5回送信ごとにLチカ
-//							{
-								TOGGLE_TX_LED;
-								txled=0;
-//							}
-//							else
-//							{
-//								txled++;
-//							}
-							RESET_ERRORLED;
-							return 0;
-						}
-	}
-	Txok=false;
+				   }
+				 else
+				 {
+					 hcan1.ErrorCode |= HAL_CAN_ERROR_NOT_INITIALIZED;
+					 error_flag=true;
+					 this->SetError();
+					    return -1;
+				 }
+				  if(Txok)
+				  {
+				 	if(tx_led>5)
+				 	{
+				 		TOGGLE_TX_LED;
+				 		tx_led=0;
+				 	}
+				 	else
+				 	{
+				 		tx_led++;
+				 	}
+				  }
+			Txok=false;
 }
 

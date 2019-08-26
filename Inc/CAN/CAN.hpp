@@ -13,7 +13,7 @@
 
 class CanBus
 {
-	CAN_TxHeaderTypeDef Txmsg;
+
 	uint8_t TX_BUF[8]={0,};
 	bool Txok=false;
 	bool error_flag=false;
@@ -22,7 +22,7 @@ class CanBus
 	unsigned long IDE;
 	unsigned long RTR;
 	int txled=0;
-
+	void SetError();
 public:
 	CanBus(unsigned long _IDE,unsigned long _RTR):IDE(_IDE),RTR(_RTR){
 

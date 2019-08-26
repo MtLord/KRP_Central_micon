@@ -51,7 +51,7 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+CAN_TxHeaderTypeDef Txmsg;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -131,6 +131,7 @@ hlow.M7.begin();
     LoopInt.Start();
     FilterConfig();
 float i=0;
+
 /*************************************/
   /* USER CODE END 2 */
 
@@ -145,13 +146,35 @@ float i=0;
 
 //	  if(IntFlag)
 //	  {
-		  hlow.servo1.SetDuty(3);
-		  HAL_Delay(1000);
-		  hlow.servo1.SetDuty(5);
-		  HAL_Delay(1000);
-		  hlow.servo1.SetDuty(9);
-		  HAL_Delay(1000);
-		 // hlow.loca.SendReqest();
+
+	 //
+hlow.servo1.SetDuty(5);
+HAL_Delay(500);
+hlow.servo3.SetDuty(4);
+HAL_Delay(500);
+hlow.servo2.SetDuty(6);
+HAL_Delay(500);
+hlow.servo4.SetDuty(7);
+HAL_Delay(500);
+//	 hlow.Air2.open();
+//	 hlow.Air2.close();
+//	 HAL_Delay(500);
+//
+//	 hlow.Air2.open();
+//	 hlow.Air2.close();
+//		 HAL_Delay(500);
+//	  Txmsg.ExtId=0x21<<6|0x2;
+//	  Txmsg.DLC=0;
+//	  Txmsg.IDE=CAN_ID_EXT;
+//	  HAL_CAN_AddTxMessage(&hcan1,&Txmsg,0,(uint32_t*)CAN_TX_MAILBOX0);
+//	  HAL_Delay(500);
+//	  Txmsg.ExtId=0x22<<6|0x2;
+//	  Txmsg.DLC=0;
+//	  Txmsg.IDE=CAN_ID_EXT;
+//	  HAL_CAN_AddTxMessage(&hcan1,&Txmsg,0,(uint32_t*)CAN_TX_MAILBOX0);
+//	  HAL_Delay(500);
+		  //hlow.loca.SendReqest();
+		//  HAL_Delay(500);
 //	 		  /****user code here*******/
 //		  hlow.Air2.open();
 //		  HAL_Delay(1000);
