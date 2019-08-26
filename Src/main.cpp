@@ -144,47 +144,36 @@ float i=0;
     /* USER CODE BEGIN 3 */
 
 
-//	  if(IntFlag)
-//	  {
-
+	  if(IntFlag)
+	  {
+	  hlow.loca.SendReqest();
+	  hlow.encoder1.Sendreqest();
 	 //
-hlow.servo1.SetDuty(5);
-HAL_Delay(500);
-hlow.servo3.SetDuty(4);
-HAL_Delay(500);
-hlow.servo2.SetDuty(6);
-HAL_Delay(500);
-hlow.servo4.SetDuty(7);
-HAL_Delay(500);
+//hlow.M1.SetDuty(40);
+//HAL_Delay(500);
+//hlow.M1.SetDuty(0);
+//HAL_Delay(500);
+//hlow.M1.SetDuty(-40);
+//HAL_Delay(500);
 //	 hlow.Air2.open();
+//	 HAL_Delay(500);
 //	 hlow.Air2.close();
 //	 HAL_Delay(500);
 //
 //	 hlow.Air2.open();
 //	 hlow.Air2.close();
 //		 HAL_Delay(500);
-//	  Txmsg.ExtId=0x21<<6|0x2;
-//	  Txmsg.DLC=0;
-//	  Txmsg.IDE=CAN_ID_EXT;
-//	  HAL_CAN_AddTxMessage(&hcan1,&Txmsg,0,(uint32_t*)CAN_TX_MAILBOX0);
-//	  HAL_Delay(500);
-//	  Txmsg.ExtId=0x22<<6|0x2;
-//	  Txmsg.DLC=0;
-//	  Txmsg.IDE=CAN_ID_EXT;
-//	  HAL_CAN_AddTxMessage(&hcan1,&Txmsg,0,(uint32_t*)CAN_TX_MAILBOX0);
-//	  HAL_Delay(500);
-		  //hlow.loca.SendReqest();
+
+
 		//  HAL_Delay(500);
 //	 		  /****user code here*******/
-//		  hlow.Air2.open();
-//		  HAL_Delay(1000);
-//		  hlow.Air2.close();
-//		  HAL_Delay(1000);
-//printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+
+	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	  printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
 
 //	 		  /***************************/
 		  IntFlag=false;
- 	 //}
+	  }
 
   }
   /* USER CODE END 3 */

@@ -15,13 +15,15 @@ class Encoder
 {
 	CanBus *canbus;
 	unsigned short board_ID;
-	void Sendreqest(unsigned long cmd);
-	long countdata=0;
+	int enco_num;
+	static long countdata[8];
 	float dist=0;
 public:
-	Encoder(CanBus *_canbus,unsigned char ID):canbus(_canbus),board_ID(ID){
+	Encoder(CanBus *_canbus,int num,unsigned char ID):canbus(_canbus),board_ID(ID),enco_num(num)
+	{
 
 	}
+	void Sendreqest();
 	float GetDistance(float d,float count);//(ギアのピッチ円直径,一周あたりのカウント量)
 	void SetData();
 };

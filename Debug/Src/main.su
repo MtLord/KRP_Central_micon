@@ -1,5 +1,5 @@
 CAN.hpp:27:2:CanBus::CanBus(long unsigned int, long unsigned int)	24	static
-RotaryEncoder.hpp:22:2:Encoder::Encoder(CanBus*, unsigned char)	24	static
+RotaryEncoder.hpp:22:2:Encoder::Encoder(CanBus*, int, unsigned char)	24	static
 Motor.hpp:19:2:Motor::Motor(CanBus*, short unsigned int)	24	static
 Aircylinder.hpp:20:2:Aircylinder::Aircylinder(CanBus*, unsigned char)	24	static
 Servo.hpp:19:2:Servo::Servo(CanBus*, short unsigned int)	24	static
@@ -13,6 +13,6 @@ LowlayerHandel.hpp:60:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static
-main.cpp:79:5:int main()	728	static
-main.cpp:197:6:void SystemClock_Config()	88	static
-main.cpp:244:6:void Error_Handler()	8	static
+main.cpp:79:5:int main()	752	static
+main.cpp:186:6:void SystemClock_Config()	88	static
+main.cpp:233:6:void Error_Handler()	8	static
