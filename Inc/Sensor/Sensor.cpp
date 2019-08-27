@@ -7,14 +7,29 @@
 
 #include "Sensor.hpp"
 #include "DefineOrder.h"
+#include "DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
 unsigned short Sensor::sensordata[12]={0,};
 unsigned char MicroSw::Data[4]={0,};
 
+
 void Sensor::SendRequest()
 {
-	canbus->Send(Get_SENSOR<<ORDER_BIT_Pos, 0, 0);
+	if(canbus->Send(Get_SENSOR<<ORDER_BIT_Pos, 0, 0)!=0){
+		ERROR_LED;
+	}
+	else
+	{
+		if(tx_led>15){
+			TOGGLE_TX_LED;
+			tx_led=0;
+		}
+		else{
+			tx_led++;
+		}
+
+	}
 }
 
 void Sensor::SetData()

@@ -12,6 +12,7 @@ class PS3controller
 {
 private:
 	CanBus *canbus;
+	int tx_led=0;
 	unsigned char Data[7]={0,};
 	short Maskbyte(int matrixnum,int shiftnum);
 	const unsigned long begincmd=0x70;

@@ -9,6 +9,7 @@
 #include "can.h"
 #include "stdio.h"
 #include "LowlayerHandel.hpp"
+#include "DefineLED.h"
 unsigned char RxFIFO_Data[8];
 CAN_RxHeaderTypeDef RXmsg;
 bool CanRxFlag=false;
@@ -17,17 +18,15 @@ extern LowlayerHandelTypedef *plow;
 #define MASKID_L 0x0000
 #define FILTERID_L 0x0000
 
-#define TOGGLE_TX_LED HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_9);
-#define TOGGLE_RX_LED  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_8);
-#define SET_ERROR_LED HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,GPIO_PIN_SET);
-#define RESET_ERRORLED HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,GPIO_PIN_RESET);
+
+
 
 int rx_led=0;
-int tx_led=0;
+
 void FilterConfig()
 {
 	CAN_FilterTypeDef  sFilterConfig;
-	sFilterConfig.FilterIdHigh=0x0000; //エンコーダ関連のメッセージ以外を受け取らないようにフィルタ設定
+	sFilterConfig.FilterIdHigh=0x0000;
 	sFilterConfig.FilterIdLow=FILTERID_L;
 	sFilterConfig.FilterMaskIdHigh=0x0000;
 	sFilterConfig.FilterMaskIdLow=MASKID_L;
@@ -89,7 +88,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 						         return -1;
 						   }
 
-						  if(this->IDE==CAN_ID_STD)
+						  else if(this->IDE==CAN_ID_STD)
 						  {
 							  	  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<21|this->RTR;
 						  }
@@ -123,15 +122,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 				 }
 				  if(Txok)
 				  {
-				 	if(tx_led>5)
-				 	{
-				 		TOGGLE_TX_LED;
-				 		tx_led=0;
-				 	}
-				 	else
-				 	{
-				 		tx_led++;
-				 	}
+
 				  }
 			Txok=false;
 }

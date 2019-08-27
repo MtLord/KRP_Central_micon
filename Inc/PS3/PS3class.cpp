@@ -5,7 +5,7 @@
  *      Author: —T‘¿
  */
 #include "PS3class.hpp"
-
+#include "DefineLED.h"
 
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[6];
@@ -25,10 +25,23 @@ extern unsigned char RxFIFO_Data[6];
 
  void PS3controller::SendRequest()
  {
-	 canbus->Send((0x74),0,0);
- 	if(canbus->Send((0x74),0,0)==-1){
+	if( canbus->Send((0x74),0,0)!=0)
+	{
+		ERROR_LED;
+	}
+	else
+	{
+		if(tx_led>15)
+		{
+		TOGGLE_TX_LED;
+		tx_led=0;
+		}
+		else
+		{
+			tx_led++;
+		}
 
- 	}
+	}
 
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)

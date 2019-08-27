@@ -8,9 +8,9 @@
 #ifndef DEFINELED_H_
 #define DEFINELED_H_
 
-#define TXLED HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_9)
-#define RXLED HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_8)
-#define
+#define TOGGLE_TX_LED HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_9)
+#define TOGGLE_RX_LED HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_8)
+#define ERROR_LED HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_10)
 
 
 #endif /* DEFINELED_H_ */

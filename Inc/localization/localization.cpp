@@ -9,6 +9,7 @@
 
 #include <localization/localization.hpp>
 #include "DefineOrder.h"
+#include "DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[6];
 
@@ -16,10 +17,21 @@ extern unsigned char RxFIFO_Data[6];
 
 void localization::SendReqest()
 {
-	//canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0);
+
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		//HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_3);//送信エラーLED点滅
+		ERROR_LED;//送信エラーLED点滅
+	}
+	else
+	{
+		if(tx_led>15){
+					TOGGLE_TX_LED;
+					tx_led=0;
+				}
+				else{
+					tx_led++;
+				}
+
 	}
 }
 
