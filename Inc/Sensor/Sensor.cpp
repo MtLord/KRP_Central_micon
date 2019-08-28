@@ -61,7 +61,19 @@ unsigned short Sensor:: GetValue()
 
 void MicroSw::SendRequest()
 {
-	canbus->Send(GET_MICROSWITCH<<ORDER_BIT_Pos, 0, 0);
+	if(canbus->Send(GET_MICROSWITCH<<ORDER_BIT_Pos, 0, 0)!=0){
+		ERROR_LED;
+	}
+	else{
+		if(tx_led>15)
+				{
+					TOGGLE_TX_LED;
+					tx_led=0;
+				}
+				else{
+					tx_led++;
+				}
+	}
 }
 
 void MicroSw::SetData()

@@ -148,7 +148,7 @@ float i=0;
 	  {
 	  //hlow.loca.SendReqest();
 	  //hlow.encoder1.Sendreqest();
-	  hlow.Ad1.SendRequest();
+	 // hlow.Ad1.SendRequest();
 	  hlow.Msw1.SendRequest();
 	 //
 //hlow.M1.SetDuty(40);
@@ -175,7 +175,8 @@ float i=0;
 //printf("%d \n\r",hlow.Ad1.GetValue());
 //printf("%d \n\r",hlow.Ad1.GetValue());
 	 printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
-//	 		  /***************************/
+//printf("data:%x\n\r",hlow.Msw1.Data[0]);
+	  /***************************/
 		  IntFlag=false;
 	  }
 

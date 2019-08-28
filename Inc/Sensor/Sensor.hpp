@@ -28,7 +28,7 @@ public:
 class MicroSw
 {
 	CanBus *canbus;
-	static unsigned char Data[4];
+
 	int conenum=0;
 	int boardnum=1;
 	int tx_led=0;
@@ -37,6 +37,7 @@ public:
 	{
 
 	}
+	static unsigned char Data[4];
 	void SetData();
 	void SendRequest();
 	int GetPush();
