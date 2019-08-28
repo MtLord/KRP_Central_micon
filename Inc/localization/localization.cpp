@@ -24,7 +24,7 @@ void localization::SendReqest()
 	}
 	else
 	{
-		if(tx_led>15){
+		if(tx_led>25){
 					TOGGLE_TX_LED;
 					tx_led=0;
 				}
