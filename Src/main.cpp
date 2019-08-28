@@ -79,7 +79,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	setbuf(stdout, NULL);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -149,6 +149,7 @@ float i=0;
 	  //hlow.loca.SendReqest();
 	  //hlow.encoder1.Sendreqest();
 	  hlow.Ad1.SendRequest();
+	  hlow.Msw1.SendRequest();
 	 //
 //hlow.M1.SetDuty(40);
 //HAL_Delay(500);
@@ -172,7 +173,8 @@ float i=0;
 	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 	  //printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
 //printf("%d \n\r",hlow.Ad1.GetValue());
-printf("%d \n\r",hlow.Ad1.sensordata[0]);
+//printf("%d \n\r",hlow.Ad1.GetValue());
+	 printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //	 		  /***************************/
 		  IntFlag=false;
 	  }
