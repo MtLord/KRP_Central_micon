@@ -1,6 +1,6 @@
 Sensor.cpp:17:6:void Sensor::SendRequest()	16	static
-Sensor.cpp:35:6:void Sensor::SetData()	16	static
-Sensor.cpp:57:16:short unsigned int Sensor::GetValue()	16	static
-Sensor.cpp:62:6:void MicroSw::SendRequest()	16	static
-Sensor.cpp:79:6:void MicroSw::SetData()	16	static
-Sensor.cpp:91:5:int MicroSw::GetPush()	16	static
+Sensor.cpp:40:6:void Sensor::SetData()	16	static
+Sensor.cpp:62:16:short unsigned int Sensor::GetValue()	16	static
+Sensor.cpp:67:6:void MicroSw::SendRequest()	16	static
+Sensor.cpp:91:6:void MicroSw::SetData()	16	static
+Sensor.cpp:103:5:int MicroSw::GetPush()	16	static

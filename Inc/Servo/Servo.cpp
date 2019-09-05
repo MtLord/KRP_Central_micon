@@ -8,7 +8,7 @@
 #include "Servo.hpp"
 
 #include "DefineOrder.h"
-
+#include "DefineLED.h"
 
 void Servo::DivideData(float data)
 {
@@ -21,7 +21,20 @@ void Servo::DivideData(float data)
 void Servo::SetDuty(float duty)
 {
 	this->DivideData(duty);
-	canbus->Send(SERVO_SET_DUTY<<ORDER_BIT_Pos|node_id,4,tx_buff);
+  while(TXok==false)
+  {
+	if(canbus->Send(SERVO_SET_DUTY<<ORDER_BIT_Pos|node_id,4,tx_buff)!=0)
+	{
+
+	}
+	else
+	{
+
+		TOGGLE_TX_LED;
+		TXok=true;
+	}
+  }
+  TXok=false;
 }
 
 //00000000000000|00000110|00000000

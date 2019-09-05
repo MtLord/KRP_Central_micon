@@ -88,7 +88,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-int count=0;
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -127,10 +127,10 @@ hlow.M7.begin();
 
 /************Loop config here**************/
     Timer1 LoopInt(&htim6);
-    LoopInt.SetLoopTime(5);//Loop period set up by ms
+    LoopInt.SetLoopTime(8);//Loop period set up by ms
     LoopInt.Start();
     FilterConfig();
-float i=0;
+
 
 /*************************************/
   /* USER CODE END 2 */
@@ -146,40 +146,32 @@ float i=0;
 
 	  if(IntFlag)
 	  {
-	  hlow.loca.SendReqest();
-	  hlow.encoder1.Sendreqest();
+
+//	  hlow.encoder1.Sendreqest();
 	 hlow.Ad1.SendRequest();
 	  hlow.Msw1.SendRequest();
-	 //
-//hlow.M1.SetDuty(40);
-//HAL_Delay(500);
-//hlow.M1.SetDuty(0);
-//HAL_Delay(500);
-//hlow.M1.SetDuty(-40);
-//HAL_Delay(500);
-//	 hlow.Air2.open();
-//	 HAL_Delay(500);
-//	 hlow.Air2.close();
-//	 HAL_Delay(500);
+	  hlow.loca.SendReqest();
+	  hlow.PS3.SendRequest();
 //
-//	 hlow.Air2.open();
-//	 hlow.Air2.close();
-//		 HAL_Delay(500);
-
-
-		//  HAL_Delay(500);
+//		  hlow.M4.SetDuty(-40);
+//		  hlow.M5.SetDuty(-40);
+//hlow.M1.SetDuty(40);
+//hlow.M2.SetDuty(0);
+//hlow.M3.SetDuty(-40);
 //	 		  /****user code here*******/
 
-	 printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+
 	  //printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
 //printf("%d \n\r",hlow.Ad1.GetValue());
 //printf("%d \n\r",hlow.Ad1.GetValue());
 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
+
+
 	  /***************************/
 		  IntFlag=false;
 	  }
-
+	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
   }
   /* USER CODE END 3 */
 }

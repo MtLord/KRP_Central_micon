@@ -22,7 +22,9 @@ class CanBus
 	unsigned long IDE;
 	unsigned long RTR;
 	int txled=0;
+
 	void SetError();
+	void SetmMessege(unsigned long ID,unsigned char DLC,unsigned char *data,uint32_t mailbox_num);
 public:
 	CanBus(unsigned long _IDE,unsigned long _RTR):IDE(_IDE),RTR(_RTR){
 

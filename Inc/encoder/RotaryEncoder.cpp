@@ -7,14 +7,33 @@
 
 #include "encoder/RotaryEncoder.hpp"
 #include "DefineOrder.h"
-
+#include "DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[12];
 long Encoder::countdata[8]={0,};
 
 void Encoder::Sendreqest()
 {
-	canbus->Send(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID,0,0);
+  while(TXok==false)
+  {
+	if(canbus->Send(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID,0,0)!=0)
+	{
+
+	}
+	else
+	{
+				if(tx_led>30)
+				{
+					TOGGLE_TX_LED;
+					tx_led=0;
+				}
+				else{
+					tx_led++;
+				}
+				TXok=true;
+	}
+  }
+  TXok=false;
 }
 
 float Encoder::GetDistance(float d,float count)

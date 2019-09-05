@@ -27,6 +27,7 @@ class localization
 	float currentY=0;
 	float currentyaw=0;
 	unsigned long timcount1=0,timcount2=0;
+	bool TXok=false;
 public:
 	 localization(CanBus *_canbus,CanBus *_canbus_r):canbus(_canbus),canbus_r(_canbus_r)
 	{

@@ -13,6 +13,7 @@ class Sensor
 	CanBus *canbus;
 	int tx_led=0;
 	int num;
+	bool TXok=false;
 public:
 	Sensor(CanBus *_canbus,int _num):canbus(_canbus),num(_num)
 	{
@@ -28,7 +29,7 @@ public:
 class MicroSw
 {
 	CanBus *canbus;
-
+	bool TXok=false;
 	int conenum=0;
 	int boardnum=1;
 	int tx_led=0;

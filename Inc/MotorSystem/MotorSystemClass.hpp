@@ -13,6 +13,8 @@ class MotorSystem
 private:
 	CanBus *Mcan;
 	unsigned short commuincationID;
+	bool TXok=false;
+	int tx_led=0;
 	void SetVGAIN_K(float vk);//速度制御のゲイン
 		void SetVGAIN_TI(float ti);//速度制御の積分時間
 		void SetVGAIN_TD(float td);//速度制御の微分時間

@@ -8,15 +8,32 @@
 #include "Aircylinder/Aircylinder.hpp"
 
 #include "DefineOrder.h"
-
+#include "DefineLED.h"
 
 void Aircylinder::open()
 {
-	canbus->Send(AIR_OPEN<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos,0,0);
+	this->SetOrder(AIR_OPEN);
 }
 
 void Aircylinder::close()
 {
-	canbus->Send(AIR_CLOSE<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos,0,0);
+
+	this->SetOrder(AIR_CLOSE);
 }
 
+void Aircylinder::SetOrder(int order)
+{
+  while(TXok==false)
+  {
+	if(canbus->Send(order<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos,0,0)!=0)
+	{
+
+	}
+	else
+	{
+		TOGGLE_TX_LED;
+		TXok=true;
+	}
+  }
+  TXok=false;
+}

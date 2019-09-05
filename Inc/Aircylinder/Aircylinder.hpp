@@ -13,7 +13,8 @@ class Aircylinder
 {
 	CanBus *canbus;
 	unsigned char nodeID;
-
+	bool TXok=false;
+	int tx_led=0;
 public:
 	 void open();
 	 void close();
@@ -21,6 +22,7 @@ public:
 	{
 
 	}
+	void SetOrder(int order);
 };
 
 

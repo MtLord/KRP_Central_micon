@@ -1,20 +1,20 @@
-MotorSytemClass.cpp:14:6:void MotorSystem::SetSendData(int, unsigned char, float)	32	static
-MotorSytemClass.cpp:24:6:void MotorSystem::SetReceevieData(short unsigned int*, unsigned char*, float*)	24	static
-MotorSytemClass.cpp:36:7:float MotorSystem::SetReceevieData()	24	static
-MotorSytemClass.cpp:45:6:void MotorSystem::SetDuty(float)	16	static
-MotorSytemClass.cpp:50:6:void MotorSystem::SetVelocity(float)	16	static
-MotorSytemClass.cpp:55:6:void MotorSystem::SetTorque(float)	16	static
-MotorSytemClass.cpp:61:6:void MotorSystem::begin()	24	static
-MotorSytemClass.cpp:78:6:void MotorSystem::SetVGAIN_K(float)	16	static
-MotorSytemClass.cpp:83:6:void MotorSystem::SetVGAIN_TI(float)	16	static
-MotorSytemClass.cpp:90:6:void MotorSystem::SetVGAIN_TD(float)	16	static
-MotorSytemClass.cpp:96:6:void MotorSystem::SetPPR(float)	16	static
-MotorSytemClass.cpp:102:6:void MotorSystem::Set_KT(float)	16	static
-MotorSytemClass.cpp:107:6:void MotorSystem::SetCGAIN_K(float)	16	static
-MotorSytemClass.cpp:113:6:void MotorSystem::SetCGAIN_TI(float)	16	static
-MotorSytemClass.cpp:119:6:void MotorSystem::SerCGAIN_TD(float)	16	static
-MotorSytemClass.cpp:125:7:float MotorSystem::GetVelocity()	16	static
-MotorSytemClass.cpp:137:7:float MotorSystem::GetDuty()	16	static
-MotorSytemClass.cpp:147:7:float MotorSystem::GetCurrent()	16	static
-MotorSytemClass.cpp:159:7:float MotorSystem::GetTorque()	16	static
-MotorSytemClass.cpp:170:6:void MotorSystem::SetVcc(float)	16	static
+MotorSytemClass.cpp:15:6:void MotorSystem::SetSendData(int, unsigned char, float)	32	static
+MotorSytemClass.cpp:44:6:void MotorSystem::SetReceevieData(short unsigned int*, unsigned char*, float*)	24	static
+MotorSytemClass.cpp:56:7:float MotorSystem::SetReceevieData()	24	static
+MotorSytemClass.cpp:65:6:void MotorSystem::SetDuty(float)	16	static
+MotorSytemClass.cpp:70:6:void MotorSystem::SetVelocity(float)	16	static
+MotorSytemClass.cpp:75:6:void MotorSystem::SetTorque(float)	16	static
+MotorSytemClass.cpp:81:6:void MotorSystem::begin()	24	static
+MotorSytemClass.cpp:98:6:void MotorSystem::SetVGAIN_K(float)	16	static
+MotorSytemClass.cpp:103:6:void MotorSystem::SetVGAIN_TI(float)	16	static
+MotorSytemClass.cpp:110:6:void MotorSystem::SetVGAIN_TD(float)	16	static
+MotorSytemClass.cpp:116:6:void MotorSystem::SetPPR(float)	16	static
+MotorSytemClass.cpp:122:6:void MotorSystem::Set_KT(float)	16	static
+MotorSytemClass.cpp:127:6:void MotorSystem::SetCGAIN_K(float)	16	static
+MotorSytemClass.cpp:133:6:void MotorSystem::SetCGAIN_TI(float)	16	static
+MotorSytemClass.cpp:139:6:void MotorSystem::SerCGAIN_TD(float)	16	static
+MotorSytemClass.cpp:145:7:float MotorSystem::GetVelocity()	16	static
+MotorSytemClass.cpp:157:7:float MotorSystem::GetDuty()	16	static
+MotorSytemClass.cpp:167:7:float MotorSystem::GetCurrent()	16	static
+MotorSytemClass.cpp:179:7:float MotorSystem::GetTorque()	16	static
+MotorSytemClass.cpp:190:6:void MotorSystem::SetVcc(float)	16	static

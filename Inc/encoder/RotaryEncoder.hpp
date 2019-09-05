@@ -18,6 +18,8 @@ class Encoder
 	int enco_num;
 	static long countdata[8];
 	float dist=0;
+	bool TXok=false;
+	int tx_led=0;
 public:
 	Encoder(CanBus *_canbus,int num,unsigned char ID):canbus(_canbus),board_ID(ID),enco_num(num)
 	{

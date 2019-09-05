@@ -25,6 +25,8 @@ extern unsigned char RxFIFO_Data[6];
 
  void PS3controller::SendRequest()
  {
+   while(TXok==false)
+   {
 	if( canbus->Send((0x74),0,0)!=0)
 	{
 		ERROR_LED;
@@ -40,9 +42,10 @@ extern unsigned char RxFIFO_Data[6];
 		{
 			tx_led++;
 		}
-
+		TXok=true;
 	}
-
+   }
+   TXok=false;
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)
 {

@@ -17,10 +17,11 @@ extern unsigned char RxFIFO_Data[6];
 
 void localization::SendReqest()
 {
-
+while(TXok==false)
+{
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		ERROR_LED;//送信エラーLED点滅
+		//ERROR_LED;//送信エラーLED点滅
 	}
 	else
 	{
@@ -31,8 +32,10 @@ void localization::SendReqest()
 				else{
 					tx_led++;
 				}
-
+		TXok=true;
 	}
+}
+TXok=false;
 }
 
 void localization::Setloca()//受信割り込み時の値セット関数

@@ -15,6 +15,7 @@ class Servo
 	void DivideData(float data);
 	unsigned char tx_buff[8]={0,};
 	unsigned short node_id;
+	bool TXok=false;
 public:
 	Servo(CanBus *_canbus,unsigned short _node_id):canbus(_canbus),node_id(_node_id)
 	{

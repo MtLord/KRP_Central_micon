@@ -18,6 +18,7 @@ private:
 	const unsigned long begincmd=0x70;
 	unsigned long timecount=0;
 	bool beginend=false;
+	bool TXok=false;
 public:
 	PS3controller(CanBus *_canbus):canbus(_canbus)
 	{

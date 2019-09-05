@@ -18,7 +18,7 @@ extern LowlayerHandelTypedef *plow;
 #define MASKID_L 0x0000
 #define FILTERID_L 0x0000
 
-
+int Fulllevel=0;
 
 
 int rx_led=0;
@@ -65,65 +65,80 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   }
 
  }
+void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+
+}
+void HAL_CAN_TxMai2box1CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+
+}
+void HAL_CAN_TxMai3box1CompleteCallback(CAN_HandleTypeDef *hcan)
+{
+
+}
 void CanBus::SetError()
 {
 	error_code=(hcan1.Instance->ESR>>4)&0b111;
 }
+int count=0;
+
+
+
 short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 {
-	uint32_t mailbox_num;
+					uint32_t mailbox_num;
 				 HAL_CAN_StateTypeDef state = hcan1.State;
 				 uint32_t TSR = hcan1.Instance->TSR;
 				 if ((state == HAL_CAN_STATE_READY) ||(state == HAL_CAN_STATE_LISTENING))
-				   {
-					  if (((TSR & CAN_TSR_TME0) != 0U) || ((TSR & CAN_TSR_TME1) != 0U) ||((TSR & CAN_TSR_TME2) != 0U))//どれかのメールボックスが空いていたら
-					  {
-						  mailbox_num = (TSR & CAN_TSR_CODE) >> CAN_TSR_CODE_Pos; //空きメールボックス番号を取得
-						  if (mailbox_num > 2)
-						  {
-						         /* Update error code */
-						         hcan1.ErrorCode |= HAL_CAN_ERROR_INTERNAL;
-						         error_flag=true;
-						         this->SetError();
-						         return -1;
-						   }
+				 {
+					 if (((TSR & CAN_TSR_TME0) != 0U) || ((TSR & CAN_TSR_TME1) != 0U) ||((TSR & CAN_TSR_TME2) != 0U))//どれかのメールボックスが空いていたら
+					 {
 
-						  else if(this->IDE==CAN_ID_STD)
-						  {
-							  	  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<21|this->RTR;
-						  }
-						  else//ext id
-						  {
-							  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<3U|IDE|RTR;
-						  }
-						  hcan1.Instance->sTxMailBox[mailbox_num].TDTR = DLC;
-						  hcan1.Instance->sTxMailBox[mailbox_num].TDHR=(uint32_t)data[7]<<24|(uint32_t)data[6]<<16|(uint32_t)data[5]<<8|(uint32_t)data[4];//メールボックス上位レジスタにセット
-						  hcan1.Instance->sTxMailBox[mailbox_num].TDLR=(uint32_t)data[3]<<24|(uint32_t)data[2]<<16|(uint32_t)data[1]<<8|(uint32_t)data[0];
-						  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//送信ビットセット
-						  return 0;
-						  Txok=true;
-						  error_flag=false;
-					  }
-					  else
-					  {
-						  hcan1.ErrorCode |= HAL_CAN_ERROR_PARAM;
-						  error_flag=true;
-						  this->SetError();
-						  return -1;
-					  }
+												  mailbox_num = (TSR & CAN_TSR_CODE) >> CAN_TSR_CODE_Pos; //空きメールボックス番号を取得
+												  if (mailbox_num > 2)
+												  {
+												         /* Update error code */
+												         hcan1.ErrorCode |= HAL_CAN_ERROR_INTERNAL;
+												         error_flag=true;
+												         this->SetError();
+												         return -1;
+												   }
 
-				   }
+												  if(this->IDE==CAN_ID_STD)
+												  {
+													  	  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<21|this->RTR;
+												  }
+												  else//ext id
+												  {
+													  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<3U|IDE|RTR;
+												  }
+												  hcan1.Instance->sTxMailBox[mailbox_num].TDTR = DLC;
+												  hcan1.Instance->sTxMailBox[mailbox_num].TDHR=(uint32_t)data[7]<<24|(uint32_t)data[6]<<16|(uint32_t)data[5]<<8|(uint32_t)data[4];//メールボックス上位レジスタにセット
+												  hcan1.Instance->sTxMailBox[mailbox_num].TDLR=(uint32_t)data[3]<<24|(uint32_t)data[2]<<16|(uint32_t)data[1]<<8|(uint32_t)data[0];
+												  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//送信ビットセット
+												  return 0;
+												  Txok=true;
+												  error_flag=false;
+
+
+				 	 }
+				 	  else
+				 	 	 {//メールボックスのどれも空いてない
+							 hcan1.ErrorCode |= HAL_CAN_ERROR_PARAM;
+							  error_flag=true;
+							  this->SetError();
+							  return -1;
+				 	 	 }
+
+				}
 				 else
 				 {
 					 hcan1.ErrorCode |= HAL_CAN_ERROR_NOT_INITIALIZED;
 					 error_flag=true;
 					 this->SetError();
-					    return -1;
+					    return -2;
 				 }
-				  if(Txok)
-				  {
-
-				  }
 			Txok=false;
 }
 

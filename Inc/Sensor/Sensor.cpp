@@ -16,7 +16,10 @@ unsigned char MicroSw::Data[4]={0,};
 
 void Sensor::SendRequest()
 {
-	if(canbus->Send(Get_SENSOR<<ORDER_BIT_Pos, 0, 0)!=0){
+  while(TXok==false)
+  {
+	if(canbus->Send(Get_SENSOR<<ORDER_BIT_Pos, 0, 0)!=0)
+	{
 		ERROR_LED;
 	}
 	else
@@ -28,8 +31,10 @@ void Sensor::SendRequest()
 		else{
 			tx_led++;
 		}
-
+		TXok=true;
 	}
+  }
+  TXok=false;
 }
 
 void Sensor::SetData()
@@ -61,10 +66,14 @@ unsigned short Sensor:: GetValue()
 
 void MicroSw::SendRequest()
 {
+	while(TXok==false)
+	{
 	if(canbus->Send(GET_MICROSWITCH<<ORDER_BIT_Pos, 0, 0)!=0){
 		ERROR_LED;
+		TXok=false;
 	}
-	else{
+	else
+	{
 		if(tx_led>25)
 				{
 					TOGGLE_TX_LED;
@@ -73,7 +82,10 @@ void MicroSw::SendRequest()
 				else{
 					tx_led++;
 				}
+		TXok=true;
 	}
+	}
+	TXok=false;
 }
 
 void MicroSw::SetData()

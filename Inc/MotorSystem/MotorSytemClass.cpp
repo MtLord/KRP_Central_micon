@@ -9,6 +9,7 @@
 #include "MotorSystemClass.hpp"
 #include "MotorSystem_definetion.hpp"
 #include "stdio.h"
+#include "DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[6];
 void MotorSystem::SetSendData(int cmd,unsigned char Len,float data)
@@ -18,7 +19,26 @@ void MotorSystem::SetSendData(int cmd,unsigned char Len,float data)
 	msg[1]=((unsigned char*)&data)[1];
 	msg[2]=((unsigned char*)&data)[2];
 	msg[3]=((unsigned char*)&data)[3];
-	Mcan->Send(cmd<<4|this->commuincationID,Len,msg);
+	while(TXok==false)
+	{
+		if(Mcan->Send(cmd<<4|this->commuincationID,Len,msg)!=0)
+		{
+
+		}
+		else
+		{
+			if(tx_led>15)
+					{
+						TOGGLE_TX_LED;
+						tx_led=0;
+					}
+					else{
+						tx_led++;
+					}
+			TXok=true;
+		}
+	}
+	TXok=false;
 }
 
 void MotorSystem::SetReceevieData(unsigned short *ID,unsigned char *DLC,float *data)
