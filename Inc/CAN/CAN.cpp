@@ -65,15 +65,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   }
 
  }
-void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef *hcan)
+void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {
 
 }
-void HAL_CAN_TxMai2box1CompleteCallback(CAN_HandleTypeDef *hcan)
-{
 
-}
-void HAL_CAN_TxMai3box1CompleteCallback(CAN_HandleTypeDef *hcan)
+void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
 
 }
@@ -118,8 +115,6 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 												  hcan1.Instance->sTxMailBox[mailbox_num].TDLR=(uint32_t)data[3]<<24|(uint32_t)data[2]<<16|(uint32_t)data[1]<<8|(uint32_t)data[0];
 												  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//送信ビットセット
 												  return 0;
-												  Txok=true;
-												  error_flag=false;
 
 
 				 	 }
@@ -139,6 +134,6 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 					 this->SetError();
 					    return -2;
 				 }
-			Txok=false;
+
 }
 

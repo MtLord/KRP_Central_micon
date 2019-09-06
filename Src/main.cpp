@@ -146,16 +146,17 @@ hlow.M7.begin();
 
 	  if(IntFlag)
 	  {
-
-//	  hlow.encoder1.Sendreqest();
+	 hlow.loca.SendReqest();
 	 hlow.Ad1.SendRequest();
-	  hlow.Msw1.SendRequest();
-	  hlow.loca.SendReqest();
-	  hlow.PS3.SendRequest();
+	// hlow.encoder1.Sendreqest();
+	 hlow.PS3.SendRequest();
+	 hlow.Msw1.SendRequest();
+
+
 //
 //		  hlow.M4.SetDuty(-40);
 //		  hlow.M5.SetDuty(-40);
-//hlow.M1.SetDuty(40);
+hlow.M1.SetDuty(40);
 //hlow.M2.SetDuty(0);
 //hlow.M3.SetDuty(-40);
 //	 		  /****user code here*******/
@@ -167,11 +168,11 @@ hlow.M7.begin();
 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
 
-
+//printf("rightX:%d rightY:%d leftX:%d leftY:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y());
 	  /***************************/
 		  IntFlag=false;
 	  }
-	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	  //printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
   }
   /* USER CODE END 3 */
 }

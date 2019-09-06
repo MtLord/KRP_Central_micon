@@ -1,7 +1,6 @@
 CAN.cpp:26:6:void FilterConfig()	48	static
 CAN.cpp:48:6:void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef*)	16	static
-CAN.cpp:68:6:void HAL_CAN_TxMailbox0CompleteCallback(CAN_HandleTypeDef*)	16	static
-CAN.cpp:72:6:void HAL_CAN_TxMai2box1CompleteCallback(CAN_HandleTypeDef*)	16	static
-CAN.cpp:76:6:void HAL_CAN_TxMai3box1CompleteCallback(CAN_HandleTypeDef*)	16	static
-CAN.cpp:80:6:void CanBus::SetError()	16	static
-CAN.cpp:88:7:short int CanBus::Send(long unsigned int, unsigned char, unsigned char*)	40	static
+CAN.cpp:68:6:void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef*)	16	static
+CAN.cpp:73:6:void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef*)	16	static
+CAN.cpp:77:6:void CanBus::SetError()	16	static
+CAN.cpp:85:7:short int CanBus::Send(long unsigned int, unsigned char, unsigned char*)	40	static

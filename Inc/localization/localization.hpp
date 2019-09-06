@@ -13,7 +13,7 @@ class localization
 {
 	CanBus *canbus,*canbus_r;
 	int tx_led=0;
-	float diameter=0.041;
+	float diameter=0.048;
 	unsigned long pulse=2048;
 	float ShiftY=0.26;
 	float ShiftX=0.26;
