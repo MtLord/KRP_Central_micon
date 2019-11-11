@@ -7,6 +7,9 @@
 
 #include "Libraries/KondoServo/ICS.hpp"
 #define ENPIN(STATE) (STATE==1)? HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET): HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET)
+static constexpr float MAX_DEG = 180.0; ///< 角度の最大値
+static constexpr float MIN_DEG = -180.0;  ///< 角度の最大値
+static constexpr float ANGLE_F_FALSE = 9999.9;
 
 int ICS::Synchronize(uint8_t *txBuff, size_t txLength, uint8_t *rxBuff, size_t rxLength)
 {
@@ -23,6 +26,34 @@ int ICS::Synchronize(uint8_t *txBuff, size_t txLength, uint8_t *rxBuff, size_t r
 	    return 0;
 	  }
 	  return 1;
+}
+
+int ICS::degPos(float deg)// 角度データをポジションデータへ
+{
+  if (deg > MAX_DEG) {
+    return -1;
+  }
+  if (deg < MIN_DEG) {
+    return -1;
+  }
+  int pos = deg * 29.633;
+  pos = pos + 7500;
+  return pos;
+}
+
+int ICS::posDeg(int pos)//ポジションデータを角度データへ
+{
+  pos = pos - 7500;
+  float deg = pos  / 29.633;
+
+  if (deg > MAX_DEG) {
+    return ANGLE_F_FALSE;
+  }
+  if (deg < MIN_DEG) {
+    return -ANGLE_F_FALSE;
+  }
+
+  return deg;
 }
 
 int ICS::SetPosition(uint8_t id, unsigned short pos)
@@ -48,6 +79,14 @@ int ICS::SetPosition(uint8_t id, unsigned short pos)
 
 		  return rAngle;
 }
+
+int ICS::SetAngle(uint8_t id,float angle) //範囲-135°~+135°
+{
+	int rAngle;
+	return SetPosition(id, this->degPos(angle));
+	return 0;
+}
+
 
 int ICS::SetSpeed(uint8_t id,uint8_t spData)
 {

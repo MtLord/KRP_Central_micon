@@ -25,23 +25,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  10 .ARM.attributes 00000030  00000000  00000000  0002067c  2**0
                   CONTENTS, READONLY
- 11 .debug_info   00022fcc  00000000  00000000  000206ac  2**0
+ 11 .debug_info   00023110  00000000  00000000  000206ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_abbrev 000048c6  00000000  00000000  00043678  2**0
+ 12 .debug_abbrev 000048c6  00000000  00000000  000437bc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_loc    0000fc10  00000000  00000000  00047f3e  2**0
+ 13 .debug_loc    0000fc10  00000000  00000000  00048082  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00000fb0  00000000  00000000  00057b50  2**3
+ 14 .debug_aranges 00000fb0  00000000  00000000  00057c98  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00002218  00000000  00000000  00058b00  2**3
+ 15 .debug_ranges 00002218  00000000  00000000  00058c48  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_line   0000b9f9  00000000  00000000  0005ad18  2**0
+ 16 .debug_line   0000b9f9  00000000  00000000  0005ae60  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_str    00006a7b  00000000  00000000  00066711  2**0
+ 17 .debug_str    00006ac8  00000000  00000000  00066859  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .comment      0000007c  00000000  00000000  0006d18c  2**0
+ 18 .comment      0000007c  00000000  00000000  0006d321  2**0
                   CONTENTS, READONLY
- 19 .debug_frame  00004b18  00000000  00000000  0006d208  2**2
+ 19 .debug_frame  00004b18  00000000  00000000  0006d3a0  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -12974,10 +12974,10 @@ public:
  8005b6a:	4770      	bx	lr
 
 08005b6c <_ZN3ICSC1EP20__UART_HandleTypeDef>:
-class ICS
-{
 	UART_HandleTypeDef *usart;
 	int Synchronize(uint8_t *txBuff, size_t txLength, uint8_t *rxBuff, size_t rxLength);
+	int degPos(float deg);
+	int posDeg(int pos);
 public:
 	ICS(UART_HandleTypeDef *_usart):usart(_usart)
  8005b6c:	b480      	push	{r7}
