@@ -51,7 +51,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   CanRxFlag=true;
 	   plow->Ad1.SetData();
 	   plow->Msw1.SetData();
-	   plow->PS3.SetconData();
 	   plow->loca.Setloca();
 	   plow->encoder1.SetData();
 	   if(rx_led>20)

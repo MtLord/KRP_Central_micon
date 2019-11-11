@@ -12,6 +12,7 @@
 #define ORDER_BIT_Pos_S 4U//stdid sift bit
 #define NODE_ID_Pos 2U
 
+#define CON_ADDRESEE 0x74<<1
 enum{
 	MOTORE_SET_DUTY=0x2,
 	SERVO_SET_DUTY=0x42,

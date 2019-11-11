@@ -61,10 +61,6 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
-#define E_Pin GPIO_PIN_0
-#define E_GPIO_Port GPIOC
-#define RS_Pin GPIO_PIN_1
-#define RS_GPIO_Port GPIOC
 #define USART_TX_Pin GPIO_PIN_2
 #define USART_TX_GPIO_Port GPIOA
 #define USART_RX_Pin GPIO_PIN_3
@@ -75,14 +71,6 @@ void Error_Handler(void);
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
-#define DB4_Pin GPIO_PIN_4
-#define DB4_GPIO_Port GPIOB
-#define DB5_Pin GPIO_PIN_5
-#define DB5_GPIO_Port GPIOB
-#define DB6_Pin GPIO_PIN_6
-#define DB6_GPIO_Port GPIOB
-#define DB7_Pin GPIO_PIN_7
-#define DB7_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

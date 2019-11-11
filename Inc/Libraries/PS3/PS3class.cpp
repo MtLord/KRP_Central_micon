@@ -6,28 +6,29 @@
  */
 #include "Libraries/PS3/PS3class.hpp"
 #include "Libraries/DefineLED.h"
-
+#include "Libraries/DefineOrder.h"
+#include "i2c.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
 
 
-
- void PS3controller::SetconData()
- {
- 	if(RXmsg.ExtId==(0x75))
- 	{
- 		for(int i=0;i<8;i++)
- 		{
- 			Data[i]=RxFIFO_Data[i];
- 		}
- 	}
- }
+//
+// void PS3controller::SetconData()
+// {
+// 	if(RXmsg.ExtId==(0x75))
+// 	{
+// 		for(int i=0;i<8;i++)
+// 		{
+// 			Data[i]=RxFIFO_Data[i];
+// 		}
+// 	}
+// }
 
  void PS3controller::SendRequest()
  {
    while(TXok==false)
    {
-	if( canbus->Send((0x74),0,0)!=0)
+	if(  HAL_I2C_Master_Transmit(&hi2c2,CON_ADDRESEE, 0, 0,10)!=0)
 	{
 		ERROR_LED;
 	}

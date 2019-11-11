@@ -34,6 +34,7 @@
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
 #include "Libraries/Buzzer/Buzzer.h"
+#include "Libraries/DefineOrder.h"
 
 /* USER CODE END Includes */
 
@@ -41,6 +42,7 @@
 /* USER CODE BEGIN PTD */
 extern bool IntFlag;
 extern void FilterConfig();
+extern uint8_t con_data[8];
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -57,7 +59,6 @@ CAN_TxHeaderTypeDef Txmsg;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
 
 /* USER CODE END PV */
 
@@ -108,12 +109,15 @@ int main(void)
   MX_TIM7_Init();
   MX_I2C2_Init();
   MX_TIM3_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
-  hlow.lcd.LcdInit();
-  hlow.lcd.LcdPuts((char *)"CAN OK");
+//  hlow.lcd.LcdInit();
+//  hlow.lcd.LcdPuts((char *)"CAN OK");
+
+    // Print a message to the LCD.
 
 #ifdef MOTERSYSTEM
 hlow.M1.begin();
@@ -131,7 +135,7 @@ hlow.M7.begin();
     LoopInt.Start();
     FilterConfig();
 
-
+    HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 /*************************************/
   /* USER CODE END 2 */
 
@@ -146,10 +150,10 @@ hlow.M7.begin();
 
 	  if(IntFlag)
 	  {
-	 hlow.loca.SendReqest();
+	// hlow.loca.SendReqest();
 	 //hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
-	 hlow.PS3.SendRequest();
+	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 
 
@@ -172,7 +176,7 @@ hlow.M7.begin();
 	  /***************************/
 		  IntFlag=false;
 	  }
-	  printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	  //printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
   }
   /* USER CODE END 3 */
 }
@@ -232,7 +236,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-	 plow->lcd.LcdPuts((char *)"Now in error handler");
+
   /* USER CODE END Error_Handler_Debug */
 }
 
