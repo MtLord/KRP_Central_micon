@@ -62,7 +62,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   {
 		   rx_led++;
 	   }
-
  }
 void HAL_CAN_RxFifo0FullCallback(CAN_HandleTypeDef *hcan)
 {

@@ -82,7 +82,6 @@ int ICS::SetPosition(uint8_t id, unsigned short pos)
 
 int ICS::SetAngle(uint8_t id,float angle) //”ÍˆÍ-135‹~+135‹
 {
-	int rAngle;
 	return SetPosition(id, this->degPos(angle));
 	return 0;
 }

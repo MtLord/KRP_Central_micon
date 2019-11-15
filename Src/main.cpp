@@ -114,8 +114,8 @@ int main(void)
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
-//  hlow.lcd.LcdInit();
-//  hlow.lcd.LcdPuts((char *)"CAN OK");
+hlow.Lcd.oled_puts((char *)"CAN OK");
+
 
     // Print a message to the LCD.
 
@@ -134,7 +134,8 @@ hlow.M7.begin();
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
     FilterConfig();
-
+hlow.Lcd.oled_setcursor(1, 0);
+hlow.Lcd.oled_puts((char *)"Timer OK");
     HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 /*************************************/
   /* USER CODE END 2 */
@@ -146,10 +147,9 @@ hlow.M7.begin();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-
 	  if(IntFlag)
 	  {
+
 	// hlow.loca.SendReqest();
 	 //hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
@@ -236,7 +236,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+	plow->Lcd.oled_puts((char*)"Init Error");
   /* USER CODE END Error_Handler_Debug */
 }
 

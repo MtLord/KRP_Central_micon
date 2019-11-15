@@ -27,6 +27,8 @@ typedef enum{
 class I2CLCD
 {
 	I2C_HandleTypeDef *oled_I2C;
+
+		void oled_writeCommand(char t_command);
 public:
 	I2CLCD(I2C_HandleTypeDef *_oled_I2C):oled_I2C(_oled_I2C)
 	{
@@ -35,13 +37,13 @@ public:
 			 oled_clear();
 			 oled_display_setting(true, false, false);
 	}
-	void oled_put(char t_data);
-	void oled_puts(char *strings);
-	void oled_writeCommand(char t_command);
+
 	void oled_contrast(int contrast);
 	void oled_init();
 	void oled_clear();
 	void oled_power(bool state);
+	void oled_put(char t_data);
+	void oled_puts(char *strings);
 	void oled_delay_puts(char *strings,int delay_ms);
 	void oled_display_setting(bool displayon,bool cursoron,bool blinkon);
 	void oled_returnhome();

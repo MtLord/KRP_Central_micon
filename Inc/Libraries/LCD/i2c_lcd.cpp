@@ -60,11 +60,13 @@ void I2CLCD::oled_init(){
 	oled_clear();
 }
 
-void I2CLCD::oled_clear(){
+void I2CLCD::oled_clear()
+{
 	oled_writeCommand(ClearDisplay);
 }
 
-void I2CLCD::oled_power(bool state){
+void I2CLCD::oled_power(bool state)
+{
 	if(state == true){
 		oled_writeCommand(DisplayON);
 		HAL_Delay(10);
@@ -76,7 +78,8 @@ void I2CLCD::oled_power(bool state){
 }
 
 
-void I2CLCD::oled_display_setting(bool displayon,bool cursoron,bool blinkon){
+void I2CLCD::oled_display_setting(bool displayon,bool cursoron,bool blinkon)
+{
 	char command[1];
 	command[0] = 0x08;
 	command[0] =
@@ -96,7 +99,8 @@ void I2CLCD::oled_display_setting(bool displayon,bool cursoron,bool blinkon){
   * @param  row		0~15
   * @retval none
   */
-void I2CLCD::oled_setcursor(int column,int row){
+void I2CLCD::oled_setcursor(int column,int row)
+{
 	if(column==0 && row<16){
 		oled_writeCommand(0x80+row);
 	}
@@ -108,6 +112,7 @@ void I2CLCD::oled_setcursor(int column,int row){
 	}
 }
 
-void I2CLCD::oled_returnhome(){
+void I2CLCD::oled_returnhome()
+{
 	oled_writeCommand(ReturnHome);
 }
