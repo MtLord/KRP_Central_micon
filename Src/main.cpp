@@ -150,13 +150,13 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 	  if(IntFlag)
 	  {
 
-	// hlow.loca.SendReqest();
+	 hlow.loca.SendReqest();
 	 //hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 
-
+	 printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
 //		  hlow.M5.SetDuty(-40);
@@ -176,7 +176,7 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 	  /***************************/
 		  IntFlag=false;
 	  }
-	  //printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+
   }
   /* USER CODE END 3 */
 }
