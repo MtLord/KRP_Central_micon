@@ -33,9 +33,9 @@
 #include "Libraries/InterruptIvent/TimerInterruptCallback.hpp"
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
-#include "Libraries/Buzzer/Buzzer.h"
-#include "Libraries/DefineOrder.h"
 
+#include "Libraries/DefineOrder.h"
+//#include "Libraries/Buzzer/buzzer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -149,14 +149,14 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-
+		//Melody_Update();
 	 hlow.loca.SendReqest();
-	 //hlow.Ad1.SendRequest();
+	 hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 
-	 printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
 //		  hlow.M5.SetDuty(-40);

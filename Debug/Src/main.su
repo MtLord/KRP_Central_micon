@@ -8,13 +8,12 @@ i2c_lcd.hpp:33:2:I2CLCD::I2CLCD(I2C_HandleTypeDef*)	16	static
 Sensor.hpp:18:2:Sensor::Sensor(CanBus*, int)	24	static
 Sensor.hpp:37:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
 PS3class.hpp:23:2:PS3controller::PS3controller(CanBus*)	16	static
-Buzzer.h:20:2:Buzzer::Buzzer(TIM_HandleTypeDef*)	16	static
 ICS.hpp:22:2:ICS::ICS(UART_HandleTypeDef*)	16	static
 LowlayerHandel.hpp:42:7:void LowlayerHandelTypedef::PowerOn()	16	static
 LowlayerHandel.hpp:63:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static
-main.cpp:80:5:int main()	960	static
+main.cpp:80:5:int main()	920	static
 main.cpp:188:6:void SystemClock_Config()	88	static
 main.cpp:235:6:void Error_Handler()	8	static

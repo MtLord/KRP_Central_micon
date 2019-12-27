@@ -23,7 +23,7 @@ public:
 	void SetData();
 	static unsigned short sensordata[12];
 	unsigned short GetValue();
-
+	unsigned short GetI2CData();
 };
 
 class MicroSw

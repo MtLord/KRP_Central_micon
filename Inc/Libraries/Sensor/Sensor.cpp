@@ -64,6 +64,9 @@ unsigned short Sensor:: GetValue()
 	return sensordata[num];
 }
 
+unsigned short Sensor::GetI2CData(){
+
+}
 void MicroSw::SendRequest()
 {
 	while(TXok==false)

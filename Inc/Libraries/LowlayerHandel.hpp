@@ -18,7 +18,7 @@
 #include "Libraries/LCD/i2c_lcd.hpp"
 #include "Libraries/Sensor/Sensor.hpp"
 #include "Libraries/PS3/PS3class.hpp"
-#include "Libraries/Buzzer/Buzzer.h"
+
 #include "Libraries/KondoServo/ICS.hpp"
 #include "tim.h"
 //#define MOTERSYSTEM
@@ -58,7 +58,7 @@ public:
 	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6;
 	//LCD表示　絶対に制御周期の中で表示させないで
 	I2CLCD Lcd;
-	Buzzer buzzer;//ブザー
+
 	ICS KoServo;
 	LowlayerHandelTypedef():extcan_d(CAN_ID_EXT,CAN_RTR_DATA),extcan_r(CAN_ID_EXT,CAN_RTR_REMOTE),stdcan_d(CAN_ID_STD,CAN_RTR_DATA)
 #ifndef MOTERSYSTEM
@@ -74,7 +74,7 @@ public:
 	,encoder1(&extcan_r,1,1),encoder2(&extcan_r,2,1),encoder3(&extcan_r,3,1),encoder4(&extcan_r,4,1),PS3(&extcan_r)
 	,Ad1(&extcan_r,0),Ad2(&extcan_r,1),Ad3(&extcan_r,2),Ad4(&extcan_r,3),Ad5(&extcan_r,4),Ad6(&extcan_r,5)
 	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
-	,buzzer(&htim3),Lcd(&hi2c2),KoServo(&huart1)
+	,Lcd(&hi2c2),KoServo(&huart1)
 	{
 		PowerOn();
 	}
