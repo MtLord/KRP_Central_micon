@@ -35,6 +35,11 @@
 #include "stdio.h"
 
 #include "Libraries/DefineOrder.h"
+#include <stdio.h>
+
+#include "dma_printf.hpp"
+#include "dma_scanf.hpp"
+
 //#include "Libraries/Buzzer/buzzer.h"
 /* USER CODE END Includes */
 
@@ -43,6 +48,28 @@
 extern bool IntFlag;
 extern void FilterConfig();
 extern uint8_t con_data[8];
+#ifdef __cplusplus
+ extern "C" {
+#endif
+int __io_putchar(int ch)
+{
+      dma_printf_putc(ch&0xFF);
+        return ch;
+}
+
+int __io_getchar(void)
+{
+      return dma_scanf_getc_blocking();
+}
+
+#ifdef __cplusplus
+}
+#endif
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+      dma_printf_send_it(huart);
+}
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -59,7 +86,7 @@ CAN_TxHeaderTypeDef Txmsg;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+//#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -80,8 +107,14 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	setbuf(stdout, NULL);
+	 setbuf(stdin, NULL);
+	  setbuf(stdout, NULL);
+	  setbuf(stderr, NULL);
+	  dma_printf_init(&huart2);   //printfを使いたいUARTポートの構造体のポインタ
+	  dma_scanf_init(&huart2);    //scanfを使いたいUARTポートの構造体のポインタ
+
   /* USER CODE END 1 */
+  
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -102,7 +135,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_CAN1_Init();
+  //MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
@@ -114,8 +147,9 @@ int main(void)
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
+#ifdef USEOLCD
 hlow.Lcd.oled_puts((char *)"CAN OK");
-
+#endif
 
     // Print a message to the LCD.
 
@@ -133,10 +167,12 @@ hlow.M7.begin();
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-    FilterConfig();
+   // FilterConfig();
+#ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
-    HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+#endif
+   // HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 /*************************************/
   /* USER CODE END 2 */
 
@@ -150,12 +186,12 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 	  if(IntFlag)
 	  {
 		//Melody_Update();
-	 hlow.loca.SendReqest();
-	 hlow.Ad1.SendRequest();
+	 //hlow.loca.SendReqest();
+	// hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
-
+printf("hello\n\r");
 	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
@@ -225,6 +261,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 
 /* USER CODE END 4 */
 

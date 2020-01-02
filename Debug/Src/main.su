@@ -14,6 +14,9 @@ LowlayerHandel.hpp:63:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static
-main.cpp:80:5:int main()	920	static
-main.cpp:188:6:void SystemClock_Config()	88	static
-main.cpp:235:6:void Error_Handler()	8	static
+main.cpp:54:5:int __io_putchar(int)	16	static
+main.cpp:60:5:int __io_getchar()	8	static
+main.cpp:68:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
+main.cpp:107:5:int main()	920	static
+main.cpp:224:6:void SystemClock_Config()	88	static
+main.cpp:272:6:void Error_Handler()	8	static
