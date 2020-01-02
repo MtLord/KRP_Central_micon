@@ -107,9 +107,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	 setbuf(stdin, NULL);
-	  setbuf(stdout, NULL);
-	  setbuf(stderr, NULL);
+
 	  dma_printf_init(&huart2);   //printfを使いたいUARTポートの構造体のポインタ
 	  dma_scanf_init(&huart2);    //scanfを使いたいUARTポートの構造体のポインタ
 
@@ -175,6 +173,7 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
    // HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 /*************************************/
   /* USER CODE END 2 */
+float t=0;
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -185,13 +184,17 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
+
+			  printf("t=%f\n\r",t);
+
 		//Melody_Update();
 	 //hlow.loca.SendReqest();
 	// hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
-printf("hello\n\r");
+//printf("hello\n\r");
+
 	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
@@ -258,6 +261,9 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  setbuf(stdin, NULL);
+ 	  setbuf(stdout, NULL);
+ 	  setbuf(stderr, NULL);
 }
 
 /* USER CODE BEGIN 4 */
