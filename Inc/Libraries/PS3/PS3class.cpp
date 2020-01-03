@@ -10,24 +10,29 @@
 #include "i2c.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
-
+uint8_t con_data[8]={0,};
 
 
  void PS3controller::SetconData()
  {
- 	if(RXmsg.ExtId==(0x75))
- 	{
- 		for(int i=0;i<8;i++)
- 		{
- 			Data[i]=RxFIFO_Data[i];
- 		}
- 	}
+// 	if(RXmsg.ExtId==(0x75))
+// 	{
+// 		for(int i=0;i<8;i++)
+// 		{
+// 			Data[i]=RxFIFO_Data[i];
+// 		}
+// 	}
+ 	HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+ 	for(int i=0;i>7;i++)
+ 	 		{
+ 	 			Data[i]=con_data[i];
+ 	 		}
  }
 
  void PS3controller::SendRequest()
  {
-//   while(TXok==false)
-//   {
+   while(TXok==false)
+   {
 //	if(HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8)!=0)
 //	{
 //		ERROR_LED;
@@ -50,7 +55,7 @@ extern unsigned char RxFIFO_Data[8];
 //		}
 //		TXok=true;
 //	}
-//   }
+   }
    TXok=false;
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)

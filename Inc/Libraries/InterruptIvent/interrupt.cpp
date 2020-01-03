@@ -13,8 +13,8 @@
 #include "i2c.h"
 #include "Libraries/DefineOrder.h"
 extern LowlayerHandelTypedef *plow;
+extern uint8_t con_data[8];
 
-uint8_t con_data[8]={0,};
 bool IntFlag=false;
 int cunt=0;
  void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -29,7 +29,7 @@ int cunt=0;
 
  void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c)
  {
-	 HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+	 plow->PS3.SetconData();
 	 cunt++;
  }
 
