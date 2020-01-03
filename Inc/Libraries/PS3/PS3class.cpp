@@ -26,30 +26,31 @@ extern unsigned char RxFIFO_Data[8];
 
  void PS3controller::SendRequest()
  {
-   while(TXok==false)
-   {
-//	if(  HAL_I2C_Master_Transmit(&hi2c2,CON_ADDRESEE, 0, 0,10)!=0)
+//   while(TXok==false)
+//   {
+//	if(HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8)!=0)
 //	{
 //		ERROR_LED;
 //	}
-	if(canbus->Send((0x74),0,0)!=0)
-	   {
-		   ERROR_LED;
-	   }
-	else
-	{
-		if(tx_led>15)
-		{
-		TOGGLE_TX_LED;
-		tx_led=0;
-		}
-		else
-		{
-			tx_led++;
-		}
-		TXok=true;
-	}
-   }
+	HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8);
+//	if(canbus->Send((0x74),0,0)!=0)
+//	   {
+//		   ERROR_LED;
+//	   }
+//	else
+//	{
+//		if(tx_led>15)
+//		{
+//		TOGGLE_TX_LED;
+//		tx_led=0;
+//		}
+//		else
+//		{
+//			tx_led++;
+//		}
+//		TXok=true;
+//	}
+//   }
    TXok=false;
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)

@@ -16,7 +16,7 @@ extern LowlayerHandelTypedef *plow;
 
 uint8_t con_data[8]={0,};
 bool IntFlag=false;
-
+int cunt=0;
  void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  			{
 	 	 	 	if(htim->Instance==TIM6)
@@ -30,5 +30,6 @@ bool IntFlag=false;
  void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c)
  {
 	 HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+	 cunt++;
  }
 

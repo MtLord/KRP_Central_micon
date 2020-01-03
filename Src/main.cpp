@@ -39,7 +39,7 @@
 
 #include "dma_printf.hpp"
 #include "dma_scanf.hpp"
-
+extern int cunt;
 //#include "Libraries/Buzzer/buzzer.h"
 /* USER CODE END Includes */
 
@@ -170,7 +170,7 @@ hlow.M7.begin();
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
 #endif
-   // HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+    HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 /*************************************/
   /* USER CODE END 2 */
 float t=0;
@@ -184,14 +184,14 @@ float t=0;
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-
-			  printf("t=%f\n\r",t);
+		  //HAL_I2C_Master_Receive_IT(&hi2c2, CON_ADDRESEE, 0, 8);
+			//printf("from arduino:%c %c %c %c %c %c\n\r",con_data[0],con_data[1],con_data[2],con_data[3],con_data[4],con_data[5]);
 
 		//Melody_Update();
 	 //hlow.loca.SendReqest();
 	// hlow.Ad1.SendRequest();
 	// hlow.encoder1.Sendreqest();
-	 //hlow.PS3.SendRequest();
+	 hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 //printf("hello\n\r");
 
@@ -211,7 +211,7 @@ float t=0;
 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
 
-//printf("rightX:%d rightY:%d leftX:%d leftY:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y());
+printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
 	  /***************************/
 		  IntFlag=false;
 	  }
