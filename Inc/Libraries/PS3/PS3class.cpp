@@ -23,21 +23,29 @@ uint8_t con_data[8]={0,};
 // 		}
 // 	}
  	HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
- 	for(int i=0;i>7;i++)
- 	 		{
- 	 			Data[i]=con_data[i];
- 	 		}
+
+ 	 			this->Data[0]=(short)con_data[0];
+ 	 			this->Data[1]=(short)con_data[1];
+ 	 			this->Data[2]=(short)con_data[2];
+ 	 			this->Data[3]=(short)con_data[3];
+ 	 			this->Data[4]=(short)con_data[4];
+ 	 			this->Data[5]=(short)con_data[5];
+ 	 			this->Data[6]=(short)con_data[6];
+ 	 			this->Data[7]=(short)con_data[7];
+
  }
 
  void PS3controller::SendRequest()
  {
-   while(TXok==false)
-   {
+//   while(TXok==false)
+//   {
 //	if(HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8)!=0)
 //	{
 //		ERROR_LED;
 //	}
 	HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8);
+
+
 //	if(canbus->Send((0x74),0,0)!=0)
 //	   {
 //		   ERROR_LED;
@@ -55,8 +63,8 @@ uint8_t con_data[8]={0,};
 //		}
 //		TXok=true;
 //	}
-   }
-   TXok=false;
+//   }
+//   TXok=false;
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)
 {
@@ -65,39 +73,39 @@ short PS3controller::Maskbyte(int matrixnum,int shiftnum)
 
 short PS3controller::SELECT()
 {
-	return (short)Maskbyte(0,0);
+	return Maskbyte(0,0);
 }
 
 short PS3controller::L3(){
-	return (short)Maskbyte(0,1);
+	return Maskbyte(0,1);
 }
 
 short PS3controller::R3(){
-	return (short)Maskbyte(0,2);
+	return Maskbyte(0,2);
 }
 short PS3controller::START(){
-	return (short)Maskbyte(0,3);
+	return Maskbyte(0,3);
 }
 short PS3controller::UP(){
-	return (short)Maskbyte(0,4);
+	return Maskbyte(0,4);
 }
 
 short PS3controller::RIGHT(){
-	return (short)Maskbyte(0,5);
+	return Maskbyte(0,5);
 }
 short PS3controller::DOWN(){
-	return (short)Maskbyte(0,6);
+	return Maskbyte(0,6);
 }
 short PS3controller::LEFT(){
-	return (short)Maskbyte(0,7);
+	return Maskbyte(0,7);
 }
 
 
 short PS3controller::L1(){
-	return (short)Maskbyte(1,2);
+	return Maskbyte(1,2);
 }
 short PS3controller::R1(){
-	return (short)Maskbyte(1,3);
+	return Maskbyte(1,3);
 }
 short PS3controller::SANKAKU(){
 	return Maskbyte(1,4);
@@ -106,22 +114,22 @@ short PS3controller::MARU(){
 	return Maskbyte(1,5);
 }
 short PS3controller::BATSU(){
-	return (short)Maskbyte(1,6);
+	return Maskbyte(1,6);
 }
 short PS3controller::SHIKAKU(){
-	return (short)Maskbyte(1,7);
+	return Maskbyte(1,7);
 }
 short PS3controller::ANALOG_RIGHT_X(){
-	return (short)Data[2];
+	return Data[2];
 }
 short PS3controller::ANALOG_RIGHT_Y(){
-	return (short)Data[3];
+	return Data[3];
 }
 short PS3controller::ANALOG_LEFT_X(){
-	return (short)Data[4];
+	return Data[4];
 }
 short PS3controller::ANALOG_LEFT_Y(){
-	return (short)Data[5];
+	return Data[5];
 }
 
 short PS3controller::L2(){

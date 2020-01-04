@@ -184,8 +184,8 @@ float t=0;
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-		  //HAL_I2C_Master_Receive_IT(&hi2c2, CON_ADDRESEE, 0, 8);
-			//printf("from arduino:%c %c %c %c %c %c\n\r",con_data[0],con_data[1],con_data[2],con_data[3],con_data[4],con_data[5]);
+
+
 
 		//Melody_Update();
 	 //hlow.loca.SendReqest();
@@ -210,8 +210,10 @@ float t=0;
 //printf("%d \n\r",hlow.Ad1.GetValue());
 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
-
-printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
+//printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
+printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
+		hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
+	 //printf("R1%d\n\r",hlow.PS3.R1());
 	  /***************************/
 		  IntFlag=false;
 	  }
