@@ -36,7 +36,7 @@ public:
 	 void SendReqest();//send reqest localization
 	 void Setloca();//dataset
 
-	 void begin();
+	 void begin();//©ŒÈˆÊ’uÀ•WÄİ’è
 	 float GetX();
 
 	 float GetY();

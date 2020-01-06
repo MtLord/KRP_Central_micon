@@ -25,23 +25,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  10 .ARM.attributes 00000030  00000000  00000000  0002067c  2**0
                   CONTENTS, READONLY
- 11 .debug_info   0002555b  00000000  00000000  000206ac  2**0
+ 11 .debug_info   0002556d  00000000  00000000  000206ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_abbrev 00004f03  00000000  00000000  00045c07  2**0
+ 12 .debug_abbrev 00004f03  00000000  00000000  00045c19  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_loc    0000fba8  00000000  00000000  0004ab0a  2**0
+ 13 .debug_loc    0000fba8  00000000  00000000  0004ab1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001148  00000000  00000000  0005a6b8  2**3
+ 14 .debug_aranges 00001148  00000000  00000000  0005a6c8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00002398  00000000  00000000  0005b800  2**3
+ 15 .debug_ranges 00002398  00000000  00000000  0005b810  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_line   0000c3ae  00000000  00000000  0005db98  2**0
+ 16 .debug_line   0000c3ae  00000000  00000000  0005dba8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_str    00006ebe  00000000  00000000  00069f46  2**0
+ 17 .debug_str    00006ec9  00000000  00000000  00069f56  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .comment      0000007c  00000000  00000000  00070e04  2**0
+ 18 .comment      0000007c  00000000  00000000  00070e1f  2**0
                   CONTENTS, READONLY
- 19 .debug_frame  00005158  00000000  00000000  00070e80  2**2
+ 19 .debug_frame  00005158  00000000  00000000  00070e9c  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -11736,7 +11736,7 @@ void Sensor::SetData()
 	if(RXmsg.ExtId==(Get_SENSOR<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
  8005490:	4b21      	ldr	r3, [pc, #132]	; (8005518 <_ZN6Sensor7SetDataEv+0x90>)
  8005492:	685b      	ldr	r3, [r3, #4]
- 8005494:	f640 4244 	movw	r2, #3140	; 0xc44
+ 8005494:	f243 1210 	movw	r2, #12560	; 0x3110
  8005498:	4293      	cmp	r3, r2
  800549a:	d120      	bne.n	80054de <_ZN6Sensor7SetDataEv+0x56>
 	{
@@ -11790,7 +11790,7 @@ void Sensor::SetData()
 	else if(RXmsg.ExtId==(Get_SENSOR<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos))
  80054de:	4b0e      	ldr	r3, [pc, #56]	; (8005518 <_ZN6Sensor7SetDataEv+0x90>)
  80054e0:	685b      	ldr	r3, [r3, #4]
- 80054e2:	f640 4248 	movw	r2, #3144	; 0xc48
+ 80054e2:	f243 1220 	movw	r2, #12576	; 0x3120
  80054e6:	4293      	cmp	r3, r2
  80054e8:	d10f      	bne.n	800550a <_ZN6Sensor7SetDataEv+0x82>
 		((unsigned char*)&sensordata[4])[0]=RxFIFO_Data[0];
@@ -11849,7 +11849,7 @@ void MicroSw::SetData()
 	if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|1))
  8005558:	4b0d      	ldr	r3, [pc, #52]	; (8005590 <_ZN7MicroSw7SetDataEv+0x40>)
  800555a:	685b      	ldr	r3, [r3, #4]
- 800555c:	f640 4281 	movw	r2, #3201	; 0xc81
+ 800555c:	f243 2201 	movw	r2, #12801	; 0x3201
  8005560:	4293      	cmp	r3, r2
  8005562:	d104      	bne.n	800556e <_ZN7MicroSw7SetDataEv+0x1e>
 	{
@@ -11868,7 +11868,7 @@ void MicroSw::SetData()
 	else if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|2))
  800556e:	4b08      	ldr	r3, [pc, #32]	; (8005590 <_ZN7MicroSw7SetDataEv+0x40>)
  8005570:	685b      	ldr	r3, [r3, #4]
- 8005572:	f640 4282 	movw	r2, #3202	; 0xc82
+ 8005572:	f243 2202 	movw	r2, #12802	; 0x3202
  8005576:	4293      	cmp	r3, r2
  8005578:	d103      	bne.n	8005582 <_ZN7MicroSw7SetDataEv+0x32>
 		Data[1]=RxFIFO_Data[1];
@@ -11903,7 +11903,7 @@ void Encoder::SetData()
  80055a6:	685b      	ldr	r3, [r3, #4]
  80055a8:	687a      	ldr	r2, [r7, #4]
  80055aa:	8892      	ldrh	r2, [r2, #4]
- 80055ac:	f442 62a0 	orr.w	r2, r2, #1280	; 0x500
+ 80055ac:	f442 52a0 	orr.w	r2, r2, #5120	; 0x1400
  80055b0:	b292      	uxth	r2, r2
  80055b2:	4293      	cmp	r3, r2
  80055b4:	d11f      	bne.n	80055f6 <_ZN7Encoder7SetDataEv+0x5a>
@@ -11984,7 +11984,7 @@ void localization::Setloca()//受信割り込み時の値セット関数
 	if(RXmsg.ExtId==(GET_LOCA<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
  8005634:	4b2b      	ldr	r3, [pc, #172]	; (80056e4 <_ZN12localization7SetlocaEv+0xb8>)
  8005636:	685b      	ldr	r3, [r3, #4]
- 8005638:	f240 4244 	movw	r2, #1092	; 0x444
+ 8005638:	f241 1210 	movw	r2, #4368	; 0x1110
  800563c:	4293      	cmp	r3, r2
  800563e:	d12e      	bne.n	800569e <_ZN12localization7SetlocaEv+0x72>
 	{
@@ -12053,7 +12053,7 @@ void localization::Setloca()//受信割り込み時の値セット関数
 	else if(RXmsg.ExtId==(GET_LOCA<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos))
  800569e:	4b11      	ldr	r3, [pc, #68]	; (80056e4 <_ZN12localization7SetlocaEv+0xb8>)
  80056a0:	685b      	ldr	r3, [r3, #4]
- 80056a2:	f5b3 6f89 	cmp.w	r3, #1096	; 0x448
+ 80056a2:	f5b3 5f89 	cmp.w	r3, #4384	; 0x1120
  80056a6:	d116      	bne.n	80056d6 <_ZN12localization7SetlocaEv+0xaa>
 		((unsigned char *)&currentyaw)[0]=RxFIFO_Data[0];
  80056a8:	687b      	ldr	r3, [r7, #4]

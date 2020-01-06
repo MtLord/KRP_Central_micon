@@ -1058,13 +1058,13 @@ Discarded input sections
                 0x00000000        0xc Inc\Libraries\Aircylinder\Aircylinder.o
  .ARM.exidx.text._ZN11Aircylinder8SetOrderEi
                 0x00000000        0x8 Inc\Libraries\Aircylinder\Aircylinder.o
- .debug_info    0x00000000      0x49e Inc\Libraries\Aircylinder\Aircylinder.o
+ .debug_info    0x00000000      0x4a4 Inc\Libraries\Aircylinder\Aircylinder.o
  .debug_abbrev  0x00000000      0x1d7 Inc\Libraries\Aircylinder\Aircylinder.o
  .debug_aranges
                 0x00000000       0x30 Inc\Libraries\Aircylinder\Aircylinder.o
  .debug_ranges  0x00000000       0x20 Inc\Libraries\Aircylinder\Aircylinder.o
  .debug_line    0x00000000      0x23f Inc\Libraries\Aircylinder\Aircylinder.o
- .debug_str     0x00000000      0x48f Inc\Libraries\Aircylinder\Aircylinder.o
+ .debug_str     0x00000000      0x49a Inc\Libraries\Aircylinder\Aircylinder.o
  .comment       0x00000000       0x7d Inc\Libraries\Aircylinder\Aircylinder.o
  .debug_frame   0x00000000       0x7c Inc\Libraries\Aircylinder\Aircylinder.o
  .ARM.attributes
@@ -1192,13 +1192,13 @@ Discarded input sections
                 0x00000000        0xc Inc\Libraries\Motor\Motor.o
  .ARM.exidx.text._ZN5Motor7SetDutyEf
                 0x00000000        0x8 Inc\Libraries\Motor\Motor.o
- .debug_info    0x00000000      0x4a5 Inc\Libraries\Motor\Motor.o
+ .debug_info    0x00000000      0x4ab Inc\Libraries\Motor\Motor.o
  .debug_abbrev  0x00000000      0x1d8 Inc\Libraries\Motor\Motor.o
  .debug_aranges
                 0x00000000       0x28 Inc\Libraries\Motor\Motor.o
  .debug_ranges  0x00000000       0x18 Inc\Libraries\Motor\Motor.o
  .debug_line    0x00000000      0x232 Inc\Libraries\Motor\Motor.o
- .debug_str     0x00000000      0x467 Inc\Libraries\Motor\Motor.o
+ .debug_str     0x00000000      0x472 Inc\Libraries\Motor\Motor.o
  .comment       0x00000000       0x7d Inc\Libraries\Motor\Motor.o
  .debug_frame   0x00000000       0x5c Inc\Libraries\Motor\Motor.o
  .ARM.attributes
@@ -1493,13 +1493,13 @@ Discarded input sections
                 0x00000000        0xc Inc\Libraries\Servo\Servo.o
  .ARM.exidx.text._ZN5Servo7SetDutyEf
                 0x00000000        0x8 Inc\Libraries\Servo\Servo.o
- .debug_info    0x00000000      0x4b8 Inc\Libraries\Servo\Servo.o
+ .debug_info    0x00000000      0x4be Inc\Libraries\Servo\Servo.o
  .debug_abbrev  0x00000000      0x1ef Inc\Libraries\Servo\Servo.o
  .debug_aranges
                 0x00000000       0x28 Inc\Libraries\Servo\Servo.o
  .debug_ranges  0x00000000       0x18 Inc\Libraries\Servo\Servo.o
  .debug_line    0x00000000      0x22e Inc\Libraries\Servo\Servo.o
- .debug_str     0x00000000      0x487 Inc\Libraries\Servo\Servo.o
+ .debug_str     0x00000000      0x492 Inc\Libraries\Servo\Servo.o
  .comment       0x00000000       0x7d Inc\Libraries\Servo\Servo.o
  .debug_frame   0x00000000       0x5c Inc\Libraries\Servo\Servo.o
  .ARM.attributes
@@ -1519,17 +1519,73 @@ Discarded input sections
                 0x00000000        0xc Inc\Libraries\Steppre\SteppingMotor.o
  .ARM.exidx.text._ZN13SteppingMotor8SetPulseEs
                 0x00000000        0x8 Inc\Libraries\Steppre\SteppingMotor.o
- .debug_info    0x00000000      0x4a1 Inc\Libraries\Steppre\SteppingMotor.o
+ .debug_info    0x00000000      0x4a7 Inc\Libraries\Steppre\SteppingMotor.o
  .debug_abbrev  0x00000000      0x1c1 Inc\Libraries\Steppre\SteppingMotor.o
  .debug_aranges
                 0x00000000       0x28 Inc\Libraries\Steppre\SteppingMotor.o
  .debug_ranges  0x00000000       0x18 Inc\Libraries\Steppre\SteppingMotor.o
  .debug_line    0x00000000      0x244 Inc\Libraries\Steppre\SteppingMotor.o
- .debug_str     0x00000000      0x491 Inc\Libraries\Steppre\SteppingMotor.o
+ .debug_str     0x00000000      0x49c Inc\Libraries\Steppre\SteppingMotor.o
  .comment       0x00000000       0x7d Inc\Libraries\Steppre\SteppingMotor.o
  .debug_frame   0x00000000       0x5c Inc\Libraries\Steppre\SteppingMotor.o
  .ARM.attributes
                 0x00000000       0x39 Inc\Libraries\Steppre\SteppingMotor.o
+ .text          0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .data          0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .bss           0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule10SendReqestEv
+                0x00000000       0x84 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule10SendReqestEv
+                0x00000000        0xc Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule10SendReqestEv
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule7SetDataEv
+                0x00000000       0x68 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule7SetDataEv
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule7SetDataEv
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule10SetLedModeEiiiiii
+                0x00000000       0x9c Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule10SetLedModeEiiiiii
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule10SetLedModeEiiiiii
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule14GetToggleStateEi
+                0x00000000       0xa0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule14GetToggleStateEi
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule14GetToggleStateEi
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule12GetTactStateEi
+                0x00000000       0x78 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule12GetTactStateEi
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule12GetTactStateEi
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule10GetAdData1Ev
+                0x00000000       0x1a Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule10GetAdData1Ev
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule10GetAdData1Ev
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .text._ZN12SwitchModule10GetAdData2Ev
+                0x00000000       0x1a Inc\Libraries\Switch\SwitchModule.o
+ .ARM.extab.text._ZN12SwitchModule10GetAdData2Ev
+                0x00000000        0x0 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.exidx.text._ZN12SwitchModule10GetAdData2Ev
+                0x00000000        0x8 Inc\Libraries\Switch\SwitchModule.o
+ .debug_info    0x00000000      0x71a Inc\Libraries\Switch\SwitchModule.o
+ .debug_abbrev  0x00000000      0x1f1 Inc\Libraries\Switch\SwitchModule.o
+ .debug_aranges
+                0x00000000       0x50 Inc\Libraries\Switch\SwitchModule.o
+ .debug_ranges  0x00000000       0x40 Inc\Libraries\Switch\SwitchModule.o
+ .debug_line    0x00000000      0x2f2 Inc\Libraries\Switch\SwitchModule.o
+ .debug_str     0x00000000      0x629 Inc\Libraries\Switch\SwitchModule.o
+ .comment       0x00000000       0x7d Inc\Libraries\Switch\SwitchModule.o
+ .debug_frame   0x00000000      0x124 Inc\Libraries\Switch\SwitchModule.o
+ .ARM.attributes
+                0x00000000       0x39 Inc\Libraries\Switch\SwitchModule.o
  .text          0x00000000        0x0 Inc\Libraries\encoder\RotaryEncoder.o
  .data          0x00000000        0x0 Inc\Libraries\encoder\RotaryEncoder.o
  .text._ZN7Encoder10SendreqestEv
@@ -2044,6 +2100,7 @@ LOAD Inc\Libraries\PS3\PS3class.o
 LOAD Inc\Libraries\Sensor\Sensor.o
 LOAD Inc\Libraries\Servo\Servo.o
 LOAD Inc\Libraries\Steppre\SteppingMotor.o
+LOAD Inc\Libraries\Switch\SwitchModule.o
 LOAD Inc\Libraries\encoder\RotaryEncoder.o
 LOAD Inc\Libraries\localization\localization.o
 LOAD Src\can.o
@@ -3709,7 +3766,7 @@ LOAD c:/program files (x86)/atollic/truestudio for stm32 9.0.1/armtools/bin/../l
                 0x000012b6       0x22 c:/program files (x86)/atollic/truestudio for stm32 9.0.1/armtools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
 OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x2555b
+.debug_info     0x00000000    0x2556d
  .debug_info    0x00000000      0xa41 Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
  .debug_info    0x00000a41     0x10ed Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.o
  .debug_info    0x00001b2e      0xf5b Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.o
@@ -3725,24 +3782,24 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
  .debug_info    0x00012518     0x264a Inc\Libraries\InterruptIvent\interrupt.o
  .debug_info    0x00014b62     0x1355 Inc\Libraries\LCD\i2c_lcd.o
  .debug_info    0x00015eb7     0x1012 Inc\Libraries\PS3\PS3class.o
- .debug_info    0x00016ec9      0x7e4 Inc\Libraries\Sensor\Sensor.o
- .debug_info    0x000176ad      0xb47 Inc\Libraries\encoder\RotaryEncoder.o
- .debug_info    0x000181f4     0x1068 Inc\Libraries\localization\localization.o
- .debug_info    0x0001925c      0xc41 Src\can.o
- .debug_info    0x00019e9d      0x5e8 Src\dma.o
- .debug_info    0x0001a485      0x7a7 Src\dma_printf.o
- .debug_info    0x0001ac2c     0x106a Src\dma_ring.o
- .debug_info    0x0001bc96      0x743 Src\dma_scanf.o
- .debug_info    0x0001c3d9      0x54e Src\gpio.o
- .debug_info    0x0001c927      0xe95 Src\i2c.o
- .debug_info    0x0001d7bc     0x35ea Src\main.o
- .debug_info    0x00020da6      0x366 Src\stm32f4xx_hal_msp.o
- .debug_info    0x0002110c     0x10b3 Src\stm32f4xx_it.o
- .debug_info    0x000221bf      0xffa Src\syscalls.o
- .debug_info    0x000231b9      0x53e Src\system_stm32f4xx.o
- .debug_info    0x000236f7     0x105c Src\tim.o
- .debug_info    0x00024753      0xd9a Src\usart.o
- .debug_info    0x000254ed       0x6e startup\startup_stm32f446xx.o
+ .debug_info    0x00016ec9      0x7ea Inc\Libraries\Sensor\Sensor.o
+ .debug_info    0x000176b3      0xb4d Inc\Libraries\encoder\RotaryEncoder.o
+ .debug_info    0x00018200     0x106e Inc\Libraries\localization\localization.o
+ .debug_info    0x0001926e      0xc41 Src\can.o
+ .debug_info    0x00019eaf      0x5e8 Src\dma.o
+ .debug_info    0x0001a497      0x7a7 Src\dma_printf.o
+ .debug_info    0x0001ac3e     0x106a Src\dma_ring.o
+ .debug_info    0x0001bca8      0x743 Src\dma_scanf.o
+ .debug_info    0x0001c3eb      0x54e Src\gpio.o
+ .debug_info    0x0001c939      0xe95 Src\i2c.o
+ .debug_info    0x0001d7ce     0x35ea Src\main.o
+ .debug_info    0x00020db8      0x366 Src\stm32f4xx_hal_msp.o
+ .debug_info    0x0002111e     0x10b3 Src\stm32f4xx_it.o
+ .debug_info    0x000221d1      0xffa Src\syscalls.o
+ .debug_info    0x000231cb      0x53e Src\system_stm32f4xx.o
+ .debug_info    0x00023709     0x105c Src\tim.o
+ .debug_info    0x00024765      0xd9a Src\usart.o
+ .debug_info    0x000254ff       0x6e startup\startup_stm32f446xx.o
 
 .debug_abbrev   0x00000000     0x4f03
  .debug_abbrev  0x00000000      0x23d Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
@@ -3936,7 +3993,7 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
  .debug_line    0x0000bfef      0x340 Src\usart.o
  .debug_line    0x0000c32f       0x7f startup\startup_stm32f446xx.o
 
-.debug_str      0x00000000     0x6ebe
+.debug_str      0x00000000     0x6ec9
  .debug_str     0x00000000      0xb5a Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.o
                                 0xc14 (size before relaxing)
  .debug_str     0x00000b5a      0x6e0 Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_can.o
@@ -3967,39 +4024,39 @@ OUTPUT(KRP_CentralMicon.elf elf32-littlearm)
                                 0xee2 (size before relaxing)
  .debug_str     0x00006019       0x6e Inc\Libraries\PS3\PS3class.o
                                 0xda1 (size before relaxing)
- .debug_str     0x00006087       0xf6 Inc\Libraries\Sensor\Sensor.o
-                                0x6db (size before relaxing)
- .debug_str     0x0000617d       0x42 Inc\Libraries\encoder\RotaryEncoder.o
-                                0xb03 (size before relaxing)
- .debug_str     0x000061bf       0x2f Inc\Libraries\localization\localization.o
-                                0xb77 (size before relaxing)
- .debug_str     0x000061ee       0x32 Src\can.o
+ .debug_str     0x00006087      0x101 Inc\Libraries\Sensor\Sensor.o
+                                0x6e6 (size before relaxing)
+ .debug_str     0x00006188       0x42 Inc\Libraries\encoder\RotaryEncoder.o
+                                0xb0e (size before relaxing)
+ .debug_str     0x000061ca       0x2f Inc\Libraries\localization\localization.o
+                                0xb82 (size before relaxing)
+ .debug_str     0x000061f9       0x32 Src\can.o
                                 0xc15 (size before relaxing)
- .debug_str     0x00006220       0x19 Src\dma.o
+ .debug_str     0x0000622b       0x19 Src\dma.o
                                 0x895 (size before relaxing)
- .debug_str     0x00006239      0x10d Src\dma_printf.o
+ .debug_str     0x00006244      0x10d Src\dma_printf.o
                                 0x8d0 (size before relaxing)
- .debug_str     0x00006346      0x270 Src\dma_ring.o
+ .debug_str     0x00006351      0x270 Src\dma_ring.o
                                 0xd83 (size before relaxing)
- .debug_str     0x000065b6       0xa6 Src\dma_scanf.o
+ .debug_str     0x000065c1       0xa6 Src\dma_scanf.o
                                 0x880 (size before relaxing)
- .debug_str     0x0000665c       0x1b Src\gpio.o
+ .debug_str     0x00006667       0x1b Src\gpio.o
                                 0x3fd (size before relaxing)
- .debug_str     0x00006677       0x31 Src\i2c.o
+ .debug_str     0x00006682       0x31 Src\i2c.o
                                 0xeae (size before relaxing)
- .debug_str     0x000066a8      0x310 Src\main.o
+ .debug_str     0x000066b3      0x310 Src\main.o
                                0x28b6 (size before relaxing)
- .debug_str     0x000069b8       0x1b Src\stm32f4xx_hal_msp.o
+ .debug_str     0x000069c3       0x1b Src\stm32f4xx_hal_msp.o
                                 0x369 (size before relaxing)
- .debug_str     0x000069d3      0x1af Src\stm32f4xx_it.o
+ .debug_str     0x000069de      0x1af Src\stm32f4xx_it.o
                                 0xf36 (size before relaxing)
- .debug_str     0x00006b82      0x23c Src\syscalls.o
+ .debug_str     0x00006b8d      0x23c Src\syscalls.o
                                 0x86a (size before relaxing)
- .debug_str     0x00006dbe       0x45 Src\system_stm32f4xx.o
+ .debug_str     0x00006dc9       0x45 Src\system_stm32f4xx.o
                                 0x3c8 (size before relaxing)
- .debug_str     0x00006e03       0x79 Src\tim.o
+ .debug_str     0x00006e0e       0x79 Src\tim.o
                                 0xf56 (size before relaxing)
- .debug_str     0x00006e7c       0x42 Src\usart.o
+ .debug_str     0x00006e87       0x42 Src\usart.o
                                 0xe16 (size before relaxing)
 
 .comment        0x00000000       0x7c
