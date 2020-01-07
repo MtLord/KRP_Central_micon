@@ -12,16 +12,19 @@ extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
 uint8_t con_data[8]={0,};
 
-
+#define USEI2C
  void PS3controller::SetconData()
  {
-// 	if(RXmsg.ExtId==(0x75))
-// 	{
-// 		for(int i=0;i<8;i++)
-// 		{
-// 			Data[i]=RxFIFO_Data[i];
-// 		}
-// 	}
+#ifndef USEI2C
+ 	if(RXmsg.ExtId==(0x75))
+ 	{
+ 		for(int i=0;i<8;i++)
+ 		{
+ 			Data[i]=RxFIFO_Data[i];
+ 		}
+ 	}
+#endif
+#ifdef USEI2C
  	HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 
  	 			this->Data[0]=(short)con_data[0];
@@ -32,39 +35,38 @@ uint8_t con_data[8]={0,};
  	 			this->Data[5]=(short)con_data[5];
  	 			this->Data[6]=(short)con_data[6];
  	 			this->Data[7]=(short)con_data[7];
+#endif
 
  }
 
  void PS3controller::SendRequest()
  {
-//   while(TXok==false)
-//   {
-//	if(HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8)!=0)
-//	{
-//		ERROR_LED;
-//	}
-	HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,8);
-
-
-//	if(canbus->Send((0x74),0,0)!=0)
-//	   {
-//		   ERROR_LED;
-//	   }
-//	else
-//	{
-//		if(tx_led>15)
-//		{
-//		TOGGLE_TX_LED;
-//		tx_led=0;
-//		}
-//		else
-//		{
-//			tx_led++;
-//		}
-//		TXok=true;
-//	}
-//   }
-//   TXok=false;
+#ifdef USEI2C
+	 HAL_I2C_Master_Transmit_IT(&hi2c2,CON_ADDRESEE, 0,0);
+#endif
+#ifndef USEI2C
+   while(TXok==false)
+   {
+		if(canbus->Send((0x74),0,0)!=0)
+	   {
+		   ERROR_LED;
+	   }
+		else
+		{
+			if(tx_led>15)
+			{
+				TOGGLE_TX_LED;
+				tx_led=0;
+			}
+			else
+			{
+				tx_led++;
+			}
+			TXok=true;
+		}
+   }
+   TXok=false;
+#endif
  }
 short PS3controller::Maskbyte(int matrixnum,int shiftnum)
 {

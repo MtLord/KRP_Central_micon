@@ -133,7 +133,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  //MX_CAN1_Init();
+  MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
@@ -153,19 +153,19 @@ hlow.Lcd.oled_puts((char *)"CAN OK");
 
 #ifdef MOTERSYSTEM
 hlow.M1.begin();
-hlow.M2.begin();
-hlow.M2.begin();
-hlow.M4.begin();
-hlow.M5.begin();
-hlow.M6.begin();
-hlow.M7.begin();
+//hlow.M2.begin();
+//hlow.M2.begin();
+//hlow.M4.begin();
+//hlow.M5.begin();
+//hlow.M6.begin();
+//hlow.M7.begin();
 #endif
 
 /************Loop config here**************/
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-   // FilterConfig();
+    FilterConfig();
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
@@ -188,18 +188,18 @@ float t=0;
 
 
 		//Melody_Update();
-	 //hlow.loca.SendReqest();
-	// hlow.Ad1.SendRequest();
-	// hlow.encoder1.Sendreqest();
-	 hlow.PS3.SendRequest();
-	// hlow.Msw1.SendRequest();
+	// hlow.loca.SendReqest();
+//	 hlow.Ad1.SendRequest();
+	//hlow.encoder1.Sendreqest();
+	 //hlow.PS3.SendRequest();
+//	 hlow.Msw1.SendRequest();
 //printf("hello\n\r");
 
 	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
 //		  hlow.M5.SetDuty(-40);
-//hlow.M1.SetDuty(10);
+hlow.M1.SetVelocity(100);
 //hlow.M2.SetDuty(10);
 //hlow.M3.SetDuty(10);
 //	 		  /****user code here*******/
@@ -211,8 +211,8 @@ float t=0;
 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
 //printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
-printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
-		hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
+//printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
+	//	hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
 	 //printf("R1%d\n\r",hlow.PS3.R1());
 	  /***************************/
 		  IntFlag=false;
