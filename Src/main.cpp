@@ -151,21 +151,29 @@ hlow.Lcd.oled_puts((char *)"CAN OK");
 
     // Print a message to the LCD.
 
-#ifdef MOTERSYSTEM
-hlow.M1.begin();
-//hlow.M2.begin();
-//hlow.M2.begin();
-//hlow.M4.begin();
-//hlow.M5.begin();
-//hlow.M6.begin();
-//hlow.M7.begin();
-#endif
+
 
 /************Loop config here**************/
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
     FilterConfig();
+    /***Related Can Begin write below***/
+#ifdef MOTERSYSTEM
+hlow.M1.SetVcc(24);
+hlow.M2.SetVcc(24);
+hlow.M3.SetVcc(24);
+hlow.M4.SetVcc(24);
+//hlow.M1.SetVcc(24);
+
+hlow.M1.begin();
+hlow.M2.begin();
+hlow.M2.begin();
+hlow.M4.begin();
+//hlow.M5.begin();
+//hlow.M6.begin();
+//hlow.M7.begin();
+#endif
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
@@ -174,7 +182,7 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 /*************************************/
   /* USER CODE END 2 */
 float t=0;
-
+//hlow.EmagenceStop();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -184,22 +192,19 @@ float t=0;
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-
-
-
 		//Melody_Update();
-	// hlow.loca.SendReqest();
-//	 hlow.Ad1.SendRequest();
+	 //hlow.loca.SendReqest();
+	// hlow.Ad1.SendRequest();
 	//hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
-//	 hlow.Msw1.SendRequest();
+	// hlow.Msw1.SendRequest();
 //printf("hello\n\r");
 
 	// printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 //
 //		  hlow.M4.SetDuty(-40);
 //		  hlow.M5.SetDuty(-40);
-hlow.M1.SetVelocity(100);
+//hlow.M1.SetVelocity(30);
 //hlow.M2.SetDuty(10);
 //hlow.M3.SetDuty(10);
 //	 		  /****user code here*******/

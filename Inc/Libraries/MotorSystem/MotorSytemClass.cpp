@@ -84,7 +84,7 @@ void MotorSystem::begin()
 	this->SetSendData(BEGIN,0,0);
 	while(BeginEnd==false)
 	{
-		printf("NOW MOTOE INITIALIZING\n\r");
+		printf("NOW MOTOE%d INITIALIZING\n\r",this->commuincationID);
 		if((RXmsg.StdId>>4)==0x44)
 		{
 			BeginEnd=true;
