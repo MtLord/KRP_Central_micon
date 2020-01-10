@@ -8,6 +8,8 @@
 #ifndef PS3_PS3CLASS_HPP_
 #define PS3_PS3CLASS_HPP_
 #include "Libraries/CAN/CAN.hpp"
+
+//#define USEI2C
 class PS3controller
 {
 private:

@@ -7,7 +7,7 @@ localization.hpp:32:3:localization::localization(CanBus*, CanBus*)	24	static
 i2c_lcd.hpp:33:2:I2CLCD::I2CLCD(I2C_HandleTypeDef*)	16	static
 Sensor.hpp:18:2:Sensor::Sensor(CanBus*, int)	24	static
 Sensor.hpp:37:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
-PS3class.hpp:23:2:PS3controller::PS3controller(CanBus*)	16	static
+PS3class.hpp:25:2:PS3controller::PS3controller(CanBus*)	16	static
 ICS.hpp:22:2:ICS::ICS(UART_HandleTypeDef*)	16	static
 LowlayerHandel.hpp:42:7:void LowlayerHandelTypedef::PowerOn()	16	static
 LowlayerHandel.hpp:63:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
@@ -18,5 +18,5 @@ main.cpp:54:5:int __io_putchar(int)	16	static
 main.cpp:60:5:int __io_getchar()	8	static
 main.cpp:68:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
 main.cpp:107:5:int main()	936	static
-main.cpp:234:6:void SystemClock_Config()	88	static
-main.cpp:285:6:void Error_Handler()	8	static
+main.cpp:235:6:void SystemClock_Config()	88	static
+main.cpp:286:6:void Error_Handler()	8	static

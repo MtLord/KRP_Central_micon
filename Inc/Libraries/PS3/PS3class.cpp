@@ -12,7 +12,7 @@ extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
 uint8_t con_data[8]={0,};
 
-#define USEI2C
+
  void PS3controller::SetconData()
  {
 #ifndef USEI2C
