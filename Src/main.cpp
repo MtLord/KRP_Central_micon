@@ -157,13 +157,12 @@ hlow.Lcd.oled_puts((char *)"CAN OK");
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
     FilterConfig();
-    /***Related Can Begin write below***/
+/***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-hlow.M1.SetVcc(24);
+hlow.M1.SetVcc(24);//Set battery voltage
 hlow.M2.SetVcc(24);
 hlow.M3.SetVcc(24);
 hlow.M4.SetVcc(24);
-//hlow.M1.SetVcc(24);
 
 hlow.M1.begin();
 hlow.M2.begin();
@@ -172,6 +171,7 @@ hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
 //hlow.M7.begin();
+/*************************************/
 #endif
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
