@@ -112,17 +112,21 @@ void localization::begin()
 	}
 
 }
-
+void localization::SetIntialPoint(float x, float y)
+{
+	this->initX=x;
+	this->initY=y;
+}
 float localization::GetX()
 {
 
-	return currentX;
+	return currentX+initX;
 }
 
 float localization::GetY()
 {
 
-	return currentY;
+	return currentY+initY;
 }
 
 float localization::GetYaw()

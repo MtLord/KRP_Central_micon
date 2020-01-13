@@ -86,7 +86,7 @@ CAN_TxHeaderTypeDef Txmsg;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-//#define USEOLCD
+#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -146,6 +146,7 @@ int main(void)
   LowlayerHandelTypedef hlow;
   plow=&hlow;
 #ifdef USEOLCD
+  hlow.Lcd.oled_init();
 hlow.Lcd.oled_puts((char *)"CAN OK");
 #endif
 // Print a message to the LCD.

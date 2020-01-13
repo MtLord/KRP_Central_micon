@@ -38,12 +38,12 @@ public:
 
 	 void begin();//自己位置座標再設定
 	 float GetX();
-
 	 float GetY();
-
 	 float GetYaw();
+
 	 void PutLCD();
-	void Setshitf_X(float x)//機体中心からのズレを記述
+	 void SetIntialPoint(float x,float y);
+	void Setshitf_X(float x)//エンコーダの機体中心からのズレを記述
 	{
 		ShiftX=x;
 	}
