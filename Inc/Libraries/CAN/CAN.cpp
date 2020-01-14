@@ -43,6 +43,7 @@ void FilterConfig()
 		}
 	HAL_CAN_Start(&hcan1);
 	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+	plow->Lcd.oled_puts((char *)"CAN Start Listening");
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)

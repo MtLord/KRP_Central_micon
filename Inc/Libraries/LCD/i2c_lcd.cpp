@@ -101,10 +101,10 @@ void I2CLCD::oled_display_setting(bool displayon,bool cursoron,bool blinkon)
   */
 void I2CLCD::oled_setcursor(int column,int row)
 {
-	if(column==0 && row<16){
+	if(column==0 && row<20){
 		oled_writeCommand(0x80+row);
 	}
-	else if(column==1 && row<16){
+	else if(column==1 && row<20){
 		oled_writeCommand(0xA0+row);
 	}
 	else{

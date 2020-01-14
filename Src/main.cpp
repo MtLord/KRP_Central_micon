@@ -147,7 +147,7 @@ int main(void)
   plow=&hlow;
 #ifdef USEOLCD
   hlow.Lcd.oled_init();
-hlow.Lcd.oled_puts((char *)"CAN OK");
+hlow.Lcd.oled_puts((char *)"CAN init OK");
 #endif
 // Print a message to the LCD.
 
@@ -157,7 +157,11 @@ hlow.Lcd.oled_puts((char *)"CAN OK");
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-    FilterConfig();
+#ifdef USEOLCD
+hlow.Lcd.oled_setcursor(1, 0);
+hlow.Lcd.oled_puts((char *)"Timer OK");
+#endif
+    //FilterConfig();
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
 hlow.M1.SetVcc(24);//Set battery voltage
@@ -172,18 +176,21 @@ hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
 //hlow.M7.begin();
-/*************************************/
-#endif
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
-hlow.Lcd.oled_puts((char *)"Timer OK");
+hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 #endif
+/*************************************/
+#endif
+
+
+
 #ifdef USEI2C
     HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 #endif
 /*************************************/
   /* USER CODE END 2 */
-float t=0;
+
 //hlow.EmagenceStop();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -196,7 +203,7 @@ float t=0;
 	  {
 		//Melody_Update();
 /*********write Send Request so that other boards return requested data*************/
-	 hlow.loca.SendReqest();
+	 //hlow.loca.SendReqest();
 	// hlow.Ad1.SendRequest();
 	//hlow.encoder1.Sendreqest();
 	 //hlow.PS3.SendRequest();
@@ -271,8 +278,8 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   setbuf(stdin, NULL);
- 	  setbuf(stdout, NULL);
- 	  setbuf(stderr, NULL);
+ setbuf(stdout, NULL);
+ setbuf(stderr, NULL);
 }
 
 /* USER CODE BEGIN 4 */
@@ -288,7 +295,7 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-	plow->Lcd.oled_puts((char*)"Init Error");
+	printf("init error");
   /* USER CODE END Error_Handler_Debug */
 }
 

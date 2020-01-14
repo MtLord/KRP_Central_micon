@@ -22,7 +22,7 @@ while(TXok==false)
 {
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		//ERROR_LED;//送信エラーLED点滅
+		ERROR_LED;//送信エラーLED点滅
 	}
 	else
 	{
