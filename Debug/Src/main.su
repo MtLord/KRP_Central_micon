@@ -18,5 +18,5 @@ main.cpp:54:5:int __io_putchar(int)	16	static
 main.cpp:60:5:int __io_getchar()	8	static
 main.cpp:68:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
 main.cpp:107:5:int main()	928	static
-main.cpp:243:6:void SystemClock_Config()	88	static
-main.cpp:294:6:void Error_Handler()	8	static
+main.cpp:245:6:void SystemClock_Config()	88	static
+main.cpp:296:6:void Error_Handler()	8	static
