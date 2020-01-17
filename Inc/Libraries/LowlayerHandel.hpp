@@ -51,6 +51,7 @@ public:
 #ifndef MOTERSYSTEM
 	Motor M1,M2,M3,M4,M5,M6,M7,M8;
 #endif
+	Motor SM1;
 	Servo servo1,servo2,servo3,servo4,servo5,servo6,servo7,servo8;
 	PS3controller PS3;
 	localization loca;
@@ -65,6 +66,7 @@ public:
 #ifndef MOTERSYSTEM
 	,M1(&extcan_d,1),M2(&extcan_d,2),M3(&extcan_d,3),M4(&extcan_d,4),M5(&extcan_d,5),M6(&extcan_d,6),M7(&extcan_d,7),M8(&extcan_d,8)
 #endif
+	,SM1(&extcan_d,1)
 #ifdef MOTERSYSTEM
 	,M0(&stdcan_d,0),M1(&stdcan_d,1),M2(&stdcan_d,2),M3(&stdcan_d,3),M4(&stdcan_d,4),M5(&stdcan_d,5),M6(&stdcan_d,6),M7(&stdcan_d,7),M8(&stdcan_d,8)
 #endif
