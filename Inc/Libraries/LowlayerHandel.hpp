@@ -22,7 +22,7 @@
 #include "Libraries/KondoServo/ICS.hpp"
 #include "tim.h"
 /*****switch profile****************/
-//#define MOTERSYSTEM
+#define MOTERSYSTEM
 #define KODOSERVO
 /****************************************/
 struct LowlayerHandelTypedef //低レイヤーハンドラをまとめた構造体 上位はこのハンドルを使ってアクセス
@@ -46,7 +46,7 @@ public:
 	}
 	Aircylinder Air1,Air2,Air3,Air4,Air5,Air6,Air7,Air8;
 #ifdef MOTERSYSTEM
-	MotorSystem M1,M2,M3,M4,M5,M6,M7,M8;
+	MotorSystem M0,M1,M2,M3,M4,M5,M6,M7,M8;
 #endif
 #ifndef MOTERSYSTEM
 	Motor M1,M2,M3,M4,M5,M6,M7,M8;
@@ -66,7 +66,7 @@ public:
 	,M1(&extcan_d,1),M2(&extcan_d,2),M3(&extcan_d,3),M4(&extcan_d,4),M5(&extcan_d,5),M6(&extcan_d,6),M7(&extcan_d,7),M8(&extcan_d,8)
 #endif
 #ifdef MOTERSYSTEM
-	,M1(&stdcan_d,1),M2(&stdcan_d,2),M3(&stdcan_d,3),M4(&stdcan_d,4),M5(&stdcan_d,5),M6(&stdcan_d,6),M7(&stdcan_d,7),M8(&stdcan_d,8)
+	,M0(&stdcan_d,0),M1(&stdcan_d,1),M2(&stdcan_d,2),M3(&stdcan_d,3),M4(&stdcan_d,4),M5(&stdcan_d,5),M6(&stdcan_d,6),M7(&stdcan_d,7),M8(&stdcan_d,8)
 #endif
 	,Air1(&extcan_d,1),Air2(&extcan_d,2),Air3(&extcan_d,3),Air4(&extcan_d,4),Air5(&extcan_d,5),Air6(&extcan_d,6),Air7(&extcan_d,7),Air8(&extcan_d,8)
 	,servo1(&extcan_d,1),servo2(&extcan_d,2)
@@ -75,9 +75,9 @@ public:
 	,encoder1(&extcan_r,1,1),encoder2(&extcan_r,2,1),encoder3(&extcan_r,3,1),encoder4(&extcan_r,4,1),PS3(&extcan_r)
 	,Ad1(&extcan_r,0),Ad2(&extcan_r,1),Ad3(&extcan_r,2),Ad4(&extcan_r,3),Ad5(&extcan_r,4),Ad6(&extcan_r,5)
 	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
-	,Lcd(&hi2c2),KoServo(&huart1)
+	,Lcd(&hi2c1),KoServo(&huart1)
 	{
-		PowerOn();
+		//PowerOn();
 	}
 
 };

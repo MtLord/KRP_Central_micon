@@ -12,33 +12,21 @@
 #include "Libraries/DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[6];
-void MotorSystem::SetSendData(int cmd,unsigned char Len,float data)
+short MotorSystem::SetSendData(int cmd,unsigned char Len,float data)
 {
 	unsigned char msg[4];
 	msg[0]=((unsigned char*)&data)[0];
 	msg[1]=((unsigned char*)&data)[1];
 	msg[2]=((unsigned char*)&data)[2];
 	msg[3]=((unsigned char*)&data)[3];
-	while(TXok==false)
-	{
 		if(Mcan->Send(cmd<<4|this->commuincationID,Len,msg)!=0)
 		{
-
+			return -1;
 		}
 		else
 		{
-			if(tx_led>15)
-					{
-						TOGGLE_TX_LED;
-						tx_led=0;
-					}
-					else{
-						tx_led++;
-					}
-			TXok=true;
+			return 0;
 		}
-	}
-	TXok=false;
 }
 
 void MotorSystem::SetReceevieData(unsigned short *ID,unsigned char *DLC,float *data)
@@ -69,7 +57,16 @@ void MotorSystem::SetDuty(float d)
 
 void MotorSystem::SetVelocity(float v)
 {
-	this->SetSendData(SET_VELOCITY,4,v);
+	TXok=false;
+	while(TXok==false)
+	{
+		if(this->SetSendData(SET_VELOCITY,4,v)!=0){
+
+		}
+		else{
+			TXok=true;
+		}
+	}
 }
 
 void MotorSystem::SetTorque(float q)
@@ -90,6 +87,7 @@ void MotorSystem::begin()
 			BeginEnd=true;
 		}
 	}
+
 	 printf("INITIALIZING FINSH!\n\r");
 }
 

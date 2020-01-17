@@ -86,7 +86,7 @@ LowlayerHandelTypedef *plow;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-//#define USEOLCD
+#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -133,9 +133,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
-  MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_CAN1_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
   MX_I2C2_Init();
@@ -163,17 +163,18 @@ hlow.Lcd.oled_puts((char *)"CAN init OK");
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
 #endif
-    //FilterConfig();
+
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-hlow.M1.SetVcc(24);//Set battery voltage
-hlow.M2.SetVcc(24);
-hlow.M3.SetVcc(24);
-hlow.M4.SetVcc(24);
+//hlow.M1.SetVcc(24);//Set battery voltage
+//hlow.M2.SetVcc(24);
+//hlow.M3.SetVcc(24);
+//hlow.M4.SetVcc(24);
 
+//hlow.M0.begin();
 hlow.M1.begin();
 hlow.M2.begin();
-hlow.M2.begin();
+hlow.M3.begin();
 hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
@@ -194,6 +195,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
   /* USER CODE END 2 */
 
 //hlow.EmagenceStop();
+    //hlow.PowerOn();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -204,15 +206,12 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	  if(IntFlag)
 	  {
 		//Melody_Update();
-/*********write Send Request so that other boards return requested data*************/
-	 //hlow.loca.SendReqest();
-	// hlow.Ad1.SendRequest();
-	//hlow.encoder1.Sendreqest();
-	 //hlow.PS3.SendRequest();
-	// hlow.Msw1.SendRequest();
-/*****************************************************************************/
-/************write your application code******************************************************/
 
+/************write your application code******************************************************/
+//hlow.M3.SetVelocity(50);
+//hlow.M1.SetVelocity(50);
+//hlow.M2.SetVelocity(30);
+//hlow.M4.SetVelocity(50);
 
 
 
@@ -231,9 +230,18 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	 //printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
 	 	//	hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
 	 	 //printf("R1%d\n\r",hlow.PS3.R1());
+/*********write Send Request so that other boards return requested data*************/
+
+	//hlow.encoder1.Sendreqest();
+	 //hlow.PS3.SendRequest();
+	// hlow.Msw1.SendRequest();
+hlow.Ad1.SendRequest();
+ hlow.loca.SendReqest();
+/*****************************************************************************/
+
+
 		  IntFlag=false;
 	  }
-
   }
   /* USER CODE END 3 */
 }

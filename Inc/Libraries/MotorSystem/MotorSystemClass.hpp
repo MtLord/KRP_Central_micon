@@ -22,7 +22,7 @@ private:
 		void SetCGAIN_TI(float ti);//“d—¬§Œä‚ÌÏ•ªŠÔ
 		void SerCGAIN_TD(float td);//“d—¬§Œä‚Ì”÷•ªŠÔ
 
-		void SetSendData(int cmd,unsigned char Len,float data);
+		short SetSendData(int cmd,unsigned char Len,float data);
 		void SetReceevieData(unsigned short *ID,unsigned char *DLC,float *data);
 		float SetReceevieData();
 public:
