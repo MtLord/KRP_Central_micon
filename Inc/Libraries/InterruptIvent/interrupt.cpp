@@ -7,6 +7,7 @@
 
 
 
+#include <Libraries/Buzzer/Buzzer.hpp>
 #include "stm32f4xx_hal.h"
 #include "Libraries/InterruptIvent/TimerInterruptCallback.hpp"
 #include "Libraries/LowlayerHandel.hpp"
@@ -24,12 +25,15 @@ int cunt=0;
  					IntFlag=true;
 
  					}
+	 	 	 	else if(htim->Instance==TIM7){
+	 	 	 	 plow->buzzer.Melody_Update();
+	 	 	 	}
 
  			}
 
  void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c)
  {
 	 plow->PS3.SetconData();
-	 cunt++;
+
  }
 

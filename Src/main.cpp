@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+#include <Libraries/Buzzer/Buzzer.hpp>
 #include "main.h"
 #include "can.h"
 #include "dma.h"
@@ -33,7 +34,6 @@
 #include "Libraries/InterruptIvent/TimerInterruptCallback.hpp"
 #include "stm32f4xx_hal.h"
 #include "stdio.h"
-
 #include "Libraries/DefineOrder.h"
 #include <stdio.h>
 
@@ -80,13 +80,13 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+extern int melend;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define USEOLCD
+//#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -145,7 +145,7 @@ int main(void)
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
-
+  hlow.buzzer.Melody_Start(1);
 #ifdef USEOLCD
   hlow.Lcd.oled_init();
 hlow.Lcd.oled_puts((char *)"CAN init OK");
@@ -166,10 +166,6 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-//hlow.M1.SetVcc(24);//Set battery voltage
-//hlow.M2.SetVcc(24);
-//hlow.M3.SetVcc(24);
-//hlow.M4.SetVcc(24);
 
 //hlow.M0.begin();
 hlow.M1.begin();
@@ -194,14 +190,12 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 /*************************************/
   /* USER CODE END 2 */
 
-//hlow.EmagenceStop();
-    //hlow.PowerOn();
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
@@ -233,7 +227,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 /*********write Send Request so that other boards return requested data*************/
 
 	//hlow.encoder1.Sendreqest();
-	 hlow.PS3.SendRequest();
+	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 //hlow.Ad1.SendRequest();
  //hlow.loca.SendReqest();
