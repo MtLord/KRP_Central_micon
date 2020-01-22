@@ -109,10 +109,12 @@ short SwitchModule::GetTactState(int num)
 		}
 }
 
-short SwitchModule::GetAdData1(){
+short SwitchModule::GetAdData1()
+{
 	return data[2];
 }
 
-short SwitchModule::GetAdData2(){
+short SwitchModule::GetAdData2()
+{
 	return data[3];
 }

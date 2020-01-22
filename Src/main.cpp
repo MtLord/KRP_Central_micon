@@ -135,12 +135,13 @@ int main(void)
   MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_I2C1_Init();
+  MX_I2C2_Init();
   MX_CAN1_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
-  MX_I2C2_Init();
   MX_TIM3_Init();
-  MX_I2C1_Init();
+
   /* USER CODE BEGIN 2 */
 
   LowlayerHandelTypedef hlow;
@@ -187,9 +188,10 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 #ifdef USEI2C
     HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 #endif
+
+  //hlow.EmagenceStop();
 /*************************************/
   /* USER CODE END 2 */
-
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -199,7 +201,6 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-		//Melody_Update();
 
 /************write your application code******************************************************/
 //hlow.M3.SetVelocity(50);

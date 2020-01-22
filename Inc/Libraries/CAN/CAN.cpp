@@ -43,6 +43,7 @@ void FilterConfig()
 		}
 	HAL_CAN_Start(&hcan1);
 	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+	plow->Lcd.oled_setcursor(0, 0);
 	plow->Lcd.oled_puts((char *)"CAN Start Listening");
 }
 
@@ -74,13 +75,39 @@ void HAL_CAN_RxFifo1MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
 
 }
+#define ERROCODE_Pos 0b111<<4
+#define ERRORPUSSIVE_pos 1<<1
 void CanBus::SetError()
 {
-	error_code=(hcan1.Instance->ESR>>4)&0b111;
+	error_code=(hcan1.Instance->ESR)&ERROCODE_Pos;
+	if((hcan1.Instance->ESR)&ERRORPUSSIVE_pos)
+	{
+		plow->Lcd.oled_setcursor(0, 0);
+		plow->Lcd.oled_puts((char*)"Fatal CAN Error");
+		plow->Lcd.oled_setcursor(1, 0);
+		switch(error_code)
+		{
+		case 1:
+			plow->Lcd.oled_puts((char*)"Staff Error");
+			break;
+		case 2:
+			plow->Lcd.oled_puts((char*)"Form Error");
+			break;
+		case 3:
+			plow->Lcd.oled_puts((char*)"ACK Error");
+			break;
+		case 4:
+			plow->Lcd.oled_puts((char*)"Bit Dominant Error");
+			break;
+		case 5:
+			plow->Lcd.oled_puts((char*)"Bit Recessive Error");
+			break;
+		default:
+			plow->Lcd.oled_puts((char*)"Unknown Error");
+
+		}
+	}
 }
-int count=0;
-
-
 
 short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 {
