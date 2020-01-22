@@ -56,6 +56,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   plow->loca.Setloca();
 	   plow->encoder1.SetData();
 	   plow->PS3.SetconData();
+	   plow->Sw.SetData();
 	   if(rx_led>20)
 	   {
 		   TOGGLE_RX_LED;

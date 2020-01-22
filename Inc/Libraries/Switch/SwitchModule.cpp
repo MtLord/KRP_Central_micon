@@ -81,6 +81,9 @@ short SwitchModule::GetToggleState(int num)
 	case 6:
 		return (data[0]>>5)&1;
 		break;
+	case 7:
+		return (data[0]>>6)&1;
+		break;
 	default:
 		return -1;
 		break;

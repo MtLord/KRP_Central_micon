@@ -20,6 +20,7 @@
 #include "Libraries/PS3/PS3class.hpp"
 #include <Libraries/Buzzer/Buzzer.hpp>
 #include "Libraries/KondoServo/ICS.hpp"
+#include "Switch/SwitchModule.hpp"
 #include "tim.h"
 /*****switch profile****************/
 //#define MOTERSYSTEM
@@ -58,6 +59,7 @@ public:
 	Encoder encoder1,encoder2,encoder3,encoder4;
 	Sensor Ad1,Ad2,Ad3,Ad4,Ad5,Ad6;
 	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6;
+	SwitchModule Sw;
 	//LCDï\é¶Å@ê‚ëŒÇ…êßå‰é¸ä˙ÇÃíÜÇ≈ï\é¶Ç≥ÇπÇ»Ç¢Ç≈
 	I2CLCD Lcd;
 	Buzzer buzzer;
@@ -77,7 +79,7 @@ public:
 	,encoder1(&extcan_r,1,1),encoder2(&extcan_r,2,1),encoder3(&extcan_r,3,1),encoder4(&extcan_r,4,1),PS3(&extcan_r)
 	,Ad1(&extcan_r,0),Ad2(&extcan_r,1),Ad3(&extcan_r,2),Ad4(&extcan_r,3),Ad5(&extcan_r,4),Ad6(&extcan_r,5)
 	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
-	,Lcd(&hi2c1),KoServo(&huart1)
+	,Lcd(&hi2c1),KoServo(&huart1),Sw(&extcan_d)
 	{
 		PowerOn();
 	}
