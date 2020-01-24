@@ -37,10 +37,8 @@
 #include "Libraries/DefineOrder.h"
 #include <stdio.h>
 
-#include "dma_printf.hpp"
-#include "dma_scanf.hpp"
-extern int cunt;
-//#include "Libraries/Buzzer/buzzer.h"
+//#include "dma_printf.hpp"
+//#include "dma_scanf.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,27 +46,27 @@ extern int cunt;
 extern bool IntFlag;
 extern void FilterConfig();
 extern uint8_t con_data[8];
-#ifdef __cplusplus
- extern "C" {
-#endif
-int __io_putchar(int ch)
-{
-      dma_printf_putc(ch&0xFF);
-        return ch;
-}
-
-int __io_getchar(void)
-{
-      return dma_scanf_getc_blocking();
-}
-
-#ifdef __cplusplus
-}
-#endif
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-      dma_printf_send_it(huart);
-}
+//#ifdef __cplusplus
+// extern "C" {
+//#endif
+//int __io_putchar(int ch)
+//{
+//      dma_printf_putc(ch&0xFF);
+//        return ch;
+//}
+//
+//int __io_getchar(void)
+//{
+//      return dma_scanf_getc_blocking();
+//}
+//
+//#ifdef __cplusplus
+//}
+//#endif
+//void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//      dma_printf_send_it(huart);
+//}
 
 /* USER CODE END PTD */
 
@@ -80,7 +78,9 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-extern int melend;
+extern int cunt;
+char Debugnum=0;
+float num=0;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -108,8 +108,8 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	  dma_printf_init(&huart2);   //printfを使いたいUARTポートの構造体のポインタ
-	  dma_scanf_init(&huart2);    //scanfを使いたいUARTポートの構造体のポインタ
+//	  dma_printf_init(&huart2);   //printfを使いたいUARTポートの構造体のポインタ
+//	  dma_scanf_init(&huart2);    //scanfを使いたいUARTポートの構造体のポインタ
 
   /* USER CODE END 1 */
 
@@ -132,12 +132,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
+  //MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
-  MX_CAN1_Init();
+  //MX_CAN1_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
   MX_TIM3_Init();
@@ -159,7 +159,7 @@ hlow.Lcd.oled_puts((char *)"CAN init OK");
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-    FilterConfig();
+   // FilterConfig();
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
@@ -188,7 +188,9 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 #ifdef USEI2C
     HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 #endif
-
+  //scanf("%c\n\r",&Debugnum);
+  //scanf("%f\n\r",&num);
+  //num=Debugnum;
   //hlow.EmagenceStop();
 /*************************************/
   /* USER CODE END 2 */
@@ -201,7 +203,41 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
-
+		  switch((int)num)
+		  {
+		  case 0:
+			  hlow.loca.SendReqest();
+			  printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+			  break;
+		  case 1:
+			  hlow.encoder1.Sendreqest();
+			  printf("1:%f 2:%f 3:%f 4:%f\n\r",hlow.encoder1.GetDistance(0.03, 2048),hlow.encoder2.GetDistance(0.03, 2048),hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
+			  break;
+		  case 2:
+			  hlow.Msw1.SendRequest();
+			  printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
+			  break;
+		  case 3:
+			  hlow.Ad1.SendRequest();
+			  printf("%d %d %d %d %d %d\n\r",hlow.Ad1.GetValue(),hlow.Ad2.GetValue(),hlow.Ad3.GetValue(),hlow.Ad4.GetValue(),hlow.Ad5.GetValue()
+					  ,hlow.Ad6.GetValue());
+			  break;
+		  case 4:
+			  hlow.PS3.SendRequest();
+			  printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d \n\r",hlow.PS3.ANALOG_RIGHT_X(),
+			  		hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2());
+			  break;
+		  case 5:
+			  hlow.PS3.SendRequest();
+			  printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
+			  break;
+		  case 6:
+			  if(cunt>100){
+				  hlow.Air1.open();
+				  cunt=0;
+				  break;
+			  }
+		  }
 /************write your application code******************************************************/
 //hlow.M3.SetVelocity(50);
 //hlow.M1.SetVelocity(50);
@@ -215,23 +251,17 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 /******************************************************************************************************/
 /*********example code*************************************************************************/
 	 //hlow.M1.SetVelocity(30);
-	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
-	 //printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
-	 //printf("%d \n\r",hlow.Ad1.GetValue());
-	 //printf("%d \n\r",hlow.Ad1.GetValue());
-	 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
-	 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
-	 //printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
-//	 printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
-//	 		hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
+
+
+//
 	 	 //printf("R1%d\n\r",hlow.PS3.R1());
 /*********write Send Request so that other boards return requested data*************/
 
-	//hlow.encoder1.Sendreqest();
-	 //hlow.PS3.SendRequest();
-	// hlow.Msw1.SendRequest();
-//hlow.Ad1.SendRequest();
- //hlow.loca.SendReqest();
+
+
+
+
+
 /*****************************************************************************/
 
 

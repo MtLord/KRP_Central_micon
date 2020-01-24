@@ -23,7 +23,7 @@ int cunt=0;
 	 	 	 	if(htim->Instance==TIM6)
 	 	 	 		{
  					IntFlag=true;
-
+ 					cunt++;
  					}
 	 	 	 	else if(htim->Instance==TIM7){
 	 	 	 	 plow->buzzer.Melody_Update();
