@@ -83,6 +83,7 @@ void CanBus::SetError()
 	error_code=(hcan1.Instance->ESR)&ERROCODE_Pos;
 	if((hcan1.Instance->ESR)&ERRORPUSSIVE_pos)
 	{
+		plow->Lcd.oled_clear();
 		plow->Lcd.oled_setcursor(0, 0);
 		plow->Lcd.oled_puts((char*)"Fatal CAN Error");
 		plow->Lcd.oled_setcursor(1, 0);
