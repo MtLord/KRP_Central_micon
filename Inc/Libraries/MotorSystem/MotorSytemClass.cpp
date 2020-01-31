@@ -25,6 +25,13 @@ short MotorSystem::SetSendData(int cmd,unsigned char Len,float data)
 		}
 		else
 		{
+			if(tx_led>20){
+								TOGGLE_TX_LED;
+								tx_led=0;
+							}
+							else{
+								tx_led++;
+							}
 			return 0;
 		}
 }
@@ -52,7 +59,16 @@ float MotorSystem::SetReceevieData()
 }
 void MotorSystem::SetDuty(float d)
 {
-	this->SetSendData(SET_DUTY,4,d);
+	TXok=false;
+		while(TXok==false)
+		{
+			if(this->SetSendData(SET_DUTY,4,d)!=0){
+
+			}
+			else{
+				TXok=true;
+			}
+		}
 }
 
 void MotorSystem::SetVelocity(float v)

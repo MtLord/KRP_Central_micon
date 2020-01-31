@@ -23,7 +23,7 @@
 #include "Switch/SwitchModule.hpp"
 #include "tim.h"
 /*****switch profile****************/
-//#define MOTERSYSTEM
+#define MOTERSYSTEM
 //#define KODOSERVO
 /****************************************/
 struct LowlayerHandelTypedef //低レイヤーハンドラをまとめた構造体 上位はこのハンドルを使ってアクセス

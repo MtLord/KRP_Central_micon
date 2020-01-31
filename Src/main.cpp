@@ -86,7 +86,7 @@ extern int melend;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-//#define USEOLCD
+#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -169,11 +169,11 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 #ifdef MOTERSYSTEM
 
 //hlow.M0.begin();
-hlow.M1.begin();
-hlow.M2.begin();
-hlow.M3.begin();
+//hlow.M1.begin();
+//hlow.M2.begin();
+//hlow.M3.begin();
 hlow.M4.begin();
-hlow.M5.begin();
+//hlow.M5.begin();
 //hlow.M6.begin();
 //hlow.M7.begin();
 #ifdef USEOLCD
@@ -208,8 +208,8 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 //hlow.M2.SetVelocity(30);
 //hlow.M4.SetVelocity(50);
 //hlow.SM1.SetDuty(-90);
-
-
+hlow.M4.SetDuty(-10);
+//hlow.Air1.open();
 
 
 /******************************************************************************************************/
@@ -221,10 +221,12 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	 //printf("%d \n\r",hlow.Ad1.GetValue());
 	 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
 	 //printf("data:%x\n\r",hlow.Msw1.Data[0]);
-	 //printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
+//	 //printf("maru:%d batu:%d sankaku:%d sikaku:%d count:%d\n\r",hlow.PS3.MARU(),hlow.PS3.BATSU(),hlow.PS3.SANKAKU(),hlow.PS3.SHIKAKU(),cunt);
 //	 printf("rightX:%d rightY:%d leftX:%d leftY:%d L2:%d R2:%d count:%d\n\r",hlow.PS3.ANALOG_RIGHT_X(),
 //	 		hlow.PS3.ANALOG_RIGHT_Y(),hlow.PS3.ANALOG_LEFT_X(),hlow.PS3.ANALOG_LEFT_Y(),hlow.PS3.L2(),hlow.PS3.R2(),cunt);
 	 	 //printf("R1%d\n\r",hlow.PS3.R1());
+//		  printf("%d %d %d %d %d %d %d\n\r",hlow.Sw.GetToggleState(1),hlow.Sw.GetToggleState(2),hlow.Sw.GetToggleState(3),hlow.Sw.GetToggleState(4),
+//				  hlow.Sw.GetToggleState(5),hlow.Sw.GetToggleState(6),hlow.Sw.GetToggleState(7));
 /*********write Send Request so that other boards return requested data*************/
 
 	//hlow.encoder1.Sendreqest();
@@ -232,6 +234,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	// hlow.Msw1.SendRequest();
 //hlow.Ad1.SendRequest();
  //hlow.loca.SendReqest();
+//hlow.Sw.SendReqest();
 /*****************************************************************************/
 
 
