@@ -112,10 +112,21 @@ void localization::SetEncPulse(unsigned short p)
 {
 	unsigned char txdata2[4];
 	this->pulse=p;
-	txdata2[4]=((unsigned char *)&pulse)[0];
-	txdata2[5]=((unsigned char *)&pulse)[1];
+	txdata2[0]=((unsigned char *)&pulse)[0];
+	txdata2[1]=((unsigned char *)&pulse)[1];
 	canbus->Send(SET_ENCO_PULSE<<ORDER_BIT_Pos,2,txdata2);
 }
+
+void localization::EncoderDire(short x_dir,short y_dir)
+{
+	unsigned char txdata2[4];
+	txdata2[0]=((unsigned char *)&x_dir)[0];
+	txdata2[1]=((unsigned char *)&x_dir)[1];
+	txdata2[2]=((unsigned char *)&y_dir)[0];
+	txdata2[3]=((unsigned char *)&y_dir)[1];
+	canbus->Send(SET_ENC_DIRECTION<<ORDER_BIT_Pos,2,txdata2);
+}
+
 float localization::GetX()
 {
 

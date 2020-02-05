@@ -43,7 +43,7 @@ public:
 	void SetEncoderModef(float x_of_y,float y_of_x);//エンコーダの機体中心からのズレを記述
 	void SetDiameter(float d);
 	void SetEncPulse(unsigned short p);
-
+	void EncoderDire(short x_dir,short y_dir);
 };
 
 

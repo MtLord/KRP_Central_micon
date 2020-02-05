@@ -158,10 +158,10 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
 //hlow.M0.begin();
-hlow.M1.begin();
-hlow.M2.begin();
-hlow.M3.begin();
-hlow.M4.begin();
+//hlow.M1.begin();
+//hlow.M2.begin();
+//hlow.M3.begin();
+//hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
 //hlow.M7.begin();
@@ -178,7 +178,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
     HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
 #endif
 
-  //hlow.EmagenceStop();
+
 /*************************************/
   /* USER CODE END 2 */
 
@@ -222,6 +222,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 //hlow.Ad1.SendRequest();
+
  hlow.loca.SendReqest();
 //hlow.Sw.SendReqest();
 /*****************************************************************************/
