@@ -3,7 +3,7 @@ RotaryEncoder.hpp:24:2:Encoder::Encoder(CanBus*, int, unsigned char)	24	static
 Motor.hpp:21:2:Motor::Motor(CanBus*, short unsigned int)	24	static
 Aircylinder.hpp:21:2:Aircylinder::Aircylinder(CanBus*, unsigned char)	24	static
 Servo.hpp:20:2:Servo::Servo(CanBus*, short unsigned int)	24	static
-localization.hpp:32:3:localization::localization(CanBus*, CanBus*)	24	static
+localization.hpp:30:3:localization::localization(CanBus*, CanBus*)	24	static
 MotorSystemClass.hpp:29:2:MotorSystem::MotorSystem(CanBus*, short unsigned int)	24	static
 i2c_lcd.hpp:33:2:I2CLCD::I2CLCD(I2C_HandleTypeDef*)	16	static
 Sensor.hpp:18:2:Sensor::Sensor(CanBus*, int)	24	static
@@ -17,9 +17,8 @@ LowlayerHandel.hpp:67:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:19:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:23:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:45:7:void Timer1::Start()	16	static
-main.cpp:54:5:int __io_putchar(int)	16	static
-main.cpp:60:5:int __io_getchar()	8	static
-main.cpp:68:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
-main.cpp:107:5:int main()	5960	static
-main.cpp:251:6:void SystemClock_Config()	88	static
-main.cpp:302:6:void Error_Handler()	8	static
+main.cpp:52:5:int __io_putchar(int)	16	static
+main.cpp:62:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
+main.cpp:101:5:int main()	5944	static
+main.cpp:238:6:void SystemClock_Config()	88	static
+main.cpp:286:6:void Error_Handler()	8	static

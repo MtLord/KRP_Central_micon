@@ -62,8 +62,29 @@ void localization::Setloca()//受信割り込み時の値セット関数
 	}
 }
 
-void localization::begin()
+
+void localization::SetIntialPosition(float x, float y)
 {
+	unsigned char txdata[8];
+	this->initX=x;
+	this->initY=y;
+	txdata[0]=((unsigned char *)&initX)[0];
+		txdata[1]=((unsigned char *)&initX)[1];
+		txdata[2]=((unsigned char *)&initX)[2];
+		txdata[3]=((unsigned char *)&initX)[3];
+
+		txdata[4]=((unsigned char *)&initY)[0];
+		txdata[5]=((unsigned char *)&initY)[1];
+		txdata[6]=((unsigned char *)&initY)[2];
+		txdata[7]=((unsigned char *)&initY)[3];
+		canbus->Send(SET_INIT_POSE<<ORDER_BIT_Pos,8,txdata);
+}
+
+void localization::SetEncoderModef(float x_of_y,float y_of_x)
+{
+	unsigned char txdata[8];
+	this->ShiftX=x_of_y;
+	this->ShiftY=y_of_x;
 	txdata[0]=((unsigned char *)&ShiftX)[0];
 	txdata[1]=((unsigned char *)&ShiftX)[1];
 	txdata[2]=((unsigned char *)&ShiftX)[2];
@@ -73,69 +94,42 @@ void localization::begin()
 	txdata[5]=((unsigned char *)&ShiftY)[1];
 	txdata[6]=((unsigned char *)&ShiftY)[2];
 	txdata[7]=((unsigned char *)&ShiftY)[3];
-	canbus->Send(LOCA_BEGIN<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos,8,txdata);
-	while(RXmsg.ExtId!=(LOCA_BEGIN<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
-	{
-		if(timcount1>0x8000000)
-		{
-			beginend1=false;
-			break;
-		}
-		else
-		{
-			beginend1=true;
-		}
-		this->timcount1++;
-	}
+	canbus->Send(SET_ENCO_POSE<<ORDER_BIT_Pos,8,txdata);
+}
 
+void localization::SetDiameter(float d)
+{
+	unsigned char txdata2[4];
+	this->diameter=d;
 	txdata2[0]=((unsigned char *)&diameter)[0];
 	txdata2[1]=((unsigned char *)&diameter)[1];
 	txdata2[2]=((unsigned char *)&diameter)[2];
 	txdata2[3]=((unsigned char *)&diameter)[3];
+	canbus->Send(SET_ENC_DIAMTER<<ORDER_BIT_Pos,4,txdata2);
+}
+
+void localization::SetEncPulse(unsigned short p)
+{
+	unsigned char txdata2[4];
+	this->pulse=p;
 	txdata2[4]=((unsigned char *)&pulse)[0];
 	txdata2[5]=((unsigned char *)&pulse)[1];
-	txdata2[6]=((unsigned char *)&pulse)[2];
-	txdata2[7]=((unsigned char *)&pulse)[3];
-	canbus->Send(LOCA_BEGIN<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos,8,txdata2);
-	while(RXmsg.ExtId!=(LOCA_BEGIN<<ORDER_BIT_Pos|0x2<<NODE_ID_Pos))
-	{
-		if(timcount2>0x8000000)
-		{
-			beginend2=false;
-			break;
-		}
-		else
-		{
-			beginend2=true;
-		}
-		this->timcount2++;
-	}
-
-}
-void localization::SetIntialPoint(float x, float y)
-{
-	this->initX=x;
-	this->initY=y;
+	canbus->Send(SET_ENCO_PULSE<<ORDER_BIT_Pos,2,txdata2);
 }
 float localization::GetX()
 {
 
-	return currentX+initX;
+	return currentX;
 }
 
 float localization::GetY()
 {
 
-	return currentY+initY;
+	return currentY;
 }
 
 float localization::GetYaw()
 {
 
 	return currentyaw;
-}
-
-void localization::PutLCD()
-{
-
 }

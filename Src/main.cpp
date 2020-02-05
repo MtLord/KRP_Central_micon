@@ -19,7 +19,6 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include <Libraries/Buzzer/Buzzer.hpp>
 #include "main.h"
 #include "can.h"
 #include "dma.h"
@@ -38,9 +37,8 @@
 #include <stdio.h>
 
 #include "dma_printf.hpp"
-#include "dma_scanf.hpp"
+
 extern int cunt;
-//#include "Libraries/Buzzer/buzzer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,10 +55,6 @@ int __io_putchar(int ch)
         return ch;
 }
 
-int __io_getchar(void)
-{
-      return dma_scanf_getc_blocking();
-}
 
 #ifdef __cplusplus
 }
@@ -109,10 +103,10 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
 	  dma_printf_init(&huart2);   //printfを使いたいUARTポートの構造体のポインタ
-	  dma_scanf_init(&huart2);    //scanfを使いたいUARTポートの構造体のポインタ
+
 
   /* USER CODE END 1 */
-
+  
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -133,15 +127,14 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
+  MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  MX_I2C1_Init();
-  MX_I2C2_Init();
-  MX_CAN1_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
+  MX_I2C2_Init();
   MX_TIM3_Init();
-
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
   LowlayerHandelTypedef hlow;
@@ -152,9 +145,6 @@ int main(void)
 hlow.Lcd.oled_puts((char *)"CAN init OK");
 #endif
 // Print a message to the LCD.
-
-
-
 /************Loop config here**************/
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
@@ -167,11 +157,10 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-
 //hlow.M0.begin();
-//hlow.M1.begin();
-//hlow.M2.begin();
-//hlow.M3.begin();
+hlow.M1.begin();
+hlow.M2.begin();
+hlow.M3.begin();
 hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
@@ -198,6 +187,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
 	  if(IntFlag)
 	  {
@@ -208,9 +198,8 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 //hlow.M2.SetVelocity(30);
 //hlow.M4.SetVelocity(50);
 //hlow.SM1.SetDuty(-90);
-hlow.M4.SetDuty(-10);
+//hlow.M4.SetDuty(-10);
 //hlow.Air1.open();
-
 
 /******************************************************************************************************/
 /*********example code*************************************************************************/
@@ -233,11 +222,9 @@ hlow.M4.SetDuty(-10);
 	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 //hlow.Ad1.SendRequest();
- //hlow.loca.SendReqest();
+ hlow.loca.SendReqest();
 //hlow.Sw.SendReqest();
 /*****************************************************************************/
-
-
 		  IntFlag=false;
 	  }
   }
@@ -285,9 +272,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  setbuf(stdin, NULL);
- setbuf(stdout, NULL);
- setbuf(stderr, NULL);
 }
 
 /* USER CODE BEGIN 4 */

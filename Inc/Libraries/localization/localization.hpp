@@ -14,13 +14,11 @@ class localization
 	CanBus *canbus,*canbus_r;
 	int tx_led=0;
 	float diameter=0.048;
-	unsigned long pulse=2048;
+	unsigned short pulse=2048;
 	float ShiftY=0.26;
 	float ShiftX=0.26;
 	float initX=0;
 	float initY=0;
-	unsigned char txdata[8];
-	unsigned char txdata2[8];
 	bool beginend1=false;
 	bool beginend2=false;
 	float currentX=0;
@@ -36,30 +34,15 @@ public:
 	 void SendReqest();//send reqest localization
 	 void Setloca();//dataset
 
-	 void begin();//自己位置座標再設定
 	 float GetX();
 	 float GetY();
 	 float GetYaw();
 
 	 void PutLCD();
-	 void SetIntialPoint(float x,float y);
-	void Setshitf_X(float x)//エンコーダの機体中心からのズレを記述
-	{
-		ShiftX=x;
-	}
-	void Setshift_y(float y){
-		ShiftY=y;
-	}
-
-	void SetDiameter(float d)
-	{
-		 diameter=d;
-
-	}
-	void SetRotaryPulse(int P)
-	{
-		 pulse=P;
-	}
+	void SetIntialPosition(float x,float y);
+	void SetEncoderModef(float x_of_y,float y_of_x);//エンコーダの機体中心からのズレを記述
+	void SetDiameter(float d);
+	void SetEncPulse(unsigned short p);
 
 };
 
