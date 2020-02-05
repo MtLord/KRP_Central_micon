@@ -272,6 +272,8 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  setbuf( stdout, NULL );
+  setbuf( stdin, NULL );
 }
 
 /* USER CODE BEGIN 4 */
