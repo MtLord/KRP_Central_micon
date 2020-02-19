@@ -11,8 +11,9 @@
 class MotorSystem
 {
 private:
-	CanBus *Mcan;
 	unsigned short commuincationID;
+	CanBus *Mcan;
+
 	bool TXok=false;
 	int tx_led=0;
 	void SetVGAIN_K(float vk);//ë¨ìxêßå‰ÇÃÉQÉCÉì

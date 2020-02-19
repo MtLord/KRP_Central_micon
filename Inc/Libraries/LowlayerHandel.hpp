@@ -45,30 +45,31 @@ public:
 	{
 		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
 	}
-	Aircylinder Air1,Air2,Air3,Air4,Air5,Air6,Air7,Air8;
-#ifdef MOTERSYSTEM
-	MotorSystem M0,M1,M2,M3,M4,M5,M6,M7,M8;
-#endif
+
 #ifndef MOTERSYSTEM
 	Motor M1,M2,M3,M4,M5,M6,M7,M8;
 #endif
-	Motor SM1;
+#ifdef MOTERSYSTEM
+	MotorSystem M0,M1,M2,M3,M4,M5,M6,M7,M8;
+#endif
+	Aircylinder Air1,Air2,Air3,Air4,Air5,Air6,Air7,Air8;
 	Servo servo1,servo2,servo3,servo4,servo5,servo6,servo7,servo8;
-	PS3controller PS3;
 	localization loca;
 	Encoder encoder1,encoder2,encoder3,encoder4;
+	PS3controller PS3;
 	Sensor Ad1,Ad2,Ad3,Ad4,Ad5,Ad6;
 	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6;
-	SwitchModule Sw;
+
 	//LCDï\é¶Å@ê‚ëŒÇ…êßå‰é¸ä˙ÇÃíÜÇ≈ï\é¶Ç≥ÇπÇ»Ç¢Ç≈
 	I2CLCD Lcd;
 	Buzzer buzzer;
 	ICS KoServo;
+	SwitchModule Sw;
 	LowlayerHandelTypedef():extcan_d(CAN_ID_EXT,CAN_RTR_DATA),extcan_r(CAN_ID_EXT,CAN_RTR_REMOTE),stdcan_d(CAN_ID_STD,CAN_RTR_DATA)
 #ifndef MOTERSYSTEM
 	,M1(&extcan_d,1),M2(&extcan_d,2),M3(&extcan_d,3),M4(&extcan_d,4),M5(&extcan_d,5),M6(&extcan_d,6),M7(&extcan_d,7),M8(&extcan_d,8)
 #endif
-	,SM1(&extcan_d,1)
+
 #ifdef MOTERSYSTEM
 	,M0(&stdcan_d,0),M1(&stdcan_d,1),M2(&stdcan_d,2),M3(&stdcan_d,3),M4(&stdcan_d,4),M5(&stdcan_d,5),M6(&stdcan_d,6),M7(&stdcan_d,7),M8(&stdcan_d,8)
 #endif
