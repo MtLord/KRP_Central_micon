@@ -18,6 +18,6 @@ TimerInterruptCallback.hpp:24:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:46:7:void Timer1::Start()	16	static
 main.cpp:52:5:int __io_putchar(int)	16	static
 main.cpp:62:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
-main.cpp:101:5:int main()	5992	static
-main.cpp:251:6:void SystemClock_Config()	88	static
-main.cpp:301:6:void Error_Handler()	8	static
+main.cpp:101:5:int main()	5960	static
+main.cpp:233:6:void SystemClock_Config()	88	static
+main.cpp:283:6:void Error_Handler()	8	static

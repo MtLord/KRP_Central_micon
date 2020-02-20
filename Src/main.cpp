@@ -127,7 +127,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
- // MX_CAN1_Init();
+  MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_TIM6_Init();
@@ -149,7 +149,7 @@ hlow.Lcd.oled_puts((char *)"CAN init OK");
     Timer1 LoopInt(&htim6);
     LoopInt.SetLoopTime(5);//Loop period set up by ms
     LoopInt.Start();
-   // FilterConfig();
+    FilterConfig();
 #ifdef USEOLCD
 hlow.Lcd.oled_setcursor(1, 0);
 hlow.Lcd.oled_puts((char *)"Timer OK");
@@ -157,12 +157,7 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-//hlow.loca.EncoderDire(0, 1);
 //hlow.M0.begin();
-//hlow.M1.SetVcc(24);
-//hlow.M2.SetVcc(24);
-//hlow.M3.SetVcc(24);
-//hlow.M4.SetVcc(24);
 //hlow.M1.begin();
 //hlow.M2.begin();
 //hlow.M3.begin();
@@ -176,7 +171,6 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 #endif
 /*************************************/
 #endif
-
 
 
 #ifdef USEI2C
@@ -199,24 +193,12 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	  {
 
 /************write your application code******************************************************/
-// hlow.M4.SetVelocity(30);
-//hlow.M3.SetVelocity(30);
-//hlow.M2.SetVelocity(30);
-//hlow.M1.SetVelocity(30);
 
-
-//hlow.M4.SetDuty(a);
-//hlow.M1.SetDuty(a);
-//hlow.M2.SetDuty(a);
-//hlow.M3.SetDuty(a);
-//hlow.SM1.SetDuty(-90);
-//hlow.M4.SetDuty(-10);
-//hlow.Air1.open();
 
 /******************************************************************************************************/
 /*********example code*************************************************************************/
 	 //hlow.M1.SetVelocity(30);
-	  printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
 	 //printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
 	 //printf("%d \n\r",hlow.Ad1.GetValue());
 	 //printf("%d \n\r",hlow.Ad1.GetValue());
