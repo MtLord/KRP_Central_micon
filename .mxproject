@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/TrueStudio_WS/KRP_CentralMicon/Inc
+HeaderPath=C:/Users/—T‘¿/Desktop/KRP_CentralMicon/Inc
 HeaderFiles=stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;gpio.h;can.h;dma.h;usart.h;tim.h;i2c.h;sys.h;
-SourcePath=C:/TrueStudio_WS/KRP_CentralMicon/Src
+SourcePath=C:/Users/—T‘¿/Desktop/KRP_CentralMicon/Src
 SourceFiles=stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;gpio.c;can.c;dma.c;usart.c;tim.c;i2c.c;sys.c;
 
 [PreviousLibFiles]
@@ -14,4 +14,9 @@ CDefines=__weak:__attribute__((weak));__packed:__attribute__((__packed__));USE_H
 
 []
 SourceFiles=;;
+
+[PreviousUsedCubeIDEFiles]
+SourceFiles=Src\main.c;Src\gpio.c;Src\can.c;Src\dma.c;Src\i2c.c;Src\sys.c;Src\tim.c;Src\usart.c;Src\stm32f4xx_it.c;Src\stm32f4xx_hal_msp.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c;Src/system_stm32f4xx.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c;Src/system_stm32f4xx.c;Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c;;
+HeaderPath=Drivers\STM32F4xx_HAL_Driver\Inc;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\CMSIS\Include;Inc;
+CDefines=USE_HAL_DRIVER;STM32F446xx;USE_HAL_DRIVER;USE_HAL_DRIVER;
 

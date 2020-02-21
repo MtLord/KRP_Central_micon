@@ -102,7 +102,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	  dma_printf_init(&huart2);   //printfÇégÇ¢ÇΩÇ¢UARTÉ|Å[ÉgÇÃç\ë¢ëÃÇÃÉ|ÉCÉìÉ^
+	  dma_printf_init(&huart2);   //printf?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩg?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩUART?ÔøΩÔøΩ|?ÔøΩÔøΩ[?ÔøΩÔøΩg?ÔøΩÔøΩÃç\?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩÃÇÃÉ|?ÔøΩÔøΩC?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ^
 
 
   /* USER CODE END 1 */
@@ -157,11 +157,12 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
+//hlow.loca.EncoderDire(0, 1);
 //hlow.M0.begin();
-//hlow.M1.begin();
-//hlow.M2.begin();
-//hlow.M3.begin();
-//hlow.M4.begin();
+hlow.M1.begin();
+hlow.M2.begin();
+hlow.M3.begin();
+hlow.M4.begin();
 //hlow.M5.begin();
 //hlow.M6.begin();
 //hlow.M7.begin();
@@ -171,6 +172,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 #endif
 /*************************************/
 #endif
+
 
 
 #ifdef USEI2C
@@ -193,13 +195,25 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 	  {
 
 /************write your application code******************************************************/
+// hlow.M4.SetVelocity(30);
+//hlow.M3.SetVelocity(30);
+//hlow.M2.SetVelocity(30);
+//hlow.M1.SetVelocity(30);
 
+
+//hlow.M4.SetDuty(a);
+//hlow.M1.SetDuty(a);
+//hlow.M2.SetDuty(a);
+//hlow.M3.SetDuty(a);
+//hlow.SM1.SetDuty(-90);
+//hlow.M4.SetDuty(-10);
+//hlow.Air1.open();
 
 /******************************************************************************************************/
 /*********example code*************************************************************************/
 	 //hlow.M1.SetVelocity(30);
-	 // printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
-	 //printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
+	  //printf("x:%f y:%f yaw:%f\n\r",hlow.loca.GetX(),hlow.loca.GetY(),hlow.loca.GetYaw());
+	// printf("3:%f 4:%f\n\r",hlow.encoder3.GetDistance(0.03, 2048),hlow.encoder4.GetDistance(0.03, 2048));
 	 //printf("%d \n\r",hlow.Ad1.GetValue());
 	 //printf("%d \n\r",hlow.Ad1.GetValue());
 	 	// printf("1:%d 2:%d 3:%d 4:%d 5:%d 6:%d\n\r",hlow.Msw1.GetPush(),hlow.Msw2.GetPush(),hlow.Msw3.GetPush(),hlow.Msw4.GetPush(),hlow.Msw5.GetPush(),hlow.Msw6.GetPush());
@@ -246,11 +260,17 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 160;
+  RCC_OscInitStruct.PLL.PLLN = 180;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Activate the Over-Drive mode 
+  */
+  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     Error_Handler();
   }
@@ -267,8 +287,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  setbuf( stdout, NULL );
-  setbuf( stdin, NULL );
 }
 
 /* USER CODE BEGIN 4 */
