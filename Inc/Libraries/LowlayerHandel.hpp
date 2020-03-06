@@ -2,7 +2,7 @@
  * Robot.hpp
  *
  *  Created on: 2018/06/25
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef ROBOT_HPP_
@@ -22,11 +22,12 @@
 #include "Libraries/KondoServo/ICS.hpp"
 #include "Switch/SwitchModule.hpp"
 #include "tim.h"
+#include "Libraries/Steppre/SteppingMotor.hpp"
 /*****switch profile****************/
 #define MOTERSYSTEM
 //#define KODOSERVO
 /****************************************/
-struct LowlayerHandelTypedef //’áƒŒƒCƒ„[ƒnƒ“ƒhƒ‰‚ğ‚Ü‚Æ‚ß‚½\‘¢‘Ì ãˆÊ‚Í‚±‚Ìƒnƒ“ƒhƒ‹‚ğg‚Á‚ÄƒAƒNƒZƒX
+struct LowlayerHandelTypedef //ï¿½áƒŒï¿½Cï¿½ï¿½ï¿½[ï¿½nï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Æ‚ß‚ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê‚Í‚ï¿½ï¿½Ìƒnï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ÄƒAï¿½Nï¿½Zï¿½X
 {
 protected:
 
@@ -37,11 +38,11 @@ public:
 	CanBus extcan_d, extcan_r,stdcan_d;
 
 	/*************************/
-	void EmagenceStop()//ƒvƒƒOƒ‰ƒ€‚©‚ç‹Ù‹}’â~‚·‚éŠÖ”
+	void EmagenceStop()//ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù‹}ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½Öï¿½
 	{
 		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
 	}
-	void PowerOn()//‹Ù‹}’â~‚ğ‰ğœ‚·‚éŠÖ”
+	void PowerOn()//ï¿½Ù‹}ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öï¿½
 	{
 		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
 	}
@@ -60,11 +61,12 @@ public:
 	Sensor Ad1,Ad2,Ad3,Ad4,Ad5,Ad6;
 	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6;
 
-	//LCD•\¦@â‘Î‚É§ŒäüŠú‚Ì’†‚Å•\¦‚³‚¹‚È‚¢‚Å
+	//LCDï¿½\ï¿½ï¿½ï¿½@ï¿½ï¿½Î‚Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì’ï¿½ï¿½Å•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½
 	I2CLCD Lcd;
 	Buzzer buzzer;
 	ICS KoServo;
 	SwitchModule Sw;
+	SteppingMotor Stepper1,Stepper2,Stepper3;
 	LowlayerHandelTypedef():extcan_d(CAN_ID_EXT,CAN_RTR_DATA),extcan_r(CAN_ID_EXT,CAN_RTR_REMOTE),stdcan_d(CAN_ID_STD,CAN_RTR_DATA)
 #ifndef MOTERSYSTEM
 	,M1(&extcan_d,1),M2(&extcan_d,2),M3(&extcan_d,3),M4(&extcan_d,4),M5(&extcan_d,5),M6(&extcan_d,6),M7(&extcan_d,7),M8(&extcan_d,8)
@@ -80,7 +82,7 @@ public:
 	,encoder1(&extcan_r,1,1),encoder2(&extcan_r,2,1),encoder3(&extcan_r,3,1),encoder4(&extcan_r,4,1),PS3(&extcan_r)
 	,Ad1(&extcan_r,0),Ad2(&extcan_r,1),Ad3(&extcan_r,2),Ad4(&extcan_r,3),Ad5(&extcan_r,4),Ad6(&extcan_r,5)
 	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
-	,Lcd(&hi2c1),KoServo(&huart1),Sw(&extcan_d)
+	,Lcd(&hi2c1),KoServo(&huart1),Sw(&extcan_d),Stepper1(&extcan_d,1),Stepper2(&extcan_d,2),Stepper3(&extcan_d,3)
 	{
 		PowerOn();
 	}

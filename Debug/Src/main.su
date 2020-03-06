@@ -10,14 +10,15 @@ Sensor.hpp:37:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
 PS3class.hpp:25:2:PS3controller::PS3controller(CanBus*)	16	static
 ICS.hpp:22:2:ICS::ICS(UART_HandleTypeDef*)	16	static
 SwitchModule.hpp:20:2:SwitchModule::SwitchModule(CanBus*)	16	static
-LowlayerHandel.hpp:44:7:void LowlayerHandelTypedef::PowerOn()	16	static
+SteppingMotor.hpp:21:2:SteppingMotor::SteppingMotor(CanBus*, int)	24	static
+LowlayerHandel.hpp:45:7:void LowlayerHandelTypedef::PowerOn()	16	static
 Buzzer.hpp:90:7:Buzzer::Buzzer()	16	static
-LowlayerHandel.hpp:68:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
+LowlayerHandel.hpp:70:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
 TimerInterruptCallback.hpp:20:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
 TimerInterruptCallback.hpp:24:7:void Timer1::SetLoopTime(float)	24	static
 TimerInterruptCallback.hpp:46:7:void Timer1::Start()	16	static
 main.cpp:52:5:int __io_putchar(int)	16	static
 main.cpp:62:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
-main.cpp:101:5:int main()	5960	static
+main.cpp:101:5:int main()	6032	static
 main.cpp:247:6:void SystemClock_Config()	88	static
 main.cpp:301:6:void Error_Handler()	8	static

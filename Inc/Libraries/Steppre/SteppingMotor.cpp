@@ -2,7 +2,7 @@
  * SteppingMotor.cpp
  *
  *  Created on: 2019/12/16
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 
@@ -26,7 +26,7 @@ short SteppingMotor::SetPulse(short pulse)
 	this->DivideData(pulse);
 		while(TXok==false)
 		{
-			if(canbus->Send(SETPPER_SET_PULSE<<ORDER_BIT_Pos,4,tx_buff)!=0)
+			if(canbus->Send(SETPPER_SET_PULSE<<ORDER_BIT_Pos|this->node_id<<NODE_ID_Pos,4,tx_buff)!=0)
 			{
 				TXok=false;
 			}
