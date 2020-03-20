@@ -2,7 +2,7 @@
  * PS3class.cpp
  *
  *  Created on: 2018/08/20
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 #include "Libraries/PS3/PS3class.hpp"
 #include "Libraries/DefineLED.h"
@@ -25,7 +25,9 @@ uint8_t con_data[8]={0,};
  	}
 #endif
 #ifdef USEI2C
- 	HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8);
+ 	while(HAL_I2C_Master_Receive_IT(&hi2c2,CON_ADDRESEE,con_data,8)!=0){
+
+ 	}
 
  	 			this->Data[0]=(short)con_data[0];
  	 			this->Data[1]=(short)con_data[1];

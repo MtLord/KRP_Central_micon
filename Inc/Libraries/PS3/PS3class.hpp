@@ -2,14 +2,14 @@
  * PS3class.hpp
  *
  *  Created on: 2018/08/20
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef PS3_PS3CLASS_HPP_
 #define PS3_PS3CLASS_HPP_
 #include "Libraries/CAN/CAN.hpp"
 
-//#define USEI2C
+#define USEI2C
 class PS3controller
 {
 private:
@@ -30,7 +30,7 @@ public:
 	void SendRequest();
 	void begin();
 			 short SELECT();
-			 short L3();// L3ƒ{ƒ^ƒ“
+			 short L3();// L3ï¿½{ï¿½^ï¿½ï¿½
 			 short R3();
 			 short START();
 			 short UP();
