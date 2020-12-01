@@ -80,7 +80,7 @@ extern int melend;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define USEOLCD
+//#define USEOLCD
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,7 +102,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	  dma_printf_init(&huart2);   //printf?��?��?��g?��?��?��?��?��?��UART?��|?��[?��g?��̍\?��?��?��̂̃|?��C?��?��?��^
+ dma_printf_init(&huart2);
 
 
   /* USER CODE END 1 */
@@ -139,7 +139,6 @@ int main(void)
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
-  hlow.buzzer.Melody_Start(1);
 #ifdef USEOLCD
   hlow.Lcd.oled_init();
 hlow.Lcd.oled_puts((char *)"CAN init OK");
@@ -157,7 +156,6 @@ hlow.Lcd.oled_puts((char *)"Timer OK");
 
 /***Motor System initialization. you have to write "begin" before "SetVelocity" ****/
 #ifdef MOTERSYSTEM
-//hlow.loca.EncoderDire(0, 1);
 //hlow.M0.begin();
 //hlow.M1.begin();
 //hlow.M2.begin();
@@ -227,7 +225,7 @@ hlow.Lcd.oled_puts((char *)"MotorSystem Start");
 /*********write Send Request so that other boards return requested data*************/
 
 	//hlow.encoder1.Sendreqest();
-	 hlow.PS3.SendRequest();
+	 //hlow.PS3.SendRequest();
 	// hlow.Msw1.SendRequest();
 //hlow.Ad1.SendRequest();
 

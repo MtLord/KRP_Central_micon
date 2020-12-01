@@ -27,7 +27,7 @@
 #define MOTERSYSTEM
 //#define KODOSERVO
 /****************************************/
-struct LowlayerHandelTypedef //�჌�C���[�n���h�����܂Ƃ߂��\���� ��ʂ͂��̃n���h�����g���ăA�N�Z�X
+struct LowlayerHandelTypedef
 {
 protected:
 
@@ -38,15 +38,6 @@ public:
 	CanBus extcan_d, extcan_r,stdcan_d;
 
 	/*************************/
-	void EmagenceStop()//�v���O��������ً}��~����֐�
-	{
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
-	}
-	void PowerOn()//�ً}��~����������֐�
-	{
-		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
-	}
-
 #ifndef MOTERSYSTEM
 	Motor M1,M2,M3,M4,M5,M6,M7,M8;
 #endif
@@ -84,7 +75,7 @@ public:
 	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
 	,Lcd(&hi2c1),KoServo(&huart1),Sw(&extcan_d),Stepper1(&extcan_d,1),Stepper2(&extcan_d,2),Stepper3(&extcan_d,3)
 	{
-		PowerOn();
+
 	}
 
 };
