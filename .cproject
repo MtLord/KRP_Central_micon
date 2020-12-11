@@ -107,7 +107,8 @@
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Drivers"/>
 						<entry excluding="Libraries|Libraries/KondoServo|KondoServo|Application" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Inc"/>
-						<entry excluding="KondoServo" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Inc/Libraries"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Inc/Application"/>
+						<entry excluding="Serial|KondoServo" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Inc/Libraries"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Inc/Libraries/KondoServo"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Src"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="startup"/>

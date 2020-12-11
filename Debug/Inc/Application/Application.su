@@ -1,0 +1,4 @@
+Application.cpp:9:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
+Application.cpp:15:6:void Application::TakeOrder()	16	static
+Application.cpp:21:5:int Application::SetSerial()	16	static
+Application.cpp:29:5:int Application::TaskShift()	16	static

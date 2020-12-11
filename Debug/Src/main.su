@@ -1,23 +1,15 @@
 CAN.hpp:28:2:CanBus::CanBus(long unsigned int, long unsigned int)	24	static
 RotaryEncoder.hpp:24:2:Encoder::Encoder(CanBus*, int, unsigned char)	24	static
+Motor.hpp:22:2:Motor::Motor(CanBus*, short unsigned int, short unsigned int)	24	static
 Aircylinder.hpp:21:2:Aircylinder::Aircylinder(CanBus*, unsigned char)	24	static
-Servo.hpp:20:2:Servo::Servo(CanBus*, short unsigned int)	24	static
 localization.hpp:30:3:localization::localization(CanBus*, CanBus*)	24	static
 MotorSystemClass.hpp:30:2:MotorSystem::MotorSystem(CanBus*, short unsigned int)	24	static
-i2c_lcd.hpp:33:2:I2CLCD::I2CLCD(I2C_HandleTypeDef*)	16	static
 Sensor.hpp:18:2:Sensor::Sensor(CanBus*, int)	24	static
 Sensor.hpp:37:2:MicroSw::MicroSw(CanBus*, int, int)	24	static
 PS3class.hpp:25:2:PS3controller::PS3controller(CanBus*)	16	static
 ICS.hpp:22:2:ICS::ICS(UART_HandleTypeDef*)	16	static
-SwitchModule.hpp:20:2:SwitchModule::SwitchModule(CanBus*)	16	static
 SteppingMotor.hpp:21:2:SteppingMotor::SteppingMotor(CanBus*, int)	24	static
-Buzzer.hpp:90:7:Buzzer::Buzzer()	16	static
-LowlayerHandel.hpp:61:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
-TimerInterruptCallback.hpp:20:2:Timer1::Timer1(TIM_HandleTypeDef*)	16	static
-TimerInterruptCallback.hpp:24:7:void Timer1::SetLoopTime(float)	24	static
-TimerInterruptCallback.hpp:46:7:void Timer1::Start()	16	static
-main.cpp:52:5:int __io_putchar(int)	16	static
-main.cpp:62:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	16	static
-main.cpp:101:5:int main()	6032	static
-main.cpp:245:6:void SystemClock_Config()	88	static
-main.cpp:299:6:void Error_Handler()	8	static
+LowlayerHandel.hpp:50:2:LowlayerHandelTypedef::LowlayerHandelTypedef()	16	static
+main.cpp:82:5:int main()	1000	static
+main.cpp:140:6:void SystemClock_Config()	88	static
+main.cpp:194:6:void Error_Handler()	8	static

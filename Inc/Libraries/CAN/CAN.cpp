@@ -2,7 +2,7 @@
  * CAN.cpp
  *
  *  Created on: 2018/12/28
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #include "CAN.hpp"
@@ -30,11 +30,11 @@ void FilterConfig()
 	sFilterConfig.FilterIdLow=FILTERID_L;
 	sFilterConfig.FilterMaskIdHigh=0x0000;
 	sFilterConfig.FilterMaskIdLow=MASKID_L;
-	sFilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0;//ŽóMƒtƒBƒ‹ƒ^‚ðFIFO0‚ÉÝ’è
-	sFilterConfig.FilterBank=0; //ƒtƒBƒ‹ƒ^ƒoƒ“ƒN”Ô†‚ðÝ 0-13
-	sFilterConfig.FilterScale=CAN_FILTERSCALE_32BIT; //ƒtƒBƒ‹ƒ^ƒXƒP[ƒ‹ExtId‚Ü‚Å
-	sFilterConfig.FilterMode=CAN_FILTERMODE_IDMASK; //ƒ}ƒXƒNƒ‚[ƒh
-	sFilterConfig.FilterActivation=ENABLE; //ƒtƒBƒ‹ƒ^—LŒø
+	sFilterConfig.FilterFIFOAssignment=CAN_FILTER_FIFO0;//ï¿½ï¿½Mï¿½tï¿½Bï¿½ï¿½ï¿½^ï¿½ï¿½FIFO0ï¿½ÉÝ’ï¿½
+	sFilterConfig.FilterBank=0; //ï¿½tï¿½Bï¿½ï¿½ï¿½^ï¿½oï¿½ï¿½ï¿½Nï¿½Ôï¿½ï¿½ï¿½ï¿½ 0-13
+	sFilterConfig.FilterScale=CAN_FILTERSCALE_32BIT; //ï¿½tï¿½Bï¿½ï¿½ï¿½^ï¿½Xï¿½Pï¿½[ï¿½ï¿½ExtIdï¿½Ü‚ï¿½
+	sFilterConfig.FilterMode=CAN_FILTERMODE_IDMASK; //ï¿½}ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½h
+	sFilterConfig.FilterActivation=ENABLE; //ï¿½tï¿½Bï¿½ï¿½ï¿½^ï¿½Lï¿½ï¿½
 //	sFilterConfig.SlaveStartFilterBank=14;
 
 	if(HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig)!=HAL_OK)
@@ -43,8 +43,6 @@ void FilterConfig()
 		}
 	HAL_CAN_Start(&hcan1);
 	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
-	plow->Lcd.oled_setcursor(0, 0);
-	plow->Lcd.oled_puts((char *)"CAN Start Listening");
 }
 
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
@@ -56,7 +54,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	   plow->loca.Setloca();
 	   plow->encoder1.SetData();
 	   plow->PS3.SetconData();
-	   plow->Sw.SetData();
 	   if(rx_led>20)
 	   {
 		   TOGGLE_RX_LED;
@@ -83,31 +80,7 @@ void CanBus::SetError()
 	error_code=(hcan1.Instance->ESR)&ERROCODE_Pos;
 	if((hcan1.Instance->ESR)&ERRORPUSSIVE_pos)
 	{
-		plow->Lcd.oled_clear();
-		plow->Lcd.oled_setcursor(0, 0);
-		plow->Lcd.oled_puts((char*)"Fatal CAN Error");
-		plow->Lcd.oled_setcursor(1, 0);
-		switch(error_code)
-		{
-		case 1:
-			plow->Lcd.oled_puts((char*)"Staff Error");
-			break;
-		case 2:
-			plow->Lcd.oled_puts((char*)"Form Error");
-			break;
-		case 3:
-			plow->Lcd.oled_puts((char*)"ACK Error");
-			break;
-		case 4:
-			plow->Lcd.oled_puts((char*)"Bit Dominant Error");
-			break;
-		case 5:
-			plow->Lcd.oled_puts((char*)"Bit Recessive Error");
-			break;
-		default:
-			plow->Lcd.oled_puts((char*)"Unknown Error");
 
-		}
 	}
 }
 
@@ -118,10 +91,10 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 				 uint32_t TSR = hcan1.Instance->TSR;
 				 if ((state == HAL_CAN_STATE_READY) ||(state == HAL_CAN_STATE_LISTENING))
 				 {
-					 if (((TSR & CAN_TSR_TME0) != 0U) || ((TSR & CAN_TSR_TME1) != 0U) ||((TSR & CAN_TSR_TME2) != 0U))//‚Ç‚ê‚©‚Ìƒ[ƒ‹ƒ{ƒbƒNƒX‚ª‹ó‚¢‚Ä‚¢‚½‚ç
+					 if (((TSR & CAN_TSR_TME0) != 0U) || ((TSR & CAN_TSR_TME1) != 0U) ||((TSR & CAN_TSR_TME2) != 0U))//ï¿½Ç‚ê‚©ï¿½Ìƒï¿½ï¿½[ï¿½ï¿½ï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½ó‚¢‚Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
 					 {
 
-												  mailbox_num = (TSR & CAN_TSR_CODE) >> CAN_TSR_CODE_Pos; //‹ó‚«ƒ[ƒ‹ƒ{ƒbƒNƒX”Ô†‚ðŽæ“¾
+												  mailbox_num = (TSR & CAN_TSR_CODE) >> CAN_TSR_CODE_Pos; //ï¿½ó‚«ƒï¿½ï¿½[ï¿½ï¿½ï¿½{ï¿½bï¿½Nï¿½Xï¿½Ôï¿½ï¿½ï¿½ï¿½æ“¾
 												  if (mailbox_num > 2)
 												  {
 												         /* Update error code */
@@ -140,15 +113,15 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 													  hcan1.Instance->sTxMailBox[mailbox_num].TIR=ID<<3U|IDE|RTR;
 												  }
 												  hcan1.Instance->sTxMailBox[mailbox_num].TDTR = DLC;
-												  hcan1.Instance->sTxMailBox[mailbox_num].TDHR=(uint32_t)data[7]<<24|(uint32_t)data[6]<<16|(uint32_t)data[5]<<8|(uint32_t)data[4];//ƒ[ƒ‹ƒ{ƒbƒNƒXãˆÊƒŒƒWƒXƒ^‚ÉƒZƒbƒg
+												  hcan1.Instance->sTxMailBox[mailbox_num].TDHR=(uint32_t)data[7]<<24|(uint32_t)data[6]<<16|(uint32_t)data[5]<<8|(uint32_t)data[4];//ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½{ï¿½bï¿½Nï¿½Xï¿½ï¿½Êƒï¿½ï¿½Wï¿½Xï¿½^ï¿½ÉƒZï¿½bï¿½g
 												  hcan1.Instance->sTxMailBox[mailbox_num].TDLR=(uint32_t)data[3]<<24|(uint32_t)data[2]<<16|(uint32_t)data[1]<<8|(uint32_t)data[0];
-												  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//‘—MƒrƒbƒgƒZƒbƒg
+												  hcan1.Instance->sTxMailBox[mailbox_num].TIR|=1;//ï¿½ï¿½ï¿½Mï¿½rï¿½bï¿½gï¿½Zï¿½bï¿½g
 												  return 0;
 
 
 				 	 }
 				 	  else
-				 	 	 {//ƒ[ƒ‹ƒ{ƒbƒNƒX‚Ì‚Ç‚ê‚à‹ó‚¢‚Ä‚È‚¢
+				 	 	 {//ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½{ï¿½bï¿½Nï¿½Xï¿½Ì‚Ç‚ï¿½ï¿½ï¿½ó‚¢‚Ä‚È‚ï¿½
 							 hcan1.ErrorCode |= HAL_CAN_ERROR_PARAM;
 							  error_flag=true;
 							  this->SetError();

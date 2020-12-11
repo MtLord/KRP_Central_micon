@@ -2,7 +2,7 @@
  * Motor.cpp
  *
  *  Created on: 2019/05/05
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 #include "Motor.hpp"
 #include "Libraries/DefineOrder.h"
@@ -21,7 +21,7 @@ void Motor::SetDuty(float duty)
 	this->DivideData(duty);
 	while(TXok==false)
 	{
-		if(canbus->Send(MOTORE_SET_DUTY<<ORDER_BIT_Pos|node_id,4,tx_buff)!=0)
+		if(canbus->Send(MOTORE_SET_DUTY<<ORDER_BIT_Pos|node_id<<NODE_ID_Pos|boardid,4,tx_buff)!=0)
 		{
 			TXok=false;
 		}

@@ -9,6 +9,7 @@
 #include "stm32f4xx_hal.h"
 #include <stdio.h>
 #ifdef  __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 #define GETCHAR_PROTOTYPE int __io_getchar(FILE *f)
 #else
 #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
@@ -18,6 +19,14 @@
 #ifdef __cplusplus
  extern "C" {
 #endif
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART2 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
 
 GETCHAR_PROTOTYPE
 {
