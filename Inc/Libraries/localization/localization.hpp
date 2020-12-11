@@ -2,7 +2,7 @@
  * Get_position.hpp
  *
  *  Created on: 2018/08/28
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef APPLICATION_LOCALIZATON_HPP_
@@ -40,10 +40,9 @@ public:
 
 	 void PutLCD();
 	void SetIntialPosition(float x,float y);
-	void SetEncoderModef(float x_of_y,float y_of_x);//ƒGƒ“ƒR[ƒ_‚Ì‹@‘Ì’†S‚©‚ç‚ÌƒYƒŒ‚ğ‹Lq
+	void SetEncoderModef(float x_of_y,float y_of_x);//ï¿½Gï¿½ï¿½ï¿½Rï¿½[ï¿½_ï¿½Ì‹@ï¿½Ì’ï¿½ï¿½Sï¿½ï¿½ï¿½ï¿½ÌƒYï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½q
 	void SetDiameter(float d);
 	void SetEncPulse(unsigned short p);
-	void EncoderDire(short x_dir,short y_dir);
 };
 
 

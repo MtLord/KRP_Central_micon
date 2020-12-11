@@ -2,7 +2,7 @@
  * localization.cpp
  *
  *  Created on: 2018/09/23
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 
@@ -22,7 +22,7 @@ while(TXok==false)
 {
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		ERROR_LED;//‘—MƒGƒ‰[LED“_–Å
+		ERROR_LED;//ï¿½ï¿½ï¿½Mï¿½Gï¿½ï¿½ï¿½[LEDï¿½_ï¿½ï¿½
 	}
 	else
 	{
@@ -39,7 +39,7 @@ while(TXok==false)
 TXok=false;
 }
 
-void localization::Setloca()//ŽóMŠ„‚èž‚ÝŽž‚Ì’lƒZƒbƒgŠÖ”
+void localization::Setloca()//ï¿½ï¿½Mï¿½ï¿½ï¿½èžï¿½ÝŽï¿½ï¿½Ì’lï¿½Zï¿½bï¿½gï¿½Öï¿½
 {
 	if(RXmsg.ExtId==(GET_LOCA<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
 	{
@@ -115,16 +115,6 @@ void localization::SetEncPulse(unsigned short p)
 	txdata2[0]=((unsigned char *)&pulse)[0];
 	txdata2[1]=((unsigned char *)&pulse)[1];
 	canbus->Send(SET_ENCO_PULSE<<ORDER_BIT_Pos,2,txdata2);
-}
-
-void localization::EncoderDire(short x_dir,short y_dir)
-{
-	unsigned char txdata2[4];
-	txdata2[0]=((unsigned char *)&x_dir)[0];
-	txdata2[1]=((unsigned char *)&x_dir)[1];
-	txdata2[2]=((unsigned char *)&y_dir)[0];
-	txdata2[3]=((unsigned char *)&y_dir)[1];
-	canbus->Send(SET_ENC_DIRECTION<<ORDER_BIT_Pos,2,txdata2);
 }
 
 float localization::GetX()
