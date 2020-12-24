@@ -2,21 +2,21 @@
  * MotorSystem_definetion.hpp
  *
  *  Created on: 2018/09/27
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef MOTORSYSTEM_MOTORSYSTEM_DEFINETION_HPP_
 #define MOTORSYSTEM_MOTORSYSTEM_DEFINETION_HPP_
 enum
 {
-	 BEGIN=0x44,
+	 BEGIN=0x54,
 	 SET_VELOCITY= 0x00,
 	 SET_CGAIN_K= 0x4C,
 	 SET_TORQUE= 0x01,
 	 SET_DUTY= 0x02,
 	 SET_VCC =0x45,
 	 SET_PPR =0x46,
-	 SET_KT= 0x47,//ƒgƒ‹ƒN’è”
+	 SET_KT= 0x47,//ï¿½gï¿½ï¿½ï¿½Nï¿½è”
 	 SET_VGAIN_K =0x48,
 	 SET_VGAIN_TI =0x49,
 	 SET_VGAIN_TD =0x4A,

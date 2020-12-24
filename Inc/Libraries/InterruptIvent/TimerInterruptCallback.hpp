@@ -3,14 +3,13 @@
 #define __TIMERINTERRUPTCALLBACK__
 #include "stm32f4xx_hal.h"
 #include "tim.h"
-//#include "application/excuteApplication.hpp"
-//if you use different interrupt cycle,you set interrupt cycle  each other
+
 
 class Timer1
 {
 private:
 	TIM_HandleTypeDef *htim;
-	 float period;//Š„‚è‚İüŠú
+	 float period;
 	 unsigned short counterperiod;
 	 unsigned short Prescaler;
 	 float ajustperiod;
@@ -55,7 +54,7 @@ public:
 class Timer2
 {
 private:
-		float period=0;//Š„‚è‚İüŠú
+		float period=0;//ï¿½ï¿½ï¿½èï¿½İï¿½ï¿½ï¿½
 		unsigned short counterperiod;
 		unsigned short Prescaler;
 		float ajustperiod;

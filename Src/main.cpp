@@ -21,7 +21,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "can.h"
-#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
@@ -35,7 +34,7 @@
 #include "stdio.h"
 #include "Libraries/DefineOrder.h"
 #include <stdio.h>
-
+#include "Application/Application.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +43,7 @@
 extern void FilterConfig();
 
 
-
+extern bool intflag;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -55,7 +54,7 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+Application *App;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -84,12 +83,12 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
-  
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -104,7 +103,6 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
   MX_CAN1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
@@ -117,8 +115,11 @@ int main(void)
 
   LowlayerHandelTypedef hlow;
   plow=&hlow;
-  FilterConfig();
-
+  Application app(&hlow);
+  App=&app;
+  //FilterConfig();
+  Timer1 LoopInt(&htim6);
+  //LoopInt.SetLoopTime(5);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -126,7 +127,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  app.TaskShift();
     /* USER CODE BEGIN 3 */
 
   }

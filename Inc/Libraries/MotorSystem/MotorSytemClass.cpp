@@ -2,7 +2,7 @@
  * MotorSytemClass.cpp
  *
  *  Created on: 2018/09/27
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 
@@ -97,14 +97,14 @@ void MotorSystem::begin()
 	this->SetSendData(BEGIN,0,0);
 	while(BeginEnd==false)
 	{
-		printf("NOW MOTOE%d INITIALIZING\n\r",this->commuincationID);
-		if((RXmsg.StdId>>4)==0x44)
+		//printf("NOW MOTOE%d INITIALIZING\n\r",this->commuincationID);
+		if((RXmsg.StdId>>4)==0x54)
 		{
 			BeginEnd=true;
 		}
 	}
 
-	 printf("INITIALIZING FINSH!\n\r");
+	 //printf("INITIALIZING FINSH!\n\r");
 }
 
 

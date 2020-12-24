@@ -2,7 +2,7 @@
  * Sensor.cpp
  *
  *  Created on: 2019/05/19
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #include "Sensor.hpp"
@@ -11,7 +11,7 @@
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[8];
 unsigned short Sensor::sensordata[12]={0,};
-unsigned char MicroSw::Data[4]={0,};
+unsigned char MicroSw::Data[4]={0,0};
 
 
 void Sensor::SendRequest()

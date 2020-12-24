@@ -12,15 +12,14 @@
 extern LowlayerHandelTypedef *plow;
 extern uint8_t con_data[8];
 
+bool intflag=false;
+
  void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  {
 	 if(htim->Instance==TIM6)
 	 {
-
-
+		 intflag=true;
  	 }
-
-
  }
 
 

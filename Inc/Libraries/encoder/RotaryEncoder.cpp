@@ -2,7 +2,7 @@
  * RotaryEncoder.cpp
  *
  *  Created on: 2018/12/22
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #include "Libraries/encoder/RotaryEncoder.hpp"

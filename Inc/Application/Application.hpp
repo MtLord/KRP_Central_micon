@@ -9,16 +9,31 @@
 #define APPLICATION_HPP_
 #include "usart.h"
 #include "Libraries/LowlayerHandel.hpp"
+#include <queue>
+using namespace std;
 class Application
 {
 private:
 
 	short orderid=0;
 	short nodeid=0;
-	UART_HandleTypeDef *puart;
-	unsigned char rx_buff[8]={0,};
+	unsigned char rx_buff[6]={0,};
+	unsigned char txbuff[8]={0,};
 	LowlayerHandelTypedef *plow;
 	void TakeOrder();
+	void SetSendOrder(uint8_t orderid,uint8_t ac_id);
+	queue<unsigned char> orderbuff;//命令のキュー
+	queue<unsigned char> actubuff;
+	queue<float> rxdata;//受信値のキュー
+	int SendSensor(unsigned short *buff,short ac_id,int start,int end);
+	int SendMswitch(unsigned char buff,short board_id);
+	int SendLoca(float data,short nodeid);
+	int SendCount(short data1,short data2,short nodeid);
+	int MotorSystemBegin(short nodeid);
+	int motorsflag=0;
+	int motorsflag2=0;
+	int intflag=0;
+	float tempduty=0;
 	enum
 	{
 		MOTORE_SET_DUTY = 0x62,
@@ -28,13 +43,10 @@ private:
 		GET_MICROSWITCH = 0x32,
 		SETPPER_SET_PULSE = 0x51,
 		GET_LOCA = 0x11,
-		SET_INIT_POSE = 0x10,
 		SET_ENCO_POSE = 0x12,
 		SET_ENCO_PULSE = 0x13,
 		GRT_ENCODER_COUNT = 0x14,
 		SET_ENC_DIAMTER = 0x15,
-		SET_ENC_DIRECTION = 0x16,
-		GET_SWITCH = 0xA1,
 
 		BEGIN = 0x44,
 		SET_VELOCITY = 0x00,
@@ -64,10 +76,11 @@ private:
 public:
 	Application(LowlayerHandelTypedef *_plow):plow(_plow)
 	{
-
+		HAL_UART_Receive_IT(&huart2, rx_buff, 6);
 	}
 	int SetSerial();
-	int SetRecieveData();
+
+
 	int TaskShift();
 };
 

@@ -22,7 +22,7 @@ while(TXok==false)
 {
 	if(canbus_r->Send(GET_LOCA<<ORDER_BIT_Pos,0,0)!=0)
 	{
-		ERROR_LED;//���M�G���[LED�_��
+		ERROR_LED;
 	}
 	else
 	{
@@ -39,7 +39,7 @@ while(TXok==false)
 TXok=false;
 }
 
-void localization::Setloca()//��M���荞�ݎ��̒l�Z�b�g�֐�
+void localization::Setloca()
 {
 	if(RXmsg.ExtId==(GET_LOCA<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
 	{
@@ -63,22 +63,6 @@ void localization::Setloca()//��M���荞�ݎ��̒l�Z�b�g�֐
 }
 
 
-void localization::SetIntialPosition(float x, float y)
-{
-	unsigned char txdata[8];
-	this->initX=x;
-	this->initY=y;
-	txdata[0]=((unsigned char *)&initX)[0];
-		txdata[1]=((unsigned char *)&initX)[1];
-		txdata[2]=((unsigned char *)&initX)[2];
-		txdata[3]=((unsigned char *)&initX)[3];
-
-		txdata[4]=((unsigned char *)&initY)[0];
-		txdata[5]=((unsigned char *)&initY)[1];
-		txdata[6]=((unsigned char *)&initY)[2];
-		txdata[7]=((unsigned char *)&initY)[3];
-		canbus->Send(SET_INIT_POSE<<ORDER_BIT_Pos,8,txdata);
-}
 
 void localization::SetEncoderModef(float x_of_y,float y_of_x)
 {
@@ -119,18 +103,15 @@ void localization::SetEncPulse(unsigned short p)
 
 float localization::GetX()
 {
-
 	return currentX;
 }
 
 float localization::GetY()
 {
-
 	return currentY;
 }
 
 float localization::GetYaw()
 {
-
 	return currentyaw;
 }

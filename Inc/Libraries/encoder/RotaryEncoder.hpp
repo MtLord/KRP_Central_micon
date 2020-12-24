@@ -2,7 +2,7 @@
  * RotaryEncoder.hpp
  *
  *  Created on: 2018/12/22
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef ENCODER_ROTARYENCODER_HPP_
@@ -16,7 +16,7 @@ class Encoder
 	CanBus *canbus;
 	unsigned short board_ID;
 	int enco_num;
-	static long countdata[8];
+
 	float dist=0;
 	bool TXok=false;
 	int tx_led=0;
@@ -25,8 +25,9 @@ public:
 	{
 
 	}
+	static long countdata[8];
 	void Sendreqest();
-	float GetDistance(float d,float count);//(ƒMƒA‚Ìƒsƒbƒ`‰~’¼Œa,ˆêŽü‚ ‚½‚è‚ÌƒJƒEƒ“ƒg—Ê)
+	float GetDistance(float d,float count);//(ï¿½Mï¿½Aï¿½Ìƒsï¿½bï¿½`ï¿½~ï¿½ï¿½ï¿½a,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½gï¿½ï¿½)
 	void SetData();
 };
 
