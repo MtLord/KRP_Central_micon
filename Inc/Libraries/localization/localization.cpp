@@ -59,6 +59,7 @@ void localization::Setloca()
 		((unsigned char *)&currentyaw)[1]=RxFIFO_Data[1];
 		((unsigned char *)&currentyaw)[2]=RxFIFO_Data[2];
 		((unsigned char *)&currentyaw)[3]=RxFIFO_Data[3];
+		getok=true;
 	}
 }
 

@@ -25,6 +25,7 @@ public:
 	{
 
 	}
+	bool getok=false;
 	static long countdata[8];
 	void Sendreqest();
 	float GetDistance(float d,float count);//(�M�A�̃s�b�`�~���a,���������̃J�E���g��)

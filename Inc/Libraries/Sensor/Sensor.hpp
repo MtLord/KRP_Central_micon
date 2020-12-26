@@ -2,7 +2,7 @@
  * Sensor.hpp
  *
  *  Created on: 2019/05/19
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef SENSOR_SENSOR_HPP_
@@ -14,11 +14,13 @@ class Sensor
 	int tx_led=0;
 	int num;
 	bool TXok=false;
+
 public:
 	Sensor(CanBus *_canbus,int _num):canbus(_canbus),num(_num)
 	{
 
 	}
+	bool getok=false;
 	void SendRequest();
 	void SetData();
 	static unsigned short sensordata[12];
@@ -38,6 +40,7 @@ public:
 	{
 
 	}
+	bool getok=false;
 	static unsigned char Data[4];
 	void SetData();
 	void SendRequest();

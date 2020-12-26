@@ -31,6 +31,7 @@ public:
 	{
 
 	 }
+	 bool getok=false;
 	 void SendReqest();//send reqest localization
 	 void Setloca();//dataset
 
@@ -38,8 +39,8 @@ public:
 	 float GetY();
 	 float GetYaw();
 
-	 void PutLCD();
-	void SetIntialPosition(float x,float y);
+
+
 	void SetEncoderModef(float x_of_y,float y_of_x);//�G���R�[�_�̋@�̒��S����̃Y�����L�q
 	void SetDiameter(float d);
 	void SetEncPulse(unsigned short p);

@@ -89,7 +89,12 @@ int Application::SendCount(short data1,short data2,short nodeid)
 
 int Application::MotorSystemBegin(short nodeid)
 {
-	SetSendOrder(BEGIN,nodeid);
+	if(motorstate!=0){
+		SetSendOrder(BEGIN,-1);
+	}
+	else{
+		SetSendOrder(BEGIN,nodeid);
+	}
 	HAL_UART_Transmit(&huart2,txbuff,8,5);
 	return 0;
 }
@@ -200,11 +205,17 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 0x1:
+						plow->Ad1.SendRequest();
+						while(plow->Ad1.getok==false)//受信完了まで待つ
+						{
+
+						}
 						SendSensor(plow->Ad1.sensordata,1,0,1);
 					case 0x2:
 						SendSensor(plow->Ad1.sensordata,2,2,3);
 					case 0x3:
 						SendSensor(plow->Ad1.sensordata,3,4,5);
+						plow->Ad1.getok=false;
 						break;
 				}
 				break;
@@ -212,7 +223,13 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1://board1
+						plow->Msw1.SendRequest();
+						while(plow->Msw1.getok==false)//受信完了まで待つ
+						{
+
+						}
 						SendMswitch(plow->Msw1.Data[0],1);
+						plow->Msw1.getok=false;
 						break;
 					case 2:
 						SendMswitch(plow->Msw1.Data[1],2);
@@ -223,6 +240,11 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1:
+						plow->loca.SendReqest();
+						while(plow->loca.getok==false)//受信完了まで待つ
+						{
+
+						}
 						SendLoca(plow->loca.GetX(),1);
 						break;
 					case 2:
@@ -230,6 +252,7 @@ int Application::TaskShift()
 						break;
 					case 3:
 						SendLoca(plow->loca.GetYaw(),3);
+						plow->loca.getok=false;
 						break;
 				}
 
@@ -240,10 +263,16 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1:
+						plow->encoder1.Sendreqest();
+						while(plow->encoder1.getok==false)
+						{
+
+						}
 						SendCount(plow->encoder1.countdata[0],plow->encoder1.countdata[1],1);
 						break;
 					case 2:
 						SendCount(plow->encoder1.countdata[2],plow->encoder1.countdata[3],2);
+						plow->encoder1.getok=false;
 						break;
 				}
 				break;
@@ -251,35 +280,35 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1:
-						plow->M1.begin();
+						motorstate=plow->M1.begin();
 						MotorSystemBegin(1);
 						break;
 					case 2:
-						plow->M2.begin();
+						motorstate=plow->M2.begin();
 						MotorSystemBegin(2);
 						break;
 					case 3:
-						plow->M3.begin();
+						motorstate=plow->M3.begin();
 						MotorSystemBegin(3);
 						break;
 					case 4:
-						plow->M4.begin();
+						motorstate=plow->M4.begin();
 						MotorSystemBegin(4);
 						break;
 					case 5:
-						plow->M5.begin();
+						motorstate=plow->M5.begin();
 						MotorSystemBegin(5);
 						break;
 					case 6:
-						plow->M6.begin();
+						motorstate=plow->M6.begin();
 						MotorSystemBegin(6);
 						break;
 					case 7:
-						plow->M7.begin();
+						motorstate=plow->M7.begin();
 						MotorSystemBegin(7);
 						break;
 					case 8:
-						plow->M8.begin();
+						motorstate=plow->M8.begin();
 						MotorSystemBegin(8);
 						break;
 				}

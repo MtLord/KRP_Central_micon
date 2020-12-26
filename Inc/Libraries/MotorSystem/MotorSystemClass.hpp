@@ -2,7 +2,7 @@
  * MotorSystemClass.hpp
  *
  *  Created on: 2018/09/27
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #ifndef MOTORSYSTEM_MOTORSYSTEMCLASS_HPP_
@@ -16,12 +16,12 @@ private:
 
 	bool TXok=false;
 	int tx_led=0;
-	void SetVGAIN_K(float vk);//‘¬“x§Œä‚ÌƒQƒCƒ“
-		void SetVGAIN_TI(float ti);//‘¬“x§Œä‚ÌÏ•ªŠÔ
-		void SetVGAIN_TD(float td);//‘¬“x§Œä‚Ì”÷•ªŠÔ
-		void SetCGAIN_K(float ck);//“d—¬§Œä‚ÌƒQƒCƒ“
-		void SetCGAIN_TI(float ti);//“d—¬§Œä‚ÌÏ•ªŠÔ
-		void SerCGAIN_TD(float td);//“d—¬§Œä‚Ì”÷•ªŠÔ
+	void SetVGAIN_K(float vk);//ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ÌƒQï¿½Cï¿½ï¿½
+		void SetVGAIN_TI(float ti);//ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ÌÏ•ï¿½ï¿½ï¿½ï¿½ï¿½
+		void SetVGAIN_TD(float td);//ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		void SetCGAIN_K(float ck);//ï¿½dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒQï¿½Cï¿½ï¿½
+		void SetCGAIN_TI(float ti);//ï¿½dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌÏ•ï¿½ï¿½ï¿½ï¿½ï¿½
+		void SerCGAIN_TD(float td);//ï¿½dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		short SetSendData(int cmd,unsigned char Len,float data);
 		void SetReceevieData(unsigned short *ID,unsigned char *DLC,float *data);
@@ -38,16 +38,16 @@ public:
 	void SetVelocity(float v);//rad/s
 	void SetTorque(float q);//mNm
 	void SetDuty(float d);//-100%~100%
-	void begin();
-	void Set_KT(float T);//ƒgƒ‹ƒN’è”‚Ìİ’è
+	int begin();
+	void Set_KT(float T);//ï¿½gï¿½ï¿½ï¿½Nï¿½è”ï¿½Ìİ’ï¿½
 	void SetVcc(float c);
-	void SetPPR(float p);//ƒGƒ“ƒR[ƒ_[‚Ìƒpƒ‹ƒX”‚Ìİ’è ppR
+	void SetPPR(float p);//ï¿½Gï¿½ï¿½ï¿½Rï¿½[ï¿½_ï¿½[ï¿½Ìƒpï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Ìİ’ï¿½ ppR
 
-	float GetVelocity();//‘¬“x‚Ìæ“¾
-	float GetTorque();//ƒgƒ‹ƒN‚Ìæ“¾
-	float GetDuty();//ƒfƒ…[ƒeƒB[‚Ìæ“¾
-	float GetCurrent();//“d—¬‚Ìæ“¾
-	float GetState();//ó‘Ô‚Ìæ“¾
+	float GetVelocity();//ï¿½ï¿½ï¿½xï¿½Ìæ“¾
+	float GetTorque();//ï¿½gï¿½ï¿½ï¿½Nï¿½Ìæ“¾
+	float GetDuty();//ï¿½fï¿½ï¿½ï¿½[ï¿½eï¿½Bï¿½[ï¿½Ìæ“¾
+	float GetCurrent();//ï¿½dï¿½ï¿½ï¿½Ìæ“¾
+	float GetState();//ï¿½ï¿½Ô‚Ìæ“¾
 };
 
 

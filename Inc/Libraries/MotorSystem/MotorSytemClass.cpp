@@ -91,16 +91,24 @@ void MotorSystem::SetTorque(float q)
 
 }
 
-void MotorSystem::begin()
+int MotorSystem::begin()
 {
 	bool BeginEnd=false;
 	this->SetSendData(BEGIN,0,0);
+	uint32_t tickstart = HAL_GetTick();
+	uint32_t wait = 500;
 	while(BeginEnd==false)
 	{
-		//printf("NOW MOTOE%d INITIALIZING\n\r",this->commuincationID);
+
 		if((RXmsg.StdId>>4)==0x54)
 		{
 			BeginEnd=true;
+			return 0;
+		}
+		if((HAL_GetTick()-tickstart)>wait)
+		{
+			return -1;
+			break;
 		}
 	}
 

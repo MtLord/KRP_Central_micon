@@ -117,8 +117,8 @@ int main(void)
   plow=&hlow;
   Application app(&hlow);
   App=&app;
-  //FilterConfig();
-  Timer1 LoopInt(&htim6);
+  FilterConfig();
+  //Timer1 LoopInt(&htim6);
   //LoopInt.SetLoopTime(5);
   /* USER CODE END 2 */
 
@@ -128,6 +128,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  app.TaskShift();
+	  HAL_Delay(90);
     /* USER CODE BEGIN 3 */
 
   }

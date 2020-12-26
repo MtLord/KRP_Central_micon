@@ -17,6 +17,7 @@ private:
 
 	short orderid=0;
 	short nodeid=0;
+	short motorstate=0;
 	unsigned char rx_buff[6]={0,};
 	unsigned char txbuff[8]={0,};
 	LowlayerHandelTypedef *plow;
@@ -30,10 +31,13 @@ private:
 	int SendLoca(float data,short nodeid);
 	int SendCount(short data1,short data2,short nodeid);
 	int MotorSystemBegin(short nodeid);
+	/*debug variable*/
 	int motorsflag=0;
 	int motorsflag2=0;
 	int intflag=0;
 	float tempduty=0;
+	/*************************/
+
 	enum
 	{
 		MOTORE_SET_DUTY = 0x62,

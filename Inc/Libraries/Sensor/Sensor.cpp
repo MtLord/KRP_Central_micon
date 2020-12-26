@@ -41,6 +41,7 @@ void Sensor::SetData()
 {
 	if(RXmsg.ExtId==(Get_SENSOR<<ORDER_BIT_Pos|0x1<<NODE_ID_Pos))
 	{
+
 		((unsigned char*)&sensordata[0])[0]=RxFIFO_Data[0];
 		((unsigned char*)&sensordata[0])[1]=RxFIFO_Data[1];
 		((unsigned char*)&sensordata[1])[0]=RxFIFO_Data[2];
@@ -56,6 +57,7 @@ void Sensor::SetData()
 		((unsigned char*)&sensordata[4])[1]=RxFIFO_Data[1];
 		((unsigned char*)&sensordata[5])[0]=RxFIFO_Data[2];
 		((unsigned char*)&sensordata[6])[1]=RxFIFO_Data[3];
+		getok=true;
 	}
 }
 
@@ -64,9 +66,6 @@ unsigned short Sensor:: GetValue()
 	return sensordata[num];
 }
 
-unsigned short Sensor::GetI2CData(){
-
-}
 void MicroSw::SendRequest()
 {
 	while(TXok==false)
@@ -96,6 +95,7 @@ void MicroSw::SetData()
 	if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|1))
 	{
 		Data[0]=RxFIFO_Data[0];
+		getok=true;
 	}
 	else if(RXmsg.ExtId==(GET_MICROSWITCH<<ORDER_BIT_Pos|2))
 	{

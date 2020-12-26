@@ -41,7 +41,7 @@ public:
 	localization loca;
 	Encoder encoder1,encoder2,encoder3,encoder4;
 	Sensor Ad1,Ad2,Ad3,Ad4,Ad5,Ad6;
-	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6;
+	MicroSw Msw1,Msw2,Msw3,Msw4,Msw5,Msw6,Msw7;
 	SteppingMotor Stepper1,Stepper2,Stepper3;
 	LowlayerHandelTypedef():extcan_d(CAN_ID_EXT,CAN_RTR_DATA),extcan_r(CAN_ID_EXT,CAN_RTR_REMOTE),stdcan_d(CAN_ID_STD,CAN_RTR_DATA)
 	,SM1(&extcan_d,1,1),SM2(&extcan_d,2,1),SM3(&extcan_d,3,1),SM4(&extcan_d,4,1),SM5(&extcan_d,1,2),SM6(&extcan_d,2,2),SM7(&extcan_d,3,2),SM8(&extcan_d,4,2)
@@ -51,7 +51,7 @@ public:
 	,loca(&extcan_d,&extcan_r)
 	,encoder1(&extcan_r,1,1),encoder2(&extcan_r,2,1),encoder3(&extcan_r,3,1),encoder4(&extcan_r,4,1)
 	,Ad1(&extcan_r,0),Ad2(&extcan_r,1),Ad3(&extcan_r,2),Ad4(&extcan_r,3),Ad5(&extcan_r,4),Ad6(&extcan_r,5)
-	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1)
+	,Msw1(&extcan_d,0,1),Msw2(&extcan_d,1,1),Msw3(&extcan_d,2,1),Msw4(&extcan_d,3,1),Msw5(&extcan_d,4,1),Msw6(&extcan_d,5,1),Msw7(&extcan_d,6,1)
 	,Stepper1(&extcan_d,1),Stepper2(&extcan_d,2),Stepper3(&extcan_d,3)
 	{
 
