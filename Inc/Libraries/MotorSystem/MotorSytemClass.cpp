@@ -100,7 +100,7 @@ int MotorSystem::begin()
 	while(BeginEnd==false)
 	{
 
-		if((RXmsg.StdId>>4)==0x54)
+		if((RXmsg.StdId>>4)==BEGIN)
 		{
 			BeginEnd=true;
 			return 0;
