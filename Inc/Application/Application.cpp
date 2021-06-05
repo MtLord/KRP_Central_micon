@@ -14,6 +14,7 @@ extern Application *App;
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	App->SetSerial();//pcからの命令のセット
+	//App->TaskShift();
 }
 
 
@@ -25,7 +26,6 @@ void Application::TakeOrder()
 
 int Application::SetSerial()
 {
-	intflag++;
 	float temp_data=0;
 	HAL_UART_Receive_IT(&huart2, rx_buff, 6);
 	TakeOrder();
@@ -109,7 +109,7 @@ int Application::TaskShift()
 				switch((int)actubuff.front())
 				{
 					case 1:
-						motorsflag++;
+						//motorsflag++;
 						plow->SM1.SetDuty(rxdata.front());
 						break;
 					case 2:
@@ -205,17 +205,13 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 0x1:
-						plow->Ad1.SendRequest();
-						while(plow->Ad1.getok==false)//受信完了まで待つ
-						{
 
-						}
 						SendSensor(plow->Ad1.sensordata,1,0,1);
+
 					case 0x2:
 						SendSensor(plow->Ad1.sensordata,2,2,3);
 					case 0x3:
 						SendSensor(plow->Ad1.sensordata,3,4,5);
-						plow->Ad1.getok=false;
 						break;
 				}
 				break;
@@ -223,13 +219,9 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1://board1
-						plow->Msw1.SendRequest();
-						while(plow->Msw1.getok==false)//受信完了まで待つ
-						{
 
-						}
 						SendMswitch(plow->Msw1.Data[0],1);
-						plow->Msw1.getok=false;
+
 						break;
 					case 2:
 						SendMswitch(plow->Msw1.Data[1],2);
@@ -240,19 +232,16 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1:
-						plow->loca.SendReqest();
-						while(plow->loca.getok==false)//受信完了まで待つ
-						{
-
-						}
 						SendLoca(plow->loca.GetX(),1);
+
+
 						break;
 					case 2:
 						SendLoca(plow->loca.GetY(),2);
 						break;
 					case 3:
 						SendLoca(plow->loca.GetYaw(),3);
-						plow->loca.getok=false;
+
 						break;
 				}
 
@@ -263,16 +252,12 @@ int Application::TaskShift()
 				switch(actubuff.front())
 				{
 					case 1:
-						plow->encoder1.Sendreqest();
-						while(plow->encoder1.getok==false)
-						{
 
-						}
 						SendCount(plow->encoder1.countdata[0],plow->encoder1.countdata[1],1);
 						break;
 					case 2:
 						SendCount(plow->encoder1.countdata[2],plow->encoder1.countdata[3],2);
-						plow->encoder1.getok=false;
+
 						break;
 				}
 				break;

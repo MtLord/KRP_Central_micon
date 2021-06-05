@@ -112,14 +112,16 @@ int main(void)
   MX_TIM3_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
   LowlayerHandelTypedef hlow;
   plow=&hlow;
   Application app(&hlow);
   App=&app;
+  App->SetSerial();
   FilterConfig();
-  //Timer1 LoopInt(&htim6);
-  //LoopInt.SetLoopTime(5);
+  HAL_Delay(2000);
+  Timer1 LoopInt(&htim6);
+  LoopInt.SetLoopTime(5);
+  //LoopInt.Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,10 +129,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  app.TaskShift();
-	  HAL_Delay(90);
     /* USER CODE BEGIN 3 */
-
+	  app.TaskShift();
   }
   /* USER CODE END 3 */
 }
