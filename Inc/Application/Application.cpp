@@ -14,7 +14,7 @@ extern Application *App;
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	App->SetSerial();//pcからの命令のセット
-	//App->TaskShift();
+
 }
 
 
@@ -29,6 +29,7 @@ int Application::SetSerial()
 	float temp_data=0;
 	HAL_UART_Receive_IT(&huart2, rx_buff, 6);
 	TakeOrder();
+	//odercount++;
 	((unsigned char *)&temp_data)[0]=rx_buff[2];
 	((unsigned char *)&temp_data)[1]=rx_buff[3];
 	((unsigned char *)&temp_data)[2]=rx_buff[4];
@@ -105,11 +106,11 @@ int Application::TaskShift()
 	{
 		switch((int)orderbuff.front())
 		{
+
 			case MOTORE_SET_DUTY://モータ基板の命令
 				switch((int)actubuff.front())
 				{
 					case 1:
-						//motorsflag++;
 						plow->SM1.SetDuty(rxdata.front());
 						break;
 					case 2:
@@ -266,6 +267,7 @@ int Application::TaskShift()
 				{
 					case 1:
 						motorstate=plow->M1.begin();
+
 						MotorSystemBegin(1);
 						break;
 					case 2:

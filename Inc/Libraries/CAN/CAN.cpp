@@ -100,7 +100,7 @@ short CanBus::Send(unsigned long ID,unsigned char DLC,unsigned char *data)
 												         hcan1.ErrorCode |= HAL_CAN_ERROR_INTERNAL;
 												         error_flag=true;
 												         this->SetError();
-												         return -1;
+												         return -3;
 												   }
 
 												  if(this->IDE==CAN_ID_STD)

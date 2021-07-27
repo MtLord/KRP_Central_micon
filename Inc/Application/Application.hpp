@@ -78,6 +78,7 @@ private:
 		GET_C_TD = 0x7E
 	};
 public:
+	int odercount=0;
 	Application(LowlayerHandelTypedef *_plow):plow(_plow)
 	{
 		HAL_UART_Receive_IT(&huart2, rx_buff, 6);

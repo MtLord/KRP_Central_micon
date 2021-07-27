@@ -54,7 +54,7 @@ void Encoder::SetData()
 				((unsigned char *)&countdata[2])[0]=RxFIFO_Data[4];
 				((unsigned char *)&countdata[2])[1]=RxFIFO_Data[5];
 				((unsigned char *)&countdata[3])[0]=RxFIFO_Data[6];
-				((unsigned char *)&countdata[4])[1]=RxFIFO_Data[7];
+				((unsigned char *)&countdata[3])[1]=RxFIFO_Data[7];
 
 				getok=true;
 	}

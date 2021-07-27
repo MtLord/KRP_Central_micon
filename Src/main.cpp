@@ -119,8 +119,8 @@ int main(void)
   App->SetSerial();
   FilterConfig();
   HAL_Delay(2000);
-  Timer1 LoopInt(&htim6);
-  LoopInt.SetLoopTime(5);
+  //Timer1 LoopInt(&htim6);
+  //LoopInt.SetLoopTime(5);
   //LoopInt.Start();
   /* USER CODE END 2 */
 
@@ -131,6 +131,11 @@ int main(void)
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
 	  app.TaskShift();
+	  //hlow.Air1.open();
+	  //hlow.M1.SetVelocity(20);
+	  //hlow.Ad1.SendRequest();
+	  //hlow.SM2.SetDuty(30);
+	  //HAL_Delay(5);
   }
   /* USER CODE END 3 */
 }
