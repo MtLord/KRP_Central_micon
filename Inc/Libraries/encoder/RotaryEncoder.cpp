@@ -10,7 +10,7 @@
 #include "Libraries/DefineLED.h"
 extern CAN_RxHeaderTypeDef RXmsg;
 extern unsigned char RxFIFO_Data[12];
-long Encoder::countdata[8]={0,};
+short Encoder::countdata[8]={0,};
 
 void Encoder::Sendreqest()
 {
@@ -44,7 +44,7 @@ float Encoder::GetDistance(float d,float count)
 
 void Encoder::SetData()
 {
-	if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|board_ID))
+	if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|1))
 	{
 
 				((unsigned char *)&countdata[0])[0]=RxFIFO_Data[0];
@@ -56,6 +56,17 @@ void Encoder::SetData()
 				((unsigned char *)&countdata[3])[0]=RxFIFO_Data[6];
 				((unsigned char *)&countdata[3])[1]=RxFIFO_Data[7];
 
-				getok=true;
+	}
+	else if(RXmsg.ExtId==(GRT_ENCODER_COUNT<<ORDER_BIT_Pos|2))
+	{
+		((unsigned char *)&countdata[4])[0]=RxFIFO_Data[0];
+		((unsigned char *)&countdata[4])[1]=RxFIFO_Data[1];
+		((unsigned char *)&countdata[5])[0]=RxFIFO_Data[2];
+		((unsigned char *)&countdata[5])[1]=RxFIFO_Data[3];
+		((unsigned char *)&countdata[6])[0]=RxFIFO_Data[4];
+		((unsigned char *)&countdata[6])[1]=RxFIFO_Data[5];
+		((unsigned char *)&countdata[7])[0]=RxFIFO_Data[6];
+		((unsigned char *)&countdata[7])[1]=RxFIFO_Data[7];
+
 	}
 }
