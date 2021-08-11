@@ -18,7 +18,7 @@
 #include "Libraries/Sensor/Sensor.hpp"
 #include "Libraries/PS3/PS3class.hpp"
 
-#include "Libraries/KondoServo/ICS.hpp"
+
 #include "tim.h"
 #include "Libraries/Steppre/SteppingMotor.hpp"
 /*****switch profile****************/
