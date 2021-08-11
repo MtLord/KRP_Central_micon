@@ -10,42 +10,34 @@
 
 void Motor::DivideData(float data)
 {
-	for(int i=0;i<4;i++)
+	for (int i = 0; i < 4; i++)
 	{
-		tx_buff[i]=((unsigned char*)&data)[i];
+		tx_buff[i] = ((unsigned char *)&data)[i];
 	}
 }
 
 void Motor::SetDuty(float duty)
 {
 	this->DivideData(duty);
-	while(TXok==false)
+	while (TXok == false)
 	{
-		if(canbus->Send(MOTORE_SET_DUTY<<ORDER_BIT_Pos|node_id<<NODE_ID_Pos|boardid,4,tx_buff)!=0)
+		if (canbus->Send(MOTORE_SET_DUTY << ORDER_BIT_Pos | node_id << NODE_ID_Pos | boardid, 4, tx_buff) != 0)
 		{
-			TXok=false;
+			TXok = false;
 		}
 		else
 		{
-			if(tx_led>15)
+			if (tx_led > 15)
 			{
 				TOGGLE_TX_LED;
-				tx_led=0;
+				tx_led = 0;
 			}
-			else{
+			else
+			{
 				tx_led++;
 			}
-			TXok=true;
+			TXok = true;
 		}
 	}
-	TXok=false;
+	TXok = false;
 }
-
-
-
-
-
-
-
-
-

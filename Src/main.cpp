@@ -42,7 +42,6 @@
 
 extern void FilterConfig();
 
-
 extern bool intflag;
 /* USER CODE END PTD */
 
@@ -88,7 +87,7 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 
-	HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -113,9 +112,9 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   LowlayerHandelTypedef hlow;
-  plow=&hlow;
+  plow = &hlow;
   Application app(&hlow);
-  App=&app;
+  App = &app;
   App->SetSerial();
   FilterConfig();
   HAL_Delay(2000);
@@ -130,12 +129,12 @@ int main(void)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-	  app.TaskShift();
-	  //hlow.Air1.open();
-	  //hlow.M1.SetVelocity(20);
-	  //hlow.Ad1.SendRequest();
-	  //hlow.SM2.SetDuty(30);
-	  //HAL_Delay(5);
+    app.TaskShift();
+    //hlow.Air1.open();
+    //hlow.M1.SetVelocity(20);
+    //hlow.Ad1.SendRequest();
+    //hlow.SM2.SetDuty(30);
+    //HAL_Delay(5);
   }
   /* USER CODE END 3 */
 }
@@ -176,8 +175,7 @@ void SystemClock_Config(void)
   }
   /** Initializes the CPU, AHB and APB busses clocks 
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -191,7 +189,6 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-
 /* USER CODE END 4 */
 
 /**
@@ -202,11 +199,11 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-	printf("init error");
+  printf("init error");
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
@@ -215,7 +212,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */

@@ -17,18 +17,18 @@ class Encoder
 	unsigned short board_ID;
 	int enco_num;
 
-	float dist=0;
-	bool TXok=false;
-	int tx_led=0;
-public:
-	Encoder(CanBus *_canbus,int num,unsigned char ID):canbus(_canbus),board_ID(ID),enco_num(num)
-	{
+	float dist = 0;
+	bool TXok = false;
+	int tx_led = 0;
 
+public:
+	Encoder(CanBus *_canbus, int num, unsigned char ID) : canbus(_canbus), board_ID(ID), enco_num(num)
+	{
 	}
-	bool getok=false;
+	bool getok = false;
 	static short countdata[8];
 	void Sendreqest();
-	float GetDistance(float d,float count);//(�M�A�̃s�b�`�~���a,���������̃J�E���g��)
+	float GetDistance(float d, float count); //(�M�A�̃s�b�`�~���a,���������̃J�E���g��)
 	void SetData();
 };
 

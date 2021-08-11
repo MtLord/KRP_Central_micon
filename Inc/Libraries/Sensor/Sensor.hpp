@@ -11,16 +11,15 @@
 class Sensor
 {
 	CanBus *canbus;
-	int tx_led=0;
+	int tx_led = 0;
 	int num;
-	bool TXok=false;
+	bool TXok = false;
 
 public:
-	Sensor(CanBus *_canbus,int _num):canbus(_canbus),num(_num)
+	Sensor(CanBus *_canbus, int _num) : canbus(_canbus), num(_num)
 	{
-
 	}
-	bool getok=false;
+	bool getok = false;
 	void SendRequest();
 	void SetData();
 	static unsigned short sensordata[12];
@@ -31,16 +30,16 @@ public:
 class MicroSw
 {
 	CanBus *canbus;
-	bool TXok=false;
-	int conenum=0;
-	int boardnum=1;
-	int tx_led=0;
-public:
-	MicroSw(CanBus *_canbus,int _conenum,int brnum):canbus(_canbus),conenum(_conenum),boardnum(brnum)//(CAN handle,connection number,board number)
-	{
+	bool TXok = false;
+	int conenum = 0;
+	int boardnum = 1;
+	int tx_led = 0;
 
+public:
+	MicroSw(CanBus *_canbus, int _conenum, int brnum) : canbus(_canbus), conenum(_conenum), boardnum(brnum) //(CAN handle,connection number,board number)
+	{
 	}
-	bool getok=false;
+	bool getok = false;
 	static unsigned char Data[4];
 	void SetData();
 	void SendRequest();

@@ -2,7 +2,7 @@
  * Aircylinder.cpp
  *
  *  Created on: 2018/12/17
- *      Author: —T‘¿
+ *      Author: ï¿½Tï¿½ï¿½
  */
 
 #include "Libraries/Aircylinder/Aircylinder.hpp"
@@ -23,17 +23,16 @@ void Aircylinder::close()
 
 void Aircylinder::SetOrder(int order)
 {
-  while(TXok==false)
-  {
-	if(canbus->Send(order<<ORDER_BIT_Pos|nodeID<<NODE_ID_Pos,0,0)!=0)
+	while (TXok == false)
 	{
-
+		if (canbus->Send(order << ORDER_BIT_Pos | nodeID << NODE_ID_Pos, 0, 0) != 0)
+		{
+		}
+		else
+		{
+			TOGGLE_TX_LED;
+			TXok = true;
+		}
 	}
-	else
-	{
-		TOGGLE_TX_LED;
-		TXok=true;
-	}
-  }
-  TXok=false;
+	TXok = false;
 }
