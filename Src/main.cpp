@@ -34,7 +34,7 @@
 #include "stdio.h"
 #include "Libraries/DefineOrder.h"
 #include <stdio.h>
-#include "Application/Application.hpp"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,7 +53,7 @@ LowlayerHandelTypedef *plow;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-Application *App;
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -113,14 +113,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   LowlayerHandelTypedef hlow;
   plow = &hlow;
-  Application app(&hlow);
-  App = &app;
-  App->SetSerial();
   FilterConfig();
   HAL_Delay(2000);
-  //Timer1 LoopInt(&htim6);
-  //LoopInt.SetLoopTime(5);
-  //LoopInt.Start();
+  Timer1 LoopInt(&htim6);
+  LoopInt.SetLoopTime(5);
+  LoopInt.Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,12 +126,9 @@ int main(void)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-    app.TaskShift();
-    //hlow.Air1.open();
-    //hlow.M1.SetVelocity(20);
-    //hlow.Ad1.SendRequest();
-    //hlow.SM2.SetDuty(30);
-    //HAL_Delay(5);
+    if (intflag)
+    {
+    }
   }
   /* USER CODE END 3 */
 }
